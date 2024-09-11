@@ -1,6 +1,6 @@
 ## Design Database
 
-<p> php artisan migrate / php artisan migrate:fresh --> update databases </p>
+<p> php artisan migrate / php artisan migrate:fresh --> update databases (ok) </p>
 
 # Table
 - users
