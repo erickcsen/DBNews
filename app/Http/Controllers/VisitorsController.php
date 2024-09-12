@@ -647,7 +647,7 @@ class VisitorsController extends Controller
             "request" => $request
         ]);
     }
-    private function category_menu(){
+    public function category_menu(){
         return Category::with(['subcategories'])->whereHas("article")->get();
     }
     private function api_football_get_country($name){

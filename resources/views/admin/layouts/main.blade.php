@@ -32,6 +32,12 @@
 
 		<div class="main-panel">
 			<div class="content">
+				{{-- Show email verification notice --}}
+                {{-- @if (auth()->check() && !auth()->user()->hasVerifiedEmail())
+                    <div class="alert alert-danger">
+                        {{ __('Please verify your email address. A verification link has been sent to your email address.') }}
+                    </div>
+                @endif --}}
 				@yield('content')
 			</div>
 

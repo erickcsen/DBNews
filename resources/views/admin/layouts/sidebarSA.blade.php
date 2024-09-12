@@ -3,7 +3,7 @@
     <div class="sidebar-wrapper scrollbar scrollbar-inner">
         <div class="sidebar-content">
 
-            <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
+            <a data-toggle="collapse" class="d-none" href="#collapseExample" aria-expanded="true">
                 <span>
                     Hizrian
                     <span class="user-level">Administrator</span>
@@ -30,7 +30,7 @@
                         <p>Admin</p>
                     </a>
                 </li>
-                <li class="nav-item {{ request()->routeIs('user.indexx') ? 'active' : '' }}">
+                <li class="nav-item {{ request()->routeIs('user.indexx') ? 'active' : '' }} d-none">
                     <a href="{{route('user.indexx')}}">
                         <i class="far fa-user"></i>
                         <p>User</p>

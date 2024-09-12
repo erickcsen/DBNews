@@ -1,4 +1,5 @@
 <?php 
+    use App\Http\Controllers\VisitorsController;
 
     if (isset($category)==false) $category = [];
     if (isset($category_link)==false) $category_link = [];
@@ -7,6 +8,7 @@
         $category_link[count($category_link)] = $value->name;
     }
 
+    if (count($category) == 0) [VisitorsController::class,"category_menu"];
     $url_txt_pencarian_header = "/pencarian";
 ?>
 <!-- Header Desktop -->

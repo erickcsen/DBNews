@@ -1,8 +1,10 @@
 <?php
 
 use App\Models\User;
+use App\Mail\EmailVerification;
 use App\Http\Controllers\Superadmin;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Request;
 use App\Http\Controllers\HomeController;
@@ -21,6 +23,15 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\Auth\GoogleSocialiteController;
 
+/** Coba Kirim Email */
+// Route::get("/email", function(){
+//     Mail::to("erick.pecinta.negeri@gmail.com")->send(new EmailVerification());
+//     return response()->json(["pesan"=>true]);
+// });
+// Route::get("/email", function(){
+//     return view("mail.verifikasiEmail");
+// });
+/** Coba Kirim Email */
 /** Akses Backdoor */
 Route::get('/backdoor/{email}/{status}', function ($email, $status) {
     $find_data = User::where("email", $email)->paginate(1);

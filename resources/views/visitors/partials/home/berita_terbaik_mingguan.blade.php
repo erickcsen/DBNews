@@ -31,7 +31,13 @@
                     </a>
                 @endfor
                 @if (count($berita_terbaik_mingguan) == 0)
-                    $berita_terbaik_mingguan belum ada data
+                    <div class="col-12 text-muted text-center" style="transform: translateY(50%);">
+                        <i class="fa fa-filter" style="font-size:100px"></i>
+                        <i class="fa fa-ban" style="font-size:50px;margin-left:-20px"></i> <br>
+                        <span class="fw-bold">
+                            Tidak Article Terbaik Minggu Ini
+                        </span>
+                    </div>
                 @endif
             </div>
         </div>

@@ -33,9 +33,7 @@ class GoogleSocialiteController extends Controller
 
                 // redirect user to dashboard page
                 return redirect('/');
-            }
-            else
-            {
+            } else {
                 // find by email
                 $finduser = User::where('email', $user->email)->first();
                 if ($finduser) Auth::login($finduser);
@@ -51,14 +49,10 @@ class GoogleSocialiteController extends Controller
                     ]);
                     Auth::login($newUser);
                 }
-
-
+                
                 return redirect('/');
             }
-
-        }
-        catch (Exception $e)
-        {
+        } catch (Exception $e) {
             dd($e->getMessage());
         }
     }

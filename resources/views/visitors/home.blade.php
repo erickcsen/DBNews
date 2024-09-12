@@ -8,6 +8,15 @@
     @if (count($article) > 0)
         <div id="content" class="col-12 d-none d-lg-inline-block">
             <div class="container">
+                {{-- Show email verification notice --}}
+                {{-- ===================== VERIFICATION NOTIFICATION ===================== --}}
+                {{-- @if (auth()->check() && !auth()->user()->hasVerifiedEmail())
+                    <div class="alert alert-danger">
+                        {{ __('Please verify your email address. A verification link has been sent to your email address.') }}
+                    </div>
+                @endif --}}
+
+                
                 @include('visitors.partials.home.today_headline_news')
                 @include('visitors.partials.home.berita_terpopuler')
                 <div>&nbsp;</div>
