@@ -110,7 +110,7 @@
                                             </div>
                                             <div class="col-12 mt-2">
                                                 <span style="font-size: 10pt">
-                                                    <?php echo substr($article[$i]->description,0,220).'...' ?>
+                                                    {{preg_replace('/ {2,}/', ' ', str_replace('&nbsp;', ' ',strip_tags(substr($article[$i]->description,0,220)))).'...'}}
                                                 </span>
                                             </div>
                                         </div>
@@ -155,7 +155,7 @@
                                             </div>
                                             <div class="col-12 mt-2">
                                                 <span style="font-size: 10pt">
-                                                    <?php echo substr($item->description,0,220).'...' ?>
+                                                    {{preg_replace('/ {2,}/', ' ', str_replace('&nbsp;', ' ',strip_tags(substr($item->description,0,220))))."..."}}
                                                 </span>
                                             </div>
                                         </div>

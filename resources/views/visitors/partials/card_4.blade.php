@@ -27,7 +27,7 @@
                 </span>
             </small>
             <div class="my-2" style="font-size: 11pt">
-                {!!substr($isi,3,strlen($isi))!!}
+                {{preg_replace('/ {2,}/', ' ', str_replace('&nbsp;', ' ',strip_tags(substr($isi,3,strlen($isi)))))}}
             </div>
             <button class="btn btn-light border-color4a25a9 color4a25a9 mt-3">
                 Read more
