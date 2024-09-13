@@ -30,7 +30,7 @@
                         <p>Admin</p>
                     </a>
                 </li>
-                <li class="nav-item {{ request()->routeIs('user.indexx') ? 'active' : '' }} d-none">
+                <li class="nav-item {{ request()->routeIs('user.indexx') ? 'active' : '' }}">
                     <a href="{{route('user.indexx')}}">
                         <i class="far fa-user"></i>
                         <p>User</p>
