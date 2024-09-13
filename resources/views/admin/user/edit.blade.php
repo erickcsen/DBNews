@@ -31,7 +31,7 @@
                                 <label for="email">email</label>
                                 <input type="email" class="form-control" name="email" id="email" value="{{$use->email}}">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" hidden>
                                 <label for="name">password (leave blank to keep current)</label>
                                 <input type="password" class="form-control" name="password" id="password">
                             </div>

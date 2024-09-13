@@ -19,11 +19,11 @@
                                 <label for="name">Username</label>
                                 <input type="text" class="form-control" name="name" id="name" placeholder="username ...">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" hidden>
                                 <label for="role">Role</label>
                                 <select class="form-control" name="role" id="role">
-                                    <option value="0">User</option>
                                     <option value="1">Admin</option>
+                                    <option value="0">User</option>
                                 </select>
                             </div>
                             <div class="form-group">
