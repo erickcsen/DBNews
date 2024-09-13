@@ -67,7 +67,7 @@
             <!-- Iklan 1 -->
             <div class="row">
                 <div class="col-12 my-4">
-                    <div class="col-12" style="min-height: 300px;">
+                    <div class="col-12" style="height: 375px;">
                         @foreach ($ads_side as $item)
                             <a href="{{$item->link}}" target="_blank">
                                 <img class="iklan_side_1 rounded col-12" src="{{Storage::url($item->ad_img)}}" style="max-height: 375px; max-width:100%">

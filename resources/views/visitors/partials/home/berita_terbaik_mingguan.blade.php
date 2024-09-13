@@ -46,7 +46,7 @@
         <div class="row">
             <!-- Iklan 2 -->
             <div class="col-12">
-                <div class="col-12" style="min-height: 300px;">
+                <div class="col-12" style="height: 375px;">
                     @for ($i = count($ads_side)-1; count($ads_bottom) > 0 && $i >= 0; $i--)
                         <?php $item = $ads_side[$i]; ?>
                         <a href="{{$item->link}}" target="_blank">
