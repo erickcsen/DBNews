@@ -3,12 +3,12 @@
 
     if (isset($category)==false) $category = [];
     if (isset($category_link)==false) $category_link = [];
+    if (count($category) == 0) $category = [VisitorsController::class,"category_menu"];
 
     foreach ($category as $category_value => $value) {
         $category_link[count($category_link)] = $value->name;
     }
 
-    if (count($category) == 0) [VisitorsController::class,"category_menu"];
     $url_txt_pencarian_header = "/pencarian";
 ?>
 <!-- Header Desktop -->
