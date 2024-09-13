@@ -21,42 +21,62 @@
                 @include('visitors.partials.home.berita_terpopuler')
                 <div>&nbsp;</div>
                 @include('visitors.partials.home.youtube')
-                <!-- Iklan -->
+                <!-- Iklan 1 -->
                 <div class="row">
-                    <?php $ads_bottom_id = 0 ?>
-                    @if (count($ads_bottom) > 0)
-                        <?php $link_url = $ads_bottom[$ads_bottom_id]->link?>
-                        <a href="{{$link_url}}" target="_blank">
-                            <div class="col-12 mb-5" style="height: 170px;background-size: contain;background-position: center;background-image: url('{{Storage::url($ads_bottom[$ads_bottom_id]->ad_img)}}');background-repeat:no-repeat;">
-                            </div>
-                        </a>
-                    @endif
+                    <div class="col-12 my-4" style="height: 200px">
+                        <div class="col-12">
+                            @foreach ($ads_bottom as $item)
+                                <img class="iklan_bottom_1" src="{{Storage::url($item->ad_img)}}" style="width:100%">
+                            @endforeach
+                        </div>
+                        <script>
+                            var myIndex = 0;
+                            carousel1();
+
+                            function carousel1() {
+                                var i;
+                                var x = document.getElementsByClassName("iklan_bottom_1");
+                                for (i = 0; i < x.length; i++) {
+                                    x[i].style.display = "none";  
+                                }
+                                myIndex++;
+                                if (myIndex > x.length) {myIndex = 1}    
+                                x[myIndex-1].style.display = "block";  
+                                setTimeout(carousel1, 2000); // Change image every 2 seconds
+                            }
+                        </script>
+                    </div>
                 </div>
-                <!-- Iklan -->
+                <!-- Iklan 1 -->
                 @include('visitors.partials.home.berita_terbaik_mingguan')
-                <!-- Iklan -->
-                <?php $ads_bottom_id = $ads_bottom_id+1 ?>
-                @if (count($ads_bottom) > $ads_bottom_id)
-                    <div class="col-12 mb-5"></div>
-                    <div class="row">
-                        <?php $link_url = $ads_bottom[$ads_bottom_id]->link?>
-                        <a href="{{$link_url}}" target="_blank">
-                            <div class="col-12 mb-5" style="height: 170px;background-size: contain;background-position: center;background-image: url('{{Storage::url($ads_bottom[$ads_bottom_id]->ad_img)}}');background-repeat:no-repeat;">
-                            </div>
-                        </a>
+                <!-- Iklan 2 -->
+                <div class="row">
+                    <div class="col-12 my-4" style="height: 200px">
+                        <div class="col-12">
+                            @for ($i = count($ads_bottom)-1; count($ads_bottom) > 0 && $i >= 0; $i--)
+                                <?php $item = $ads_bottom[$i]; ?>
+                                <img class="iklan_bottom_2" src="{{Storage::url($item->ad_img)}}" style="width:100%">
+                            @endfor
+                        </div>
+                        <script>
+                            var myIndex2 = 0;
+                            carousel2();
+
+                            function carousel2() {
+                                var i;
+                                var x = document.getElementsByClassName("iklan_bottom_2");
+                                for (i = 0; i < x.length; i++) {
+                                    x[i].style.display = "none";  
+                                }
+                                myIndex2++;
+                                if (myIndex2 > x.length) {myIndex2 = 1}    
+                                x[myIndex2-1].style.display = "block";  
+                                setTimeout(carousel2, 2000); // Change image every 2 seconds
+                            }
+                        </script>
                     </div>
-                @elseif(count($ads_bottom) > 0)
-                    <?php $ads_bottom_id = 0 ?>
-                    <div class="col-12 mb-5"></div>
-                    <div class="row">
-                        <?php $link_url = $ads_bottom[$ads_bottom_id]->link?>
-                        <a href="{{$link_url}}" target="_blank">
-                            <div class="col-12 mb-5" style="height: 170px;background-size: contain;background-position: center;background-image: url('{{Storage::url($ads_bottom[$ads_bottom_id]->ad_img)}}');background-repeat:no-repeat;">
-                            </div>
-                        </a>
-                    </div>
-                @endif
-                <!-- Iklan -->
+                </div>
+                <!-- Iklan 2 -->
             </div>
         </div>
         <div id="content" class="col-12 d-lg-none d-inline-block">

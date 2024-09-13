@@ -64,12 +64,33 @@
             </div>
         </a>
         <div class="col-12 pb-3">
-            <?php $ads_side_id = 0 ?>
-            @if (count($ads_side) > 0)
-                <a href="{{$ads_side[$ads_side_id]->link}}" target="_blank">
-                    <img src="{{Storage::url($ads_side[$ads_side_id]->ad_img)}}" width="100%" class="rounded">
-                </a>
-            @endif
+            <!-- Iklan 1 -->
+            <div class="row">
+                <div class="col-12 my-4">
+                    <div class="col-12">
+                        @foreach ($ads_side as $item)
+                            <img class="iklan_side_1" src="{{Storage::url($item->ad_img)}}" style="height: 375px">
+                        @endforeach
+                    </div>
+                    <script>
+                        var myIndex_side1 = 0;
+                        carousel_side1();
+
+                        function carousel_side1() {
+                            var i;
+                            var x = document.getElementsByClassName("iklan_side_1");
+                            for (i = 0; i < x.length; i++) {
+                                x[i].style.display = "none";  
+                            }
+                            myIndex_side1++;
+                            if (myIndex_side1 > x.length) {myIndex_side1 = 1}    
+                            x[myIndex_side1-1].style.display = "block";  
+                            setTimeout(carousel_side1, 2000); // Change image every 2 seconds
+                        }
+                    </script>
+                </div>
+            </div>
+            <!-- Iklan 1 -->
         </div>
     </div>
 </div>

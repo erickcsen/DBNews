@@ -24,8 +24,8 @@ use Illuminate\Http\Request as Request2;
 class VisitorsController extends Controller
 {
     public function home(Request2 $request){
-        $ads_side = Ad::where("position","side")->inRandomOrder()->paginate(4);
-        $ads_bottom = Ad::where("position", "bottom")->inRandomOrder()->paginate(4);
+        $ads_side = Ad::where("position","side")->inRandomOrder()->paginate(10);
+        $ads_bottom = Ad::where("position", "bottom")->inRandomOrder()->paginate(10);
         $category = VisitorsController::category_menu();
 
         $youtube_video = 
@@ -250,7 +250,7 @@ class VisitorsController extends Controller
         );
     }
     public function read_article(Request2 $request, $id){
-        $ads_side = Ad::where("position", "side")->inRandomOrder()->paginate(4);
+        $ads_side = Ad::where("position", "side")->inRandomOrder()->paginate(10);
         $category = VisitorsController::category_menu();
 
         $article = Article::with(["category","user","subcategory"])->find($id);
@@ -374,7 +374,7 @@ class VisitorsController extends Controller
 
         $fullUrl = Request::fullUrl();
 
-        $ads_side = Ad::where("position", "side")->inRandomOrder()->paginate(4);
+        $ads_side = Ad::where("position", "side")->inRandomOrder()->paginate(10);
 
         // Ambil alamat IP pengguna
         $ipAddress = $request->header('X-Forwarded-For');
@@ -452,7 +452,7 @@ class VisitorsController extends Controller
             }
         }
 
-        $ads_bottom = Ad::where("position", "bottom")->inRandomOrder()->paginate(4);
+        $ads_bottom = Ad::where("position", "bottom")->inRandomOrder()->paginate(10);
 
         return view('visitors.category',[
             "today_headline"=>$today_headline,

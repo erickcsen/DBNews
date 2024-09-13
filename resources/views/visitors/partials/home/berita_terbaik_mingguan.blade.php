@@ -44,20 +44,32 @@
     </div>
     <div class="col-<?=(count($randomArticle) > 0 || count($ads_side)-1 >= $ads_side_id)?"3":"12"?> ps-4 mb-4">
         <div class="row">
+            <!-- Iklan 2 -->
             <div class="col-12">
-                @if (count($ads_side)-1 >= $ads_side_id)
-                    <a href="{{$ads_side[$ads_side_id]->link}}" target="_blank">
-                        <div class="col-12 rounded border" style="background-image: url('{{Storage::url($ads_side[$ads_side_id]->ad_img)}}');height:350px; background-size:cover;"></div>
-                    </a>
-                @elseif (count($ads_side) > 0)
-                    @php
-                        $ads_side_id = 0
-                    @endphp
-                    <a href="{{$ads_side[$ads_side_id]->link}}" target="_blank">
-                        <div class="col-12 rounded border" style="background-image: url('{{Storage::url($ads_side[$ads_side_id]->ad_img)}}');height:350px; background-size:cover;"></div>
-                    </a>
-                @endif
+                <div class="col-12">
+                    @for ($i = count($ads_side)-1; count($ads_bottom) > 0 && $i >= 0; $i--)
+                        <?php $item = $ads_side[$i]; ?>
+                        <img class="iklan_side_2" src="{{Storage::url($item->ad_img)}}" style="height: 375px">
+                    @endfor
+                </div>
+                <script>
+                    var myIndex_side2 = 0;
+                    carousel_side2();
+
+                    function carousel_side2() {
+                        var i;
+                        var x = document.getElementsByClassName("iklan_side_2");
+                        for (i = 0; i < x.length; i++) {
+                            x[i].style.display = "none";  
+                        }
+                        myIndex_side2++;
+                        if (myIndex_side2 > x.length) {myIndex_side2 = 1}    
+                        x[myIndex_side2-1].style.display = "block";  
+                        setTimeout(carousel_side2, 2000); // Change image every 2 seconds
+                    }
+                </script>
             </div>
+            <!-- Iklan 2 -->
             @if (count($randomArticle) > 0)
                 <div class="col-12 mt-3 text-capitalize">
                     <b class="color4a25a9">{{$randomCategory->name}}</b>
