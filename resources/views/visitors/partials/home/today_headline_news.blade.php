@@ -69,7 +69,9 @@
                 <div class="col-12 my-4">
                     <div class="col-12">
                         @foreach ($ads_side as $item)
-                            <img class="iklan_side_1" src="{{Storage::url($item->ad_img)}}" style="height: 375px">
+                            <a href="{{$item->link}}" target="_blank">
+                                <img class="iklan_side_1 rounded" src="{{Storage::url($item->ad_img)}}" style="height: 375px">
+                            </a>
                         @endforeach
                     </div>
                     <script>

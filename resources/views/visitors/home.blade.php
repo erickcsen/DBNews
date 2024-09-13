@@ -26,7 +26,9 @@
                     <div class="col-12 my-4" style="height: 200px">
                         <div class="col-12">
                             @foreach ($ads_bottom as $item)
-                                <img class="iklan_bottom_1" src="{{Storage::url($item->ad_img)}}" style="width:100%">
+                                <a href="{{$item->link}}" target="_blank">
+                                    <img class="iklan_bottom_1 rounded" src="{{Storage::url($item->ad_img)}}" style="width:100%">
+                                </a>
                             @endforeach
                         </div>
                         <script>
@@ -55,7 +57,9 @@
                         <div class="col-12">
                             @for ($i = count($ads_bottom)-1; count($ads_bottom) > 0 && $i >= 0; $i--)
                                 <?php $item = $ads_bottom[$i]; ?>
-                                <img class="iklan_bottom_2" src="{{Storage::url($item->ad_img)}}" style="width:100%">
+                                <a href="{{$item->link}}" target="_blank">
+                                    <img class="iklan_bottom_2 rounded" src="{{Storage::url($item->ad_img)}}" style="width:100%">
+                                </a>
                             @endfor
                         </div>
                         <script>

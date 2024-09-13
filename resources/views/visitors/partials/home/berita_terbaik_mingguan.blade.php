@@ -49,7 +49,9 @@
                 <div class="col-12">
                     @for ($i = count($ads_side)-1; count($ads_bottom) > 0 && $i >= 0; $i--)
                         <?php $item = $ads_side[$i]; ?>
-                        <img class="iklan_side_2" src="{{Storage::url($item->ad_img)}}" style="height: 375px">
+                        <a href="{{$item->link}}" target="_blank">
+                            <img class="iklan_side_2 rounded" src="{{Storage::url($item->ad_img)}}" style="height: 375px">
+                        </a>
                     @endfor
                 </div>
                 <script>
