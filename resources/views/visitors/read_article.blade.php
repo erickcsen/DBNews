@@ -248,15 +248,29 @@
                 </div>
                 <div class="col-3">
                     <div class="col-12 mb-4">
-                        <?php $ads_side_id = 0; ?>
-                        @if (count($ads_side) > $ads_side_id)
-                            <?php $ads_img = $ads_side[$ads_side_id]->ad_img; ?>
-                            <?php $ads_img = Storage::url($ads_img); ?>
-                            <?php $link_url = $ads_side[$ads_side_id]->link; ?>
-                            <a href="{{ $link_url }}" target="_blank" rel="noopener noreferrer">
-                                <img src="{{ $ads_img }}" class="rounded" alt="" width="100%">
-                            </a>
-                        @endif
+                        <div class="col-12" style="min-height: 300px;">
+                            @foreach ($ads_side as $item)
+                                <a href="{{$item->link}}" target="_blank">
+                                    <img class="iklan_side_1 rounded col-12" src="{{Storage::url($item->ad_img)}}" style="max-height: 375px; max-width:100%">
+                                </a>
+                            @endforeach
+                        </div>
+                        <script>
+                            var myIndex_side1 = 0;
+                            carousel_side1();
+
+                            function carousel_side1() {
+                                var i;
+                                var x = document.getElementsByClassName("iklan_side_1");
+                                for (i = 0; i < x.length; i++) {
+                                    x[i].style.display = "none";  
+                                }
+                                myIndex_side1++;
+                                if (myIndex_side1 > x.length) {myIndex_side1 = 1}    
+                                x[myIndex_side1-1].style.display = "block";  
+                                setTimeout(carousel_side1, 2000); // Change image every 2 seconds
+                            }
+                        </script>
                     </div>
                     <div class="col-12">
                         <b class="color4a25a9" style="font-size: 14pt">Berita Terbaru</b>
