@@ -36,7 +36,7 @@
                         </div>
                         <div class="col-12">
                             <a href="/read_article/{{ $article->id }}" class="nolink">
-                                <span class="color4a25a9 fw-bold" style="font-size: 18pt">
+                                <span class="color4a25a9 fw-bold" style="font-size: 35px;">
                                     {{ $article->title }}
                                 </span>
                             </a>
