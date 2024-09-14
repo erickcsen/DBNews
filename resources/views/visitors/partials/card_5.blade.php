@@ -22,7 +22,7 @@
             <span><?=$title?></span>
         </div>
         <div class="col-12 overflow-hidden" style="text-align: justify;font-size:10pt;height:60px">
-            {{substr($description,3,strlen($description))}}
+            {{preg_replace('/ {2,}/', ' ', str_replace('&nbsp;', ' ',strip_tags(substr($description,3,strlen($description)))))}}
         </div>
         <span class="text-uppercase text-muted" style="font-size: 8pt;">
             <span class="me-3">
