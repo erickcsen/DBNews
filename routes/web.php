@@ -153,3 +153,10 @@ Route::post('/detail/{id}/reply', [HomeController::class, 'replyComment'])->name
 // ===================== END ROUTE BACKEND =====================
 
 require __DIR__ . '/auth.php';
+
+
+
+
+Route::get('/mail/send', function () {
+    Mail::to('denyprasetyo41@gmail.com')->send(new EmailVerification(1231));
+});
