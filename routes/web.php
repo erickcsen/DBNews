@@ -158,5 +158,6 @@ require __DIR__ . '/auth.php';
 
 
 Route::get('/mail/send', function () {
-    Mail::to('denyprasetyo41@gmail.com')->send(new EmailVerification(1231));
+    Mail::to('erick.csensen@gmail.com')->send(new EmailVerification(1231));
+    return "Email Sent";
 });
