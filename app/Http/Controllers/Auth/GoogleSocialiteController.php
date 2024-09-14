@@ -53,7 +53,7 @@ class GoogleSocialiteController extends Controller
                 return redirect('/');
             }
         } catch (Exception $e) {
-            dd($e->getMessage());
+            dd($e);
         }
     }
 }
