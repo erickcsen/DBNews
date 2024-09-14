@@ -8,9 +8,11 @@
 <div class="col-12 pt-2 mb-3">
     <div class="row">
         <div class="col-md-4 col-5">
-            <div class="col-12 rounded border" style="background-image: url('<?=$gambar?>');background-size:cover;height:100px;background-position:center;"></div>
+            <div class="col-12 bg-black rounded">
+                <div class="col-12 rounded border" style="background-image: url('<?=$gambar?>');background-size:auto 100%;height:100px;background-position:center;background-repeat:no-repeat;"></div>
+            </div>
         </div>
-        <div class="col-md-8 col-7 p-0">
+        <div class="col-md-8 col-7 p-0 pe-2 overflow-hidden">
             <small class="border rounded px-2 py-1 fw-bold text-muted text-uppercase" style="font-size: 8pt">
                 <?=$tipe?>
             </small>

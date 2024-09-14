@@ -26,11 +26,13 @@
                 <?php $link_page_id = $youtube_video[$i]->id; ?>
                 <?php $link_domain = 'https://youtu.be/' ?>
                 <?php $link_id_and_value = substr($youtube_video[$i]->link,strlen($link_domain),strlen($youtube_video[$i]->link))?>
-                <?php $link_image = 'https://img.youtube.com/vi/'.$link_id = substr($link_id_and_value, 0, strpos($link_id_and_value, "?")).'/hqdefault.jpg' ?>
+                <?php $link_image = 'https://i.ytimg.com/vi/'.$link_id = substr($link_id_and_value, 0, strpos($link_id_and_value, "?")).'/hq720.jpg' ?>
                 <div class="col-6 p-0" style="border-right: 1px solid gray">
                     <a href="{{route('watch_vidio',["id"=>$link_page_id])}}" class="nolink">
                         <div class="col-12 p-0 pe-3">
-                            <img src="{{$link_image}}" width="100%" class="border rounded">
+                            <div class="col-12 border rounded overflow-hidden">
+                                <img src="{{$link_image}}" class="col-12" alt="">
+                            </div>
                             <div class="col-12">
                                 <div class="col-12 py-2">
                                     <div class="bgcolorf9e701 ps-2 pe-2 d-inline rounded text-uppercase py-1" style="font-size: 10pt;">
@@ -60,7 +62,7 @@
                         <?php $link_page_id = $youtube_video[$i]->id; ?>
                         <?php $link_domain = 'https://youtu.be/' ?>
                         <?php $link_id_and_value = substr($youtube_video[$i]->link,strlen($link_domain),strlen($youtube_video[$i]->link))?>
-                        <?php $link_image = 'https://img.youtube.com/vi/'.$link_id = substr($link_id_and_value, 0, strpos($link_id_and_value, "?")).'/hqdefault.jpg' ?>                                
+                        <?php $link_image = 'https://i.ytimg.com/vi/'.$link_id = substr($link_id_and_value, 0, strpos($link_id_and_value, "?")).'/hq720.jpg' ?>
                         <?php 
                             $gambar = $link_image;
                             $tipe = $youtube_video[$i]->category->name;

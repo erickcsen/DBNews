@@ -34,9 +34,19 @@
                     @include('visitors.partials.divider_footer')
                 </div>
 
-                <a target="_blank" href="https://www.instagram.com/dbmedianews" class="nolink text-white">Instagram</a><br/>
-                <a target="_blank" href="https://www.tiktok.com/@dbmedianews" class="nolink text-white">Tiktok</a><br/>
-                <a target="_blank" href="https://www.youtube.com/@dbnewsid" class="nolink text-white">Youtube</a><br/>
+                <a target="_blank" href="https://www.instagram.com/dbmedianews" class="nolink text-white" style="font-size: 25px">
+                    <i class="fa fa-instagram"></i>
+                </a> &nbsp;
+                <a target="_blank" href="https://www.tiktok.com/@dbmedianews" class="nolink text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="20px" style="margin-top:-10px"
+                        viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                        <path fill="white"
+                            d="M448 209.9a210.1 210.1 0 0 1 -122.8-39.3V349.4A162.6 162.6 0 1 1 185 188.3V278.2a74.6 74.6 0 1 0 52.2 71.2V0l88 0a121.2 121.2 0 0 0 1.9 22.2h0A122.2 122.2 0 0 0 381 102.4a121.4 121.4 0 0 0 67 20.1z" />
+                    </svg>
+                </a> &nbsp;
+                <a target="_blank" href="https://www.youtube.com/@dbnewsid" class="nolink text-white" style="font-size: 20px">
+                    <i class="fa fa-youtube-play"></i>
+                </a><br/>
             </div>
             <div class="col-4">
                 <b>

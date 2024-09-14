@@ -116,7 +116,7 @@
             <!-- Youtube Video -->
             @if (count($youtube_video) > 0)
                 <div class="row">
-                    <div class="col-12 mt-3 p-0" <?=(count($article) > 0)?"":"hidden"?>>
+                    <div class="col-12 mt-3 p-0 d-none" <?=(count($article) > 0)?"":"hidden"?>>
                         <b class="color4a25a9" style="font-size: 18pt">Youtube Video</b>
                         <div style="margin-top:-10px;">
                             @include('visitors.partials.long_divider')
@@ -124,7 +124,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-9 pb-3 pt-3">
+                    <div class="col-8 pb-3 pt-3">
                         <?php if (isset($youtube_video)==false) $youtube_video = []?>
                         @if (count($youtube_video) > 0)
                             <div class="row">
@@ -137,7 +137,7 @@
                                     <?php $link_page_id = "/".$youtube_video[0]->id; ?>
                                     <?php $link_domain = 'https://youtu.be/' ?>
                                     <?php $link_id_and_value = substr($youtube_video[0]->link,strlen($link_domain),strlen($youtube_video[0]->link))?>
-                                    <?php $link_image = 'https://img.youtube.com/vi/'.$link_id = substr($link_id_and_value, 0, strpos($link_id_and_value, "?")).'/hqdefault.jpg' ?>
+                                    <?php $link_image = 'https://i.ytimg.com/vi/'.$link_id = substr($link_id_and_value, 0, strpos($link_id_and_value, "?")).'/hq720.jpg' ?>
                                     <?php 
                                         $link_id = "/watch_vidio"."/".$youtube_utama->id;
                                         $article_img = $link_image;
@@ -153,7 +153,7 @@
                             </div>
                         @endif
                     </div>
-                    <div class="col-3 p-0 ps-1">
+                    <div class="col-4 p-0 ps-1">
                         <div class="col-12 pt-3">
                             <b class="color4a25a9" style="font-size: 14pt">Video Terbaru</b>
                             @include('visitors.partials.divider')

@@ -9,8 +9,8 @@
 ?>
 <a href="{{$link_id}}" class="nolink">
     <div class="col-12 p-0">
-        <div class="col-12">
-            <div class="col-12 rounded border" style="height: 400px;background:url({{$article_img}});background-size:cover;background-position:center;"></div>
+        <div class="col-12 rounded border" style="background-color: black;">
+            <div class="col-12 rounded border" style="height: 400px;background:url({{$article_img}});background-size:contain;background-position:center;background-repeat:no-repeat;"></div>
         </div>
         <div class="col-12">
             <div class="row">
@@ -58,8 +58,8 @@
                         </svg> 0
                     </span>
                 </div>
-                <div class="col-12">
-                    <span class="color4a25a9 fw-bold" style="font-size: 18pt">{{$title}}</span>
+                <div class="col-12" style="height: 120px">
+                    <span class="color4a25a9 fw-bold" style="font-size: 35px">{{$title}}</span>
                 </div>
             </div>
         </div>

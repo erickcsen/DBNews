@@ -9,11 +9,13 @@
 ?>
 <div class="col-3 p-0 pe-2 pb-3">
     <a href="{{$link_id}}" class="nolink">
-        <div class="col-12 pt-3 ps-2 border rounded" style="height: 200px;background:url('<?=$photo?>');background-size: cover;background-position:top center;">
-            <div class="col-12 bgcolorf9e701 d-inline ps-2 pe-2 py-1 ms-1 rounded text-uppercase" style="font-size: 9pt">
-                <b>
-                    <?=$category?>
-                </b>
+        <div class="col-12 rounded" style="background-color: black;">
+            <div class="col-12 pt-3 ps-2 border rounded" style="height: 200px;background:url('<?=$photo?>');background-size: 100%;background-position:center;background-repeat:no-repeat;">
+                <div class="col-12 bgcolorf9e701 d-inline ps-2 pe-2 py-1 ms-1 rounded text-uppercase" style="font-size: 9pt">
+                    <b>
+                        <?=$category?>
+                    </b>
+                </div>
             </div>
         </div>
         <div class="text-capitalize color4a25a9 fw-bold" style="height: 53px;overflow:hidden;font-size:12pt">

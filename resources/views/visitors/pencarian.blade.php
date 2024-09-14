@@ -135,7 +135,7 @@
                             <?php $item=$youtube_video[$i]; ?>
                             <?php $link_domain = 'https://youtu.be/' ?>
                             <?php $link_id_and_value = substr($item->link,strlen($link_domain),strlen($item->link))?>
-                            <?php $link_image = 'https://img.youtube.com/vi/'.$link_id = substr($link_id_and_value, 0, strpos($link_id_and_value, "?")).'/hqdefault.jpg' ?>
+                            <?php $link_image = 'https://i.ytimg.com/vi/'.$link_id = substr($link_id_and_value, 0, strpos($link_id_and_value, "?")).'/hq720.jpg' ?>
                             
                             <a href="/watch_vidio/{{$item->id}}" class="nolink">
                                 <div class="col-12 border rounded pe-2 mb-2">
@@ -275,7 +275,7 @@
                             <?php $item=$youtube_video[$i]; ?>
                             <?php $link_domain = 'https://youtu.be/' ?>
                             <?php $link_id_and_value = substr($item->link,strlen($link_domain),strlen($item->link))?>
-                            <?php $link_image = 'https://img.youtube.com/vi/'.$link_id = substr($link_id_and_value, 0, strpos($link_id_and_value, "?")).'/hqdefault.jpg' ?>
+                            <?php $link_image = 'https://i.ytimg.com/vi/'.$link_id = substr($link_id_and_value, 0, strpos($link_id_and_value, "?")).'/hq720.jpg' ?>
                             <?php 
                                 $gambar = $link_image;
                                 $tipe = $item->category->name;

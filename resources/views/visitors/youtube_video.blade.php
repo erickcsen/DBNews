@@ -36,7 +36,7 @@
                             <?php $link_page_id = $item->id; ?>
                             <?php $link_domain = 'https://youtu.be/' ?>
                             <?php $link_id_and_value = substr($item->link,strlen($link_domain),strlen($item->link))?>
-                            <?php $link_image = 'https://img.youtube.com/vi/'.$link_id = substr($link_id_and_value, 0, strpos($link_id_and_value, "?")).'/hqdefault.jpg' ?>
+                            <?php $link_image = 'https://i.ytimg.com/vi/'.$link_id = substr($link_id_and_value, 0, strpos($link_id_and_value, "?")).'/hq720.jpg' ?>
                             <?php $gambar = $link_image ?>
 
                             <?php $tipe = $item->category->name ?>
@@ -98,7 +98,7 @@
                         <?php $link_page_id = $item->id; ?>
                         <?php $link_domain = 'https://youtu.be/' ?>
                         <?php $link_id_and_value = substr($item->link,strlen($link_domain),strlen($item->link))?>
-                        <?php $link_image = 'https://img.youtube.com/vi/'.$link_id = substr($link_id_and_value, 0, strpos($link_id_and_value, "?")).'/hqdefault.jpg' ?>
+                        <?php $link_image = 'https://i.ytimg.com/vi/'.$link_id = substr($link_id_and_value, 0, strpos($link_id_and_value, "?")).'/hq720.jpg' ?>
                         <?php 
                             $gambar = $item->article_img;
                             $gambar = $link_image;

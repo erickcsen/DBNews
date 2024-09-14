@@ -19,7 +19,7 @@
                 </b>
             </div>
         </div>
-        <div class="col-12 mb-3">
+        <div class="col-12 mb-1">
             <div class="row">
                 <div class="col-6">
                     <div class="d-inline bgcolorf9e701 ps-2 pe-2 py-1 rounded text-uppercase" style="font-size: 10pt">
@@ -65,8 +65,8 @@
                         </svg> {{$share_number}}
                     </span>
                 </div>
-                <div class="col-12">
-                    <span class="color4a25a9 fw-bold" style="font-size: 18pt">{{$title}}</span>
+                <div class="col-12" style="height: 120px;">
+                    <span class="color4a25a9 fw-bold" style="font-size: 35px">{{$title}}</span>
                 </div>
             </div>
         </div>

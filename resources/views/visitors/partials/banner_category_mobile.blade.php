@@ -9,8 +9,8 @@
     <a href="{{$link_id}}" class="nolink">
         <div class="col-12">
             <div class="col-12 mb-3 rounded overflow-hidden">
-                <div class="col-12 p-0 border">
-                    <div class="col-12 rounded" style="background-image: url('{{$article_img}}');height:200px;background-size:100% auto;background-position:center;background-repeat:no-repeat;">
+                <div class="col-12 p-0 border rounded" style="background:black;">
+                    <div class="col-12 rounded" style="background-image: url('{{$article_img}}');height:200px;background-size:auto 100%;background-position:center;background-repeat:no-repeat;">
                     </div>
                 </div>
             </div>

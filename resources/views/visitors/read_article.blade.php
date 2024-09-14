@@ -369,6 +369,11 @@
                         </div>
                         <!-- Foto -->
                         <!-- Isi Article -->
+                        <style>
+                            #isi_article img{
+                                width: 100%;
+                            }
+                        </style>
                         <div id="isi_article" class="col-12 mt-3" style="text-align: justify;font-size:12pt">
                             <?php echo $article->description; ?>
                         </div>
