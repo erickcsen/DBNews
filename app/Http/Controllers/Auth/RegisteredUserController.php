@@ -52,7 +52,11 @@ class RegisteredUserController extends Controller
         
         session()->flash("kode_verifikasi", Hash::make($kode_verifikasi));
         if ($user) {
+            Log::info('mencoba mengirim email ke '.$user["email"]);
+
             if (!session("pesan")) Mail::to($user["email"])->send(new EmailVerification($kode_verifikasi));
+            
+            Log::info('berhasil email');
             return view("auth.register.verifikasi-email",["user"=>$user, "kode_verifikasi"=>$kode_verifikasi]);
         } else abort(404);
     }
