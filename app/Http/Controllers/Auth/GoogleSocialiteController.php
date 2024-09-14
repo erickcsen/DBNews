@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Models\User;
 use Exception;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -49,11 +50,12 @@ class GoogleSocialiteController extends Controller
                     ]);
                     Auth::login($newUser);
                 }
-                
+
                 return redirect('/');
             }
         } catch (Exception $e) {
-            dd($e);
+            Log::info($e);
+            return redirect('/login');
         }
     }
 }
