@@ -282,7 +282,7 @@
                         } ?>
                         @for ($i = 0; $i < count($berita_terbaru); $i++)
                             <?php
-                            $link_id = $berita_terbaru[$i]->id;
+                            $link_id = $berita_terbaru[$i]->slug;
                             $gambar = asset('storage/images/article/' . basename($berita_terbaru[$i]->article_img));
                             $tipe = $berita_terbaru[$i]->category->name;
                             $title = $berita_terbaru[$i]->title;
@@ -306,7 +306,7 @@
                         } ?>
                         @for ($i = 0; $i < count($rekomendasi_berita); $i++)
                             <?php
-                            $link_id = $rekomendasi_berita[$i]->id;
+                            $link_id = $rekomendasi_berita[$i]->slug;
                             $gambar = asset('storage/images/article/' . basename($rekomendasi_berita[$i]->article_img));
                             $tipe = $rekomendasi_berita[$i]->category->name;
                             $title = $rekomendasi_berita[$i]->title;
@@ -364,7 +364,7 @@
                     <!-- Isi Artikel -->
                     <div class="row">
                         <!-- Foto -->
-                        <div class="col-12">
+                        <div class="col-12 rounded border p-0 overflow-hidden">
                             <img src="{{ $link_image_article }}" width="100%" alt="">
                         </div>
                         <!-- Foto -->
@@ -594,7 +594,7 @@
                         } ?>
                         @for ($i = 0; $i < count($berita_terbaru); $i++)
                             <?php
-                            $link_id = $berita_terbaru[$i]->id;
+                            $link_id = $berita_terbaru[$i]->slug;
                             $gambar = asset('storage/images/article/' . basename($berita_terbaru[$i]->article_img));
                             $tipe = $berita_terbaru[$i]->category->name;
                             $title = $berita_terbaru[$i]->title;
@@ -625,18 +625,18 @@
                             @for ($i = 0; $i < count($vidio); $i++)
                                 <?php $link_domain = 'https://youtu.be/'; ?>
                                 <?php $link_id_and_value = substr($vidio[$i]->link, strlen($link_domain), strlen($vidio[$i]->link)); ?>
-                                <?php $link_image = 'https://img.youtube.com/vi/' . ($link_id = substr($link_id_and_value, 0, strpos($link_id_and_value, '?')) . '/hqdefault.jpg'); ?>
+                                <?php $link_image = 'https://i.ytimg.com/vi/' . ($link_id = substr($link_id_and_value, 0, strpos($link_id_and_value, '?')) . '/hq720.jpg'); ?>
 
                                 <?php
-                                $user = 'admin';
-                                $link_id = $vidio[$i]->id;
-                                $gambar = $link_image;
-                                $tipe = $vidio[$i]->category->name;
-                                $title = $vidio[$i]->title;
-                                $tanggal = date_format($vidio[$i]->created_at, 'd M Y');
+                                    $user = 'admin';
+                                    $link_id = '/watch_vidio'.'/'.$vidio[$i]->id;
+                                    $gambar = $link_image;
+                                    $tipe = $vidio[$i]->category->name;
+                                    $title = $vidio[$i]->title;
+                                    $tanggal = date_format($vidio[$i]->created_at, 'd M Y');
                                 ?>
-                                <a href="{{ route('read_article', ['id' => $link_id]) }}" class="nolink">
-                                    @include('visitors.partials.card_3')
+                                <a href="{{$link_id}}" class="nolink">
+                                    @include('visitors.partials.card_3_mobile')
                                 </a>
                             @endfor
                         </div>

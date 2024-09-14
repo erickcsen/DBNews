@@ -14,7 +14,7 @@
                             <span class="text-muted">
                                 / 
                             </span>
-                            <a href="/category/{{$youtube_video->category->name}}" class="nolink text-muted text-capitalize">
+                            <a href="/visit_category/{{$youtube_video->category->name}}" class="nolink text-muted text-capitalize">
                                 {{$youtube_video->category->name}}
                             </a>
                             <span class="text-muted">
@@ -159,16 +159,16 @@
                         @for ($i = 0; $i < count($video_terbaru); $i++)
                             <?php $link_domain = 'https://youtu.be/' ?>
                             <?php $link_id_and_value = substr($video_terbaru[$i]->link,strlen($link_domain),strlen($video_terbaru[$i]->link))?>
-                            <?php $link_image = 'https://img.youtube.com/vi/'.$link_id = substr($link_id_and_value, 0, strpos($link_id_and_value, "?")).'/hqdefault.jpg' ?>
+                            <?php $link_image = 'https://i.ytimg.com/vi/'.$link_id = substr($link_id_and_value, 0, strpos($link_id_and_value, "?")).'/hq720.jpg' ?>
 
                             <?php 
-                                $link_id = $video_terbaru[$i]->id;
+                                $link_id = $video_terbaru[$i]->slug;
                                 $gambar = $link_image;
                                 $tipe = $video_terbaru[$i]->category->name;
                                 $title = $video_terbaru[$i]->title;
                                 $tanggal = date_format($video_terbaru[$i]->created_at,"d M Y");
                             ?>
-                            <a href="{{route('read_article',["id"=>$link_id])}}" class="nolink">
+                            <a href="/watch_vidio/{{$link_id}}" class="nolink">
                                 @include("visitors.partials.card_2")
                             </a>
                         @endfor
@@ -286,19 +286,21 @@
                 </div>
                 <div class="col-12" {{count($video_terbaru)==0?"hidden":""}}>
                     @for ($i = 0; $i < count($video_terbaru); $i++)
+                        <?php $height = 300; ?>
+                        <?php $link_page_id = $video_terbaru[$i]->slug; ?>
                         <?php $link_domain = 'https://youtu.be/' ?>
                         <?php $link_id_and_value = substr($video_terbaru[$i]->link,strlen($link_domain),strlen($video_terbaru[$i]->link))?>
-                        <?php $link_image = 'https://img.youtube.com/vi/'.$link_id = substr($link_id_and_value, 0, strpos($link_id_and_value, "?")).'/hqdefault.jpg' ?>
-    
+                        <?php $link_image = 'https://i.ytimg.com/vi/'.$link_id = substr($link_id_and_value, 0, strpos($link_id_and_value, "?")).'/hq720.jpg' ?>
+                        <?php $tanggal = date_format($video_terbaru[$i]->created_at,"d M Y"); ?>
                         <?php 
-                            $link_id = $video_terbaru[$i]->id;
                             $gambar = $link_image;
                             $tipe = $video_terbaru[$i]->category->name;
                             $title = $video_terbaru[$i]->title;
-                            $tanggal = date_format($video_terbaru[$i]->created_at,"d M Y");
+                            $user = "Admin";
+                            $tanggal = $tanggal;
                         ?>
-                        <a href="{{route('read_article',["id"=>$link_id])}}" class="nolink">
-                            @include("visitors.partials.card_2")
+                        <a href="/watch_vidio/{{$link_id}}" class="nolink">
+                            @include("visitors.partials.card_3_mobile")
                         </a>
                     @endfor
                 </div>

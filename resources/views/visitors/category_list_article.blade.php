@@ -36,7 +36,7 @@
                             <div class="row">
                                 <?php $temp = $category?>
                                 @foreach ($article as $item)
-                                    <?php $tipe = $item->subcategory->name ?>
+                                    <?php $tipe = ($item->subcategory)?$item->subcategory->name : $item->category->name ?>
                                     <?php $category = $tipe ?>
                                     <?php $tanggal = $item->created_at ?>
                                     <?php $user = "Admin" ?>
@@ -45,7 +45,7 @@
                                     <?php $description = substr($item->description,0,255).'...' ?>
                                     <?php $gambar = $item->article_img ?>
                                     <?php $title = $item->title; ?>
-                                    <?php $link_id = "/read_article"."/".$item->id; ?>
+                                    <?php $link_id = "/read_article"."/".$item->slug; ?>
                                     <?php $photo = asset('storage/images/article/' . basename($gambar)) ?>
                                         @include('visitors.partials.card_5')
                                 @endforeach
@@ -95,12 +95,14 @@
                         <?php 
                             $gambar = $item->article_img;
                             $gambar = asset('storage/images/article/' . basename($gambar)) ;
-                            $tipe = $item->subcategory->name;
+                            $tipe = ($item->subcategory)?$item->subcategory->name: $item->category->name ;
                             $title = $item->title;
                             $tanggal = $item->category->created_at;
                             $tanggal = date_format($tanggal,"d M Y"); 
                         ?>
-                        @include('visitors.partials.card_2_mobile')
+                        <a href="/read_article/{{$item->slug}}" class="nolink">
+                            @include('visitors.partials.card_2_mobile')
+                        </a>
                     @endforeach
                 </div>
                 <div class="col-12 mt-1 border-top pt-3 pb-3">

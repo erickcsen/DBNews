@@ -23,7 +23,7 @@
             <div class="row">
                 <?php $i = 0 ?>
                 <?php $height = 400; ?>
-                <?php $link_page_id = $youtube_video[$i]->id; ?>
+                <?php $link_page_id = $youtube_video[$i]->slug; ?>
                 <?php $link_domain = 'https://youtu.be/' ?>
                 <?php $link_id_and_value = substr($youtube_video[$i]->link,strlen($link_domain),strlen($youtube_video[$i]->link))?>
                 <?php $link_image = 'https://i.ytimg.com/vi/'.$link_id = substr($link_id_and_value, 0, strpos($link_id_and_value, "?")).'/hq720.jpg' ?>
@@ -59,7 +59,7 @@
                 </div>
                 <div class="col-6">
                     @for ($i = 0; $i < count($youtube_video); $i++)
-                        <?php $link_page_id = $youtube_video[$i]->id; ?>
+                        <?php $link_page_id = $youtube_video[$i]->slug; ?>
                         <?php $link_domain = 'https://youtu.be/' ?>
                         <?php $link_id_and_value = substr($youtube_video[$i]->link,strlen($link_domain),strlen($youtube_video[$i]->link))?>
                         <?php $link_image = 'https://i.ytimg.com/vi/'.$link_id = substr($link_id_and_value, 0, strpos($link_id_and_value, "?")).'/hq720.jpg' ?>

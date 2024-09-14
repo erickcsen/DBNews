@@ -15,7 +15,7 @@
                                 <?php $article_utama = $today_headline; ?>
                             @endif
                             <?php 
-                                $link_id = "/read_article"."/".$article_utama->id;
+                                $link_id = "/read_article"."/".$article_utama->slug;
                                 $article_img = $article_utama->article_img;
                                 $article_img = asset('storage/images/article/' . basename($article_img));
                                 $category_name = $article_utama->category->name;
@@ -42,7 +42,7 @@
                                 <?php $tanggal = $item->created_at ?>
                                 <?php $tanggal = date_format($tanggal,"d M Y"); ?>
                                 <?php $title = $item->title; ?>
-                                <a href="/read_article/{{$item->id}}" class="nolink">
+                                <a href="/read_article/{{$item->slug}}" class="nolink">
                                     @include('visitors.partials.card_2')
                                 </a>
                             @endforeach
@@ -70,7 +70,7 @@
                                 <?php $gambar = $item->article_img ?>
                                 <?php $title = $item->title; ?>
                                 <?php $photo = asset('storage/images/article/' . basename($gambar)) ?>
-                                    @include('visitors.partials.card_5')
+                                @include('visitors.partials.card_5')
                             @endforeach
                             <?php $category = $temp ?>
                         </div>
@@ -134,12 +134,12 @@
                                     @if (count($youtube_video)>0)
                                         <?php $youtube_utama = $youtube_video[0]; ?>
                                     @endif
-                                    <?php $link_page_id = "/".$youtube_video[0]->id; ?>
+                                    <?php $link_page_id = "/".$youtube_video[0]->slug; ?>
                                     <?php $link_domain = 'https://youtu.be/' ?>
                                     <?php $link_id_and_value = substr($youtube_video[0]->link,strlen($link_domain),strlen($youtube_video[0]->link))?>
                                     <?php $link_image = 'https://i.ytimg.com/vi/'.$link_id = substr($link_id_and_value, 0, strpos($link_id_and_value, "?")).'/hq720.jpg' ?>
                                     <?php 
-                                        $link_id = "/watch_vidio"."/".$youtube_utama->id;
+                                        $link_id = "/watch_vidio"."/".$youtube_utama->slug;
                                         $article_img = $link_image;
                                         $category_name = $youtube_utama->category->name;
                                         $title = $youtube_utama->title;
@@ -160,7 +160,7 @@
                         </div>
                         <div class="col-12">
                             @foreach ($youtube_video_terbaru as $item)
-                                <?php $link_page_id = "/".$item->id; ?>
+                                <?php $link_page_id = "/".$item->slug; ?>
                                 <?php $link_domain = 'https://youtu.be/' ?>
                                 <?php $link_id_and_value = substr($item->link,strlen($link_domain),strlen($item->link))?>
                                 <?php $link_image = 'https://img.youtube.com/vi/'.$link_id = substr($link_id_and_value, 0, strpos($link_id_and_value, "?")).'/hqdefault.jpg' ?>
@@ -170,7 +170,7 @@
                                     $tipe = $item->category->name;
                                     $title = $item->title;
                                 ?>
-                                <a href="/watch_vidio/{{$item->id}}" class="nolink">
+                                <a href="/watch_vidio/{{$item->slug}}" class="nolink">
                                     @include('visitors.partials.card_2')
                                 </a>
                             @endforeach
@@ -188,13 +188,13 @@
                 <div class="row">
                     <?php $temp = $category?>
                     @for ($i = 0; $i < count($youtube_video); $i++)
-                        <?php $link_page_id = "/".$youtube_video[$i]->id; ?>
+                        <?php $link_page_id = "/".$youtube_video[$i]->slug; ?>
                         <?php $link_domain = 'https://youtu.be/' ?>
                         <?php $link_id_and_value = substr($youtube_video[$i]->link,strlen($link_domain),strlen($youtube_video[$i]->link))?>
                         <?php $link_image = 'https://img.youtube.com/vi/'.$link_id = substr($link_id_and_value, 0, strpos($link_id_and_value, "?")).'/hqdefault.jpg' ?>
                         <?php 
                             $item = $youtube_video[$i];
-                            $link_id = '/watch_vidio'.'/'.$item->id;
+                            $link_id = '/watch_vidio'.'/'.$item->slug;
                             $photo = $link_image;
                             $title = $youtube_video[$i]->title;
                             $user = "By Admin"; 
@@ -260,7 +260,7 @@
                         <div class="row">
                             <?php $temp = $category?>
                             @foreach ($item->article as $value_article)
-                                <?php $link_id = "/read_article"."/".$value_article->id ?>
+                                <?php $link_id = "/read_article"."/".$value_article->slug ?>
                                 <?php $tipe = $value_article->category->name ?>
                                 <?php $category = ($value_article->subcategory)?$value_article->subcategory->name:$tipe ?>
                                 <?php $tanggal = $value_article->created_at ?>
@@ -331,7 +331,7 @@
                     <div class="col-12">
                         @if (count($article) > 0)
                             <?php 
-                                $link_id = "/read_article"."/".$article[0]->id;
+                                $link_id = "/read_article"."/".$article[0]->slug;
                                 $article_img = $article[0]->article_img;
                                 $article_img = asset('storage/images/article/' . basename($article_img));
                                 $category_name = $article[0]->category->name;
@@ -351,7 +351,9 @@
                             $tanggal = $item->category->created_at;
                             $tanggal = date_format($tanggal,"d M Y"); 
                         ?>
-                        @include('visitors.partials.card_2_mobile')
+                        <a href="/read_article/{{$item->slug}}" class="nolink">
+                            @include('visitors.partials.card_2_mobile')
+                        </a>
                     @endforeach
                     <div class="col-12 text-center mb-3">
                         <a href="/visit_category/{{$category_selected}}/article" class="btn btn-light bgcolor4a25a9 text-white">
@@ -372,13 +374,13 @@
                         <?php if (isset($youtube_video)==false) $youtube_video = []?>
                         @if (count($youtube_video) > 0)
                             @for ($i = 0; $i < count($youtube_video) && $i < 1; $i++)
-                                <?php $link_page_id = $youtube_video[$i]->id; ?>
+                                <?php $link_page_id = $youtube_video[$i]->slug; ?>
                                 <a href="{{route('watch_vidio',["id"=>$link_page_id])}}" class="nolink">
                                     <div class="col-12 pb-4">
                                         <?php $height = 300; ?>
                                         <?php $link_domain = 'https://youtu.be/' ?>
                                         <?php $link_id_and_value = substr($youtube_video[$i]->link,strlen($link_domain),strlen($youtube_video[$i]->link))?>
-                                        <?php $link_image = 'https://img.youtube.com/vi/'.$link_id = substr($link_id_and_value, 0, strpos($link_id_and_value, "?")).'/hqdefault.jpg' ?>
+                                        <?php $link_image = 'https://i.ytimg.com/vi/'.$link_id = substr($link_id_and_value, 0, strpos($link_id_and_value, "?")).'/hq720.jpg' ?>
                                         <img src="{{$link_image}}" width="100%" class="rounded border">
                                         <div class="col-12 py-2">
                                             <div class="bgcolorf9e701 ps-2 pe-2 py-1 d-inline rounded text-uppercase" style="font-size: 8pt">
@@ -405,10 +407,10 @@
                             <div class="col-12">
                                 @for ($i = 0; $i < count($youtube_video); $i++)
                                     <?php $height = 300; ?>
-                                    <?php $link_page_id = $youtube_video[$i]->id; ?>
+                                    <?php $link_page_id = $youtube_video[$i]->slug; ?>
                                     <?php $link_domain = 'https://youtu.be/' ?>
                                     <?php $link_id_and_value = substr($youtube_video[$i]->link,strlen($link_domain),strlen($youtube_video[$i]->link))?>
-                                    <?php $link_image = 'https://img.youtube.com/vi/'.$link_id = substr($link_id_and_value, 0, strpos($link_id_and_value, "?")).'/hqdefault.jpg' ?>
+                                    <?php $link_image = 'https://i.ytimg.com/vi/'.$link_id = substr($link_id_and_value, 0, strpos($link_id_and_value, "?")).'/hq720.jpg' ?>
                                     <?php $tanggal = date_format($youtube_video[$i]->created_at,"d M Y"); ?>
                                     <?php 
                                         $gambar = $link_image;
@@ -452,7 +454,9 @@
                                     $tanggal = $value_article->category->created_at;
                                     $tanggal = date_format($tanggal,"d M Y"); 
                                 ?>
-                                @include('visitors.partials.card_2_mobile')
+                                <a href="/read_article/{{$value_article->slug}}" class="nolink">
+                                    @include('visitors.partials.card_2_mobile')
+                                </a>
                             @endforeach
                         </div>
                         <div class="row">

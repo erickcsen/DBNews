@@ -9,7 +9,7 @@
                 <?php if (isset($berita_terpopuler)==false) $berita_terpopuler = [];?>
                 @for ($i = 0; $i < count($berita_terpopuler); $i++)
                     <?php 
-                        $link_id = $berita_terpopuler[$i]->id;
+                        $link_id = $berita_terpopuler[$i]->slug;
                         $photo = asset('storage/images/article/'.basename($berita_terpopuler[$i]->article_img));
                         $title = $berita_terpopuler[$i]->title;
                         $user = "By Admin"; 
@@ -43,7 +43,7 @@
             <?php if (isset($berita_terbaru)==false) $berita_terbaru = [];?>
             @for ($i = 0; $i < count($berita_terbaru); $i++)
                 <?php 
-                    $link_id = $berita_terbaru[$i]->id;
+                    $link_id = $berita_terbaru[$i]->slug;
                     $gambar = asset('storage/images/article/'.basename($berita_terbaru[$i]->article_img));
                     $tipe = $berita_terbaru[$i]->category->name;
                     $title = $berita_terbaru[$i]->title;

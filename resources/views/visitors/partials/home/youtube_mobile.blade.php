@@ -7,7 +7,7 @@
         <?php if (isset($youtube_video)==false) $youtube_video = []?>
         @if (count($youtube_video) > 0)
             @for ($i = 0; $i < count($youtube_video) && $i < 1; $i++)
-                <?php $link_page_id = $youtube_video[$i]->id; ?>
+                <?php $link_page_id = $youtube_video[$i]->slug; ?>
                 <a href="{{route('watch_vidio',["id"=>$link_page_id])}}" class="nolink">
                     <div class="col-12 pb-4">
                         <?php $height = 300; ?>
@@ -40,7 +40,7 @@
             <div class="col-12">
                 @for ($i = 0; $i < count($youtube_video); $i++)
                     <?php $height = 300; ?>
-                    <?php $link_page_id = $youtube_video[$i]->id; ?>
+                    <?php $link_page_id = $youtube_video[$i]->slug; ?>
                     <?php $link_domain = 'https://youtu.be/' ?>
                     <?php $link_id_and_value = substr($youtube_video[$i]->link,strlen($link_domain),strlen($youtube_video[$i]->link))?>
                     <?php $link_image = 'https://i.ytimg.com/vi/'.$link_id = substr($link_id_and_value, 0, strpos($link_id_and_value, "?")).'/hq720.jpg' ?>

@@ -4,7 +4,7 @@
         <?php if (isset($today_headline)==false) $today_headline = []; ?>
         @if (count($today_headline) > 0)
             <?php 
-                $link_id = $today_headline[0]->id;
+                $link_id = $today_headline[0]->slug;
                 $article_img = $today_headline[0]->article_img;
                 $category_name = $today_headline[0]->category->name;
                 $title = $today_headline[0]->title;

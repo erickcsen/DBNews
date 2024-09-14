@@ -18,7 +18,7 @@
                 <?php if (isset($berita_terbaik_mingguan)==false) $berita_terbaik_mingguan = []; ?>
                 @for ($i = 0; $i < count($berita_terbaik_mingguan); $i++)
                     <?php 
-                        $link_id = $berita_terbaik_mingguan[$i]->id;
+                        $link_id = $berita_terbaik_mingguan[$i]->slug;
                         $tipe = $berita_terbaik_mingguan[$i]->category->name;
                         $gambar = asset('storage/images/article/' . basename($berita_terbaik_mingguan[$i]->article_img));
                         $title = $berita_terbaik_mingguan[$i]->title;
@@ -74,7 +74,7 @@
             <!-- Iklan 2 -->
             @if (count($randomArticle) > 0)
                 <div class="col-12 mt-3 text-capitalize">
-                    <b class="color4a25a9">{{$randomCategory->name}}</b>
+                    <b class="color4a25a9">Popular {{$randomCategory->name}}</b>
                 </div>
                 <div class="col-12">
                     @include('visitors.partials.divider')
@@ -82,7 +82,7 @@
                 @php
                     $popular_random_article = $randomArticle[0];
                 @endphp
-                <a href="/read_article/{{$popular_random_article->id}}" class="nolink">
+                <a href="/read_article/{{$popular_random_article->slug}}" class="nolink">
                     <div class="col-12">
                         <div class="col-12 mt-3 rounded overflow-hidden" style="background:url('{{Storage::url($popular_random_article->article_img)}}');height:300px;background-size:cover;background-position:center">
                             <div class="col-12" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,1));height:300px;">
@@ -114,7 +114,7 @@
                     @if (count($randomArticle) > 1)
                         @for ($i = 1; $i < count($randomArticle); $i++)
                             <?php 
-                                $link_id = $randomArticle[$i]->id;
+                                $link_id = $randomArticle[$i]->slug;
                                 $gambar = asset('storage/images/article/' . basename($randomArticle[$i]->article_img));
                                 $tipe = $randomArticle[$i]->category->name;
                                 $title = $randomArticle[$i]->title;

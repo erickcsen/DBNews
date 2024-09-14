@@ -33,7 +33,7 @@
                     <div class="row">
                         <?php $temp = $category?>
                         @foreach ($youtube_video as $item)
-                            <?php $link_page_id = $item->id; ?>
+                            <?php $link_page_id = $item->slug; ?>
                             <?php $link_domain = 'https://youtu.be/' ?>
                             <?php $link_id_and_value = substr($item->link,strlen($link_domain),strlen($item->link))?>
                             <?php $link_image = 'https://i.ytimg.com/vi/'.$link_id = substr($link_id_and_value, 0, strpos($link_id_and_value, "?")).'/hq720.jpg' ?>
@@ -47,7 +47,7 @@
                             <?php $tanggal = date_format($tanggal,"d M Y") ?>
                             <?php $description = substr($item->description,0,255).'...' ?>
                             <?php $title = $item->title; ?>
-                            <?php $link_id = "/watch_vidio"."/".$item->id; ?>
+                            <?php $link_id = "/watch_vidio"."/".$item->slug; ?>
                             <?php $photo = $gambar ?>
                                 @include('visitors.partials.card_5')
                         @endforeach
@@ -95,7 +95,7 @@
                 </div>
                 <div class="col-12">
                     @foreach ($youtube_video as $item)
-                        <?php $link_page_id = $item->id; ?>
+                        <?php $link_page_id = $item->slug; ?>
                         <?php $link_domain = 'https://youtu.be/' ?>
                         <?php $link_id_and_value = substr($item->link,strlen($link_domain),strlen($item->link))?>
                         <?php $link_image = 'https://i.ytimg.com/vi/'.$link_id = substr($link_id_and_value, 0, strpos($link_id_and_value, "?")).'/hq720.jpg' ?>
@@ -106,7 +106,7 @@
                             $title = $item->title;
                             $tanggal = $item->category->created_at;
                             $tanggal = date_format($tanggal,"d M Y"); 
-                            $link_id = "/watch_vidio"."/".$item->id; 
+                            $link_id = "/watch_vidio"."/".$item->slug; 
                         ?>
                         <a href="{{$link_id}}" class="nolink">
                             @include('visitors.partials.card_2_mobile')

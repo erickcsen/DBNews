@@ -31,7 +31,7 @@ class VisitorsController extends Controller
         $youtube_video = 
             Video::with(["category","user"])->
                 orderBy("id", "desc")->
-                paginate(5);
+                paginate(3);
 
         $article = 
             Article::with(["category","user","subcategory"])->
@@ -253,9 +253,14 @@ class VisitorsController extends Controller
         $ads_side = Ad::where("position", "side")->inRandomOrder()->paginate(10);
         $category = VisitorsController::category_menu();
 
-        $article = Article::with(["category","user","subcategory"])->find($id);
+        $article = Article::with(["category","user","subcategory"])->where(
+            "slug",$id
+        )->first();
+
         if (!($article)) {
             abort(404, "Not Found");
+        } else {
+            $id = $article->id;
         }
 
         $berita_terbaru =
@@ -364,11 +369,12 @@ class VisitorsController extends Controller
     public function watch_vidio(Request2 $request, $id){
         $category = VisitorsController::category_menu();
 
-        $youtube_video = Video::with(["category","user"])->find($id);
+        $youtube_video = Video::with(["category","user"])->where('slug',$id)->first();
         if (!($youtube_video)) {
             abort(404, "Not Found");
         }
-
+        
+        $id = $youtube_video->id;
         $video_terbaru = Video::with(["category","user"])->
             orderBy("id", "desc")->paginate(5);
 

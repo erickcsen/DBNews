@@ -1,5 +1,5 @@
 {{-- <link rel="icon" href="{{asset('https://champion-chimp-vital.ngrok-free.app/dashboard-asset/assets/img/logo.png')}}" type="image/x-icon"/> --}}
-<link rel="icon" href="/dashboard-asset/assets/img/logo.png" type="image/x-icon"/>
+<link rel="icon" href="/images/favicon.png" type="image/x-icon"/>
 
 {{-- CSRF Token --}}
 <meta name="csrf-token" content="{{ csrf_token() }}">

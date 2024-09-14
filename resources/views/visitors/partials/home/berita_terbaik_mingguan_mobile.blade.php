@@ -8,7 +8,7 @@
             <?php if (isset($berita_terbaik_mingguan)==false) $berita_terbaik_mingguan = []; ?>
             @for ($i = 0; $i < count($berita_terbaik_mingguan); $i++)
                 <?php 
-                    $link_id = $berita_terbaik_mingguan[$i]->id;
+                    $link_id = $berita_terbaik_mingguan[$i]->slug;
                     $photo = asset('storage/images/article/'.basename($berita_terbaik_mingguan[$i]->article_img));
                     $title = $berita_terbaik_mingguan[$i]->title;
                     $user = "By Admin"; 
@@ -38,13 +38,13 @@
 <div class="row">
     @if (count($randomArticle) > 0)
         <div class="col-12 mb-1 mt-3 text-capitalize">
-            <b class="color4a25a9 float-start">{{$randomCategory->name}}</b>
+            <b class="color4a25a9 float-start">Popular {{$randomCategory->name}}</b>
         </div>
         <div class="col-12">
             <?php if (isset($randomArticle)==false) $randomArticle = []; ?>
             @for ($i = 0; $i < count($randomArticle); $i++)
                 <?php 
-                    $link_id = $randomArticle[$i]->id;
+                    $link_id = $randomArticle[$i]->slug;
                     $gambar = asset('storage/images/article/'.basename($randomArticle[$i]->article_img));;
                     $tipe = $randomArticle[$i]->category->name;
                     $title = $randomArticle[$i]->title;
