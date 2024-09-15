@@ -60,7 +60,7 @@ Route::get('/api/events', function () {
     $response = curl_exec($curl);
 
     curl_close($curl);
-    return response()->json(["response" => ($response)]);
+    return response()->json(["response" => json_decode($response)]);
 });
 /** Coba API */
 /** Coba Kirim Email */
