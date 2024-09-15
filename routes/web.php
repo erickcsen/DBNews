@@ -24,16 +24,24 @@ use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\Auth\GoogleSocialiteController;
 
 /** Coba API */
-Route::get('/api/country', function ($email, $status) {
-    var settings = {
-        "url": "apiv3.apifootball.com/?action=get_countries&APIkey=da52a1c45ed57bb2aadebeb6bec3e759f9d68d62ddc8766fbfbb55214116f94b",
-        "method": "GET",
-        "timeout": 0,
-    };
+Route::get('/api/country', function () {
+    $curl = curl_init();
 
-    $.ajax(settings).done(function (response) {
-        console.log(response);
-    });
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => 'apiv3.apifootball.com/?action=get_countries&APIkey=da52a1c45ed57bb2aadebeb6bec3e759f9d68d62ddc8766fbfbb55214116f94b',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'GET',
+    ));
+
+    $response = curl_exec($curl);
+
+    curl_close($curl);
+    echo $response;
 });
 /** Coba API */
 /** Coba Kirim Email */
