@@ -660,7 +660,7 @@ class VisitorsController extends Controller
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => 'apiv3.apifootball.com/?action=get_countries&APIkey=' . env("API_FOOTBALL2"),
+            CURLOPT_URL => 'apiv3.apifootball.com/?action=get_countries&APIkey=' . env("API_FOOTBALL"),
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -671,7 +671,7 @@ class VisitorsController extends Controller
         ));
 
         $response = curl_exec($curl);
-        return response()->json(["url" => 'apiv3.apifootball.com/?action=get_countries&APIkey=' . env("API_FOOTBALL2")]);
+        return response()->json(["env" => env("API_FOOTBALL")]);
 
         curl_close($curl);
         $result = json_decode($response);
