@@ -41,7 +41,7 @@ Route::get('/api/country', function () {
     $response = curl_exec($curl);
 
     curl_close($curl);
-    return response()->json(json_encode($response));
+    return response()->json(($response));
 });
 Route::get('/api/events', function () {
     $curl = curl_init();
@@ -61,7 +61,7 @@ Route::get('/api/events', function () {
 
     curl_close($curl);
     echo $response;
-    return response()->json(json_encode($response));
+    return response()->json(($response));
 });
 /** Coba API */
 /** Coba Kirim Email */
