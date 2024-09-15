@@ -50,7 +50,7 @@ class GoogleSocialiteController extends Controller
                     ]);
                     Auth::login($newUser);
                 }
-
+                
                 return redirect('/');
             }
         } catch (Exception $e) {

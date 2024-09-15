@@ -23,46 +23,6 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\Auth\GoogleSocialiteController;
 
-/** Coba API */
-Route::get('/api/country', function () {
-    $curl = curl_init();
-
-    curl_setopt_array($curl, array(
-        CURLOPT_URL => 'apiv3.apifootball.com/?action=get_countries&APIkey=da52a1c45ed57bb2aadebeb6bec3e759f9d68d62ddc8766fbfbb55214116f94b',
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_ENCODING => '',
-        CURLOPT_MAXREDIRS => 10,
-        CURLOPT_TIMEOUT => 0,
-        CURLOPT_FOLLOWLOCATION => true,
-        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-        CURLOPT_CUSTOMREQUEST => 'GET',
-    ));
-
-    $response = curl_exec($curl);
-
-    curl_close($curl);
-    return response()->json(["response"=>json_decode($response)]);
-});
-Route::get('/api/events', function () {
-    $curl = curl_init();
-
-    curl_setopt_array($curl, array(
-    CURLOPT_URL => 'https://apiv3.apifootball.com/?action=get_events&from=2024-01-01&to=2025-01-01&APIkey=da52a1c45ed57bb2aadebeb6bec3e759f9d68d62ddc8766fbfbb55214116f94b&league_id=7552',
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_ENCODING => '',
-    CURLOPT_MAXREDIRS => 10,
-    CURLOPT_TIMEOUT => 0,
-    CURLOPT_FOLLOWLOCATION => true,
-    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-    CURLOPT_CUSTOMREQUEST => 'GET',
-    ));
-
-    $response = curl_exec($curl);
-
-    curl_close($curl);
-    return response()->json(["response" => json_decode($response)]);
-});
-/** Coba API */
 /** Coba Kirim Email */
 // Route::get("/email", function(){
 //     Mail::to("erick.pecinta.negeri@gmail.com")->send(new EmailVerification());
@@ -193,11 +153,3 @@ Route::post('/detail/{id}/reply', [HomeController::class, 'replyComment'])->name
 // ===================== END ROUTE BACKEND =====================
 
 require __DIR__ . '/auth.php';
-
-
-
-
-Route::get('/mail/send', function () {
-    Mail::to('erick.csensen@gmail.com')->queue(new EmailVerification(1231));
-    return "Email Sent";
-});
