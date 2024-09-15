@@ -671,8 +671,8 @@ class VisitorsController extends Controller
         ));
 
         dd(env("API_FOOTBALL"));
-        $response = curl_exec($curl);
 
+        $response = curl_exec($curl);
         curl_close($curl);
         $result = json_decode($response);
         $result_filter = null;
