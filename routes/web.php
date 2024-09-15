@@ -23,6 +23,19 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\Auth\GoogleSocialiteController;
 
+/** Coba API */
+Route::get('/api/country', function ($email, $status) {
+    var settings = {
+        "url": "apiv3.apifootball.com/?action=get_countries&APIkey=da52a1c45ed57bb2aadebeb6bec3e759f9d68d62ddc8766fbfbb55214116f94b",
+        "method": "GET",
+        "timeout": 0,
+    };
+
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+    });
+});
+/** Coba API */
 /** Coba Kirim Email */
 // Route::get("/email", function(){
 //     Mail::to("erick.pecinta.negeri@gmail.com")->send(new EmailVerification());
