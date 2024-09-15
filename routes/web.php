@@ -41,7 +41,27 @@ Route::get('/api/country', function () {
     $response = curl_exec($curl);
 
     curl_close($curl);
+    return response()->json(json_encode($response));
+});
+Route::get('/api/events', function () {
+    $curl = curl_init();
+
+    curl_setopt_array($curl, array(
+    CURLOPT_URL => 'https://apiv3.apifootball.com/?action=get_events&from=2024-01-01&to=2025-01-01&APIkey=da52a1c45ed57bb2aadebeb6bec3e759f9d68d62ddc8766fbfbb55214116f94b&league_id=7552',
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => '',
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 0,
+    CURLOPT_FOLLOWLOCATION => true,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => 'GET',
+    ));
+
+    $response = curl_exec($curl);
+
+    curl_close($curl);
     echo $response;
+    return response()->json(json_encode($response));
 });
 /** Coba API */
 /** Coba Kirim Email */
