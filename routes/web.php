@@ -41,7 +41,7 @@ Route::get('/api/country', function () {
     $response = curl_exec($curl);
 
     curl_close($curl);
-    return response()->json(($response));
+    return response()->json(json_decode($response));
 });
 Route::get('/api/events', function () {
     $curl = curl_init();
