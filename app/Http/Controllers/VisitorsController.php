@@ -670,7 +670,7 @@ class VisitorsController extends Controller
             CURLOPT_CUSTOMREQUEST => 'GET',
         ));
 
-        dd(env("FOOTBALL_API"));
+        dd(env("MAIL_HOST"));
 
         $response = curl_exec($curl);
         curl_close($curl);
