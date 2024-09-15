@@ -671,6 +671,7 @@ class VisitorsController extends Controller
         ));
 
         $response = curl_exec($curl);
+        return response()->json(["url" => 'apiv3.apifootball.com/?action=get_countries&APIkey=' . env("API_FOOTBALL")]);
 
         curl_close($curl);
         $result = json_decode($response);
