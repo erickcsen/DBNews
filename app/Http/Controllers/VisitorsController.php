@@ -727,7 +727,7 @@ class VisitorsController extends Controller
         $date_start = date("Y-m-d");
         $date_end = date("Y-m-d", strtotime('+1 days'));
         $country_id = VisitorsController::api_football_get_country($country_name);
-        response()->json(["country_id"=>$country_id]);
+        return response()->json(["country_id"=>$country_id]);
         $country_id = (isset($country_id->country_id))? $country_id->country_id : 0;
         $leagues = VisitorsController::api_football_get_leagues($date_start, $date_end, $country_id);
         
