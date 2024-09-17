@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('is_active')->default('draft');
             $table->integer('share')->nullable();
             $table->integer('views')->nullable();
+            $table->text('deskripsi_meta')->nullable();
+            $table->text('kata_kunci_meta')->nullable();
             $table->timestamps();
             
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
