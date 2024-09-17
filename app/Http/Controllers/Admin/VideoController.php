@@ -15,12 +15,16 @@ class VideoController extends Controller
     public function index(Request $request) {
         $search = $request->input('search');
         $query = Video::with(['category','user']);
+
+        $user_id = Auth::user()->id;
+        $role = Auth::user()->role;
+
+        if ($role == 1) $query->whereHas('user', function ($query) use ($user_id) {
+            $query->where("id", $user_id);
+        });
         
         if ($search) {
-            $query->where('title', 'like', "%{$search}%")
-                  ->orWhereHas('user', function($q) use ($search) {
-                      $q->where('email', 'like', "%{$search}%");
-                  });
+            $query->where('title', 'like', "%{$search}%");
         }
 
         $vids = $query->paginate(5);

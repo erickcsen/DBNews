@@ -27,7 +27,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="position">AD Position</label>
-                                    <select class="form-control" name="position">
+                                    <select class="form-control" name="position" hidden>
                                         <option value="side" {{ $ad->position == 'side' ? 'selected' : '' }}>Side</option>
                                         <option value="bottom" {{ $ad->position == 'bottom' ? 'selected' : '' }}>Bottom
                                         </option>

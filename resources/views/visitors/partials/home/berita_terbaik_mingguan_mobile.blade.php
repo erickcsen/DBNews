@@ -22,16 +22,23 @@
                 </a>
             @endfor
             @if (count($berita_terbaik_mingguan) == 0)
-                $berita_terbaik_mingguan belum ada data
-            @endif
-            <div class="pb-3 ms-3 me-3" style="min-width: 150px;">
-                <div class="col-12" style="transform: translateY(100%);">
-                    <a href="/berita_terbaik_mingguan" class="btn btn-light bgcolor4a25a9 border-color4a25a9 text-white">
-                        <i class="fa fa-arrow-right"></i> <br>
-                        Load More
-                    </a>
+                <div class="col-12 text-muted pt-3 pb-3 text-center">
+                    <i class="fa fa-filter" style="font-size:70px"></i>
+                    <i class="fa fa-ban" style="font-size:45px;margin-left:-20px"></i><br>
+                    <span class="fw-bold">
+                        Tidak Ada Data
+                    </span>
                 </div>
-            </div>
+            @else
+                <div class="pb-3 ms-3 me-3" style="min-width: 150px;">
+                    <div class="col-12" style="transform: translateY(100%);">
+                        <a href="/berita_terbaik_mingguan" class="btn btn-light bgcolor4a25a9 border-color4a25a9 text-white">
+                            <i class="fa fa-arrow-right"></i> <br>
+                            Load More
+                        </a>
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
 </div>

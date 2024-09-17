@@ -30,7 +30,7 @@
                                     <option value="bottom">bottom</option>
                                 </select>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" hidden>
                                 <label for="is_active">status</label>
                                     <select class="form-control" name="is_active">
                                         <option value="publish">publish</option>

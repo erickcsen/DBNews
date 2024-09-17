@@ -35,7 +35,7 @@
                             @endif
                         </div>
                         <div class="col-12">
-                            <a href="/read_article/{{ $article->id }}" class="nolink">
+                            <a href="/read_article/{{ $article->slug }}" class="nolink">
                                 <span class="color4a25a9 fw-bold" style="font-size: 35px;">
                                     {{ $article->title }}
                                 </span>
@@ -85,7 +85,7 @@
                         </div>
                         @auth
                             <div class="col-12 mt-3 mb-3">
-                                <form action="{{ route('detail.comment.store', $article->id) }}#isi_komentar" method="POST">
+                                <form action="{{ route('detail.comment.store', $article->slug) }}#isi_komentar" method="POST">
                                     @csrf
                                     <textarea name="comment_text" id="comment_text" class="form-control mb-3" placeholder="Write a comment.."
                                         style="height: 100px;"></textarea>
@@ -395,7 +395,7 @@
                         </div>
                         @auth
                             <div class="col-12 mt-3 mb-3">
-                                <form action="{{ route('detail.comment.store', $article->id) }}" method="POST">
+                                <form action="{{ route('detail.comment.store', $article->slug) }}" method="POST">
                                     @csrf
                                     <textarea id="comment_text" name="comment_text" class="form-control mb-3" placeholder="Write a comment.."
                                         style="height: 100px;"></textarea>
@@ -629,7 +629,7 @@
 
                                 <?php
                                     $user = 'admin';
-                                    $link_id = '/watch_vidio'.'/'.$vidio[$i]->id;
+                                    $link_id = '/watch_vidio'.'/'.$vidio[$i]->slug;
                                     $gambar = $link_image;
                                     $tipe = $vidio[$i]->category->name;
                                     $title = $vidio[$i]->title;

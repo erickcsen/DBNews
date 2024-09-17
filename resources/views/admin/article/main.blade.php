@@ -12,14 +12,14 @@
 						<a href="{{route('article.create')}}" class="btn btn-primary btn-sm ml-auto">Add Article</a>
 					</div>
 					<!-- Form pencarian -->
-				<form id="search-form" method="GET" action="{{ route('article.index') }}" class="mt-2">
-					<div class="input-group">
-						<input type="text" class="form-control" name="search" placeholder="Search..." value="{{ request('search') }}">
-						<div class="input-group-append">
-							<button class="btn btn-primary" type="submit">Search</button>
+					<form id="search-form" method="GET" action="{{ route('article.index') }}" class="mt-2">
+						<div class="input-group">
+							<input type="text" class="form-control" name="search" placeholder="Search..." value="{{ request('search') }}">
+							<div class="input-group-append">
+								<button class="btn btn-primary" type="submit">Search</button>
+							</div>
 						</div>
-					</div>
-				</form>
+					</form>
 					<div class="card-body">
 						@include('sweetalert::alert')
 						<div class="table-responsive">

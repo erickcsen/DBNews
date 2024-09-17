@@ -17,13 +17,16 @@ class ArticleController extends Controller
     
     public function index(Request $request) {
         $search = $request->input('search');
-        $query = Article::with(['category','user','subcategory']);
+        $query = Article::with(['category','subcategory']);
         
+        $user_id = Auth::user()->id;
+        $role = Auth::user()->role;
+        if ($role==1) $query->whereHas('user', function($query) use ($user_id){
+            $query->where("id", $user_id);
+        });
+
         if ($search) {
-            $query->where('name', 'like', "%{$search}%")
-                  ->orWhereHas('user', function($q) use ($search) {
-                      $q->where('email', 'like', "%{$search}%");
-                  });
+            $query->where('title', 'like', "%".$search."%");
         }
 
         $arts = $query->paginate(5);
@@ -50,7 +53,6 @@ class ArticleController extends Controller
             return response()->json(['fileName' => $fileName,'uploaded'=>1,'url'=>$url]);
         }
         return response()->json(['error' => 'No file uploaded.'], 400);
-    
     }
 
     public function store(Request $request) {
@@ -60,6 +62,8 @@ class ArticleController extends Controller
             'category_id' => 'required|exists:categories,id',
             'subcategory_id' => 'nullable|exists:subcategories,id',
             'article_img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'deskripsi_meta'=> 'string',
+            'kata_kunci_meta'=> 'string',
             'is_active' => 'required|in:publish,draft'
         ]);
     
@@ -69,6 +73,8 @@ class ArticleController extends Controller
         $art->description = $request->description; 
         $art->category_id = $request->category_id; 
         $art->subcategory_id = $request->subcategory_id; 
+        $art->deskripsi_meta = $request->deskripsi_meta;
+        $art->kata_kunci_meta = $request->kata_kunci_meta;
         $art->user_id = Auth::id(); 
         $art->views = 0;
         $art->is_active = $request->is_active; 
@@ -77,7 +83,7 @@ class ArticleController extends Controller
             $path = $request->file('article_img')->store('public/images/article');
             $art->article_img = $path;
         }
-    
+        
         $art->save();
         Alert::success('Success', 'Article added successfully');
         return redirect()->route('article.index');
@@ -106,6 +112,8 @@ class ArticleController extends Controller
         $article->description = $request->description;
         $article->category_id = $request->category_id;
         $article->subcategory_id = $request->subcategory_id;
+        $article->deskripsi_meta = $request->deskripsi_meta;
+        $article->kata_kunci_meta = $request->kata_kunci_meta;
         $article->is_active = $request->is_active;
     
         if ($request->hasFile('article_img')) {
@@ -127,9 +135,9 @@ class ArticleController extends Controller
         $article = Article::findOrFail($id);
     
         // Hapus gambar terkait jika ada
-        if ($article->article_img && file_exists(storage_path('app/public/images/article/' . basename($article->article_img)))) {
-            unlink(storage_path('app/public/images/article/' . basename($article->article_img)));
-        }
+        // if ($article->article_img && file_exists(storage_path('app/public/images/article/' . basename($article->article_img)))) {
+            // unlink(storage_path('app/public/images/article/' . basename($article->article_img)));
+        // }
     
         $article->delete();
         Alert::success('Success', 'Article deleted successfully');
