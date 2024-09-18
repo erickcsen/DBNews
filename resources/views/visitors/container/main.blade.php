@@ -52,6 +52,9 @@
             }
         </script>
         <!-- SEO -->
+        <!-- Ad Sense -->
+        <meta name="google-adsense-account" content="ca-pub-1326912091817850">
+        <!-- Ad Sense -->
         <title>{{$title_page}}</title>
         <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
