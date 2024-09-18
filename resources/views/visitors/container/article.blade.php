@@ -5,52 +5,88 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- SEO -->
         <meta name="title" content="{{$title_page}}" />
-        <meta name="description" content="Indeks berita terkini dan terbaru hari ini dari news, hiburan, lifestyle, sport, dan tech,  di Indonesia dan Internasional" />
-        <meta name="keywords" content="berita hari ini, berita terkini, berita terbaru, info berita, peristiwa, kecelakaan, kriminal, hukum, berita unik, Politik, liputan khusus, news, hiburan, lifestyle, sport, dan tech, Indonesia, Internasional">
-        <meta content="Indeks berita terkini dan terbaru hari ini dari news, hiburan, lifestyle, sport, dan tech di Indonesia dan Internasional" itemprop="headline">
-        <meta property="og:type" content="article">
-        <meta property="og:type" content="article">
+        <meta name="description" content="{{$article->deskripsi_meta}}" />
+        <meta name="keywords" content="{{$article->kata_kunci_meta}}">
         <meta property="og:site_name" content="dbnews">
-        <meta property="og:title" content="{{$title_page}}">
-        <meta property="og:image" content="{{asset('/images/favicon.png')}}">
-        <meta property="og:url" content="{{asset('')}}">
-        <meta property="og:image:type" content="image/jpeg">
-        <meta property="og:image:width" content="650">
-        <meta property="og:image:height" content="366">
-        <meta name="copyright" content="" itemprop="dateline">
-        <meta name="robots" content="index, follow">
-        <meta name="googlebot" content="index, follow">
-        <meta name="googlebot-news" content="index, follow">
-        <meta content="Indeks berita terkini dan terbaru hari ini dari peristiwa, kecelakaan, kriminal, hukum, berita unik, Politik, dan liputan khusus di Indonesia dan Internasional" itemprop="headline">
-        <meta name="keywords" content="berita hari ini, berita terkini, berita terbaru, info berita, peristiwa, kecelakaan, kriminal, hukum, berita unik, Politik, liputan khusus, Indonesia, Internasional" itemprop="keywords">
-        <meta name="thumbnailUrl" content="{{asset('images/favicon.png')}}" itemprop="thumbnailUrl">
-        <meta content="{{asset('')}}" itemprop="url">
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="{{asset('read_article/'.$article->slug)}}"/>
+        <meta property="og:title" content="{{$title_page}}" />
+        <meta property="og:description" content="{{$article->deskripsi_meta}}" />
+        <meta property="og:description" content="{{$article->deskripsi_meta}}" />
+        <meta property="og:image" content="{{asset(Storage::url($article->article_img))}}" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="{{asset(Storage::url($article->article_img))}}" />
+        <meta name="twitter:image" content="{{asset(Storage::url($article->article_img))}}" />
+        <link rel="canonical" href="{{asset('read_article/'.$article->slug)}}">
+        <meta name="language" content="id" />
+        <meta name="geo.country" content="id" />
+        <meta name="geo.placename" content="Indonesia" />
+        <meta name="author" content="DBNews developer">
+        <meta name="copyright" content="DBNews, All Rights Reserved" />
+        <meta name="Distribution" content="Global">
+        <meta name="Rating" content="General">
+        <meta name="robots" content="index, follow" />
+        <meta name="googlebot" content="index, follow" />
+        <meta name="googlebot-news" content="index, follow" />
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta name="keywords" content="{{$article->kata_kunci_meta}}">
+        <meta name="news_keywords" content="{{$article->kata_kunci_meta}}">
         <script type="application/ld+json">
             {
-                "@context" : "https://schema.org",
-                "@type" : "Organization",
-                "name" : "DBNews",
-                "url" : "{{asset('')}}",
-                "sameAs" : [
-                    "https://www.instagram.com/dbmedianews/",
-                    "https://www.tiktok.com/@dbmedianews",
-                    "https://www.youtube.com/@dbnewsid"
+                "@context": "https://schema.org",
+                "@type": "NewsArticle",
+                "headline": "{{$title_page}}",
+                "image": [
+                    "{{asset(Storage::url($article->article_img))}}"
                 ],
-                "logo": "{{asset('images/favicon.png')}}"
+                "thumbnailUrl": "{{asset(Storage::url($article->article_img))}}",
+                "datePublished": "{{$article->created_at}}",
+                "dateModified": "{{$article->updated_at}}",
+                "author": [{
+                    "@type": "Person",
+                    "name": "{{$article->user->name}}",
+                    "url": "{{asset('')}}"
+                    }
+                ]
             }
         </script>
         <script type="application/ld+json">
             {
                 "@context": "https://schema.org",
-                "@type": "WebSite",
-                "url": "{{asset('')}}",
-                "potentialAction": {
-                    "@type": "SearchAction",
-                    "target": "{{asset('pencarian')}}?txt_pencarian={search_term_string}",
-                    "query-input": "required name=search_term_string"
-                }
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "DBNews ",
+                        "item": {
+                            "@type": "Thing",
+                            "@id": "{{asset('')}}"
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": "2",
+                        "name": "{{$article->category->name}}",
+                        "item": {
+                            "@type": "Thing",
+                            "@id": "{{asset('visit_category/'.$article->category->name)}}"
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": "3",
+                        "name": "{{$title}}",
+                        "item": {
+                            "@type": "Thing",
+                            "@id": "{{asset('read_article/'.$article->slug)}}"
+                        }
+                    }
+                ]
             }
         </script>
+
+
         <!-- SEO -->
         <title>{{$title_page}}</title>
         <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">

@@ -1,5 +1,5 @@
 <?php $title_page = $article->title; ?>
-@extends('visitors.container.main')
+@extends('visitors.container.article')
 @section('container')
     <?php $link_image_article = asset('storage/images/article/' . basename($article->article_img)); ?>
     <style>
