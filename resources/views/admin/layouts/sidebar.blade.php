@@ -64,7 +64,7 @@
                             <p>Video</p>
                         </a>
                     </li>
-                    <li class="nav-item {{ request()->routeIs('ad.index') ? 'active' : '' }} d-none">
+                    <li class="nav-item {{ request()->routeIs('ad.index') ? 'active' : '' }}">
                         <a href="{{route('ad.index')}}">
                             <i class="fas fa-bullhorn"></i>
                             <p>Ad</p>
