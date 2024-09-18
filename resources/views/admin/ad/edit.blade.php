@@ -27,13 +27,13 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="position">AD Position</label>
-                                    <select class="form-control" name="position" hidden>
+                                    <select class="form-control" name="position">
                                         <option value="side" {{ $ad->position == 'side' ? 'selected' : '' }}>Side</option>
                                         <option value="bottom" {{ $ad->position == 'bottom' ? 'selected' : '' }}>Bottom
                                         </option>
                                     </select>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group d-none">
                                     <label for="is_active">status</label>
                                     <select class="form-control" name="is_active">
                                         <option value="publish" {{ $ad->is_active == 'publish' ? 'selected' : '' }}>Publish
