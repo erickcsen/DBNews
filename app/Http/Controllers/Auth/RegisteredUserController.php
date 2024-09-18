@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Support\Facades\Log;
 
 class RegisteredUserController extends Controller
 {
@@ -53,12 +52,7 @@ class RegisteredUserController extends Controller
         
         session()->flash("kode_verifikasi", Hash::make($kode_verifikasi));
         if ($user) {
-            Log::info('mencoba mengirim email ke '.$user["email"]);
-
-            // if (!session("pesan")) 
-            Mail::to($user["email"])->send(new EmailVerification($kode_verifikasi));
-
-            Log::info('berhasil email');
+            if (!session("pesan")) Mail::to($user["email"])->send(new EmailVerification($kode_verifikasi));
             return view("auth.register.verifikasi-email",["user"=>$user, "kode_verifikasi"=>$kode_verifikasi]);
         } else abort(404);
     }

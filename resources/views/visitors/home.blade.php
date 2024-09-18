@@ -173,9 +173,9 @@
             });
         }
 
-        // window.addEventListener('load', function() {
+        window.addEventListener('load', function() {
             get_sports_schedule();
-        // });
+        });
 
         function formatDateToText(date) {
             const today = new Date();

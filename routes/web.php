@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Request;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Response;
+use App\Http\Controllers\PhotosController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\AdController;
 use App\Http\Controllers\VisitorsController;
@@ -136,6 +137,9 @@ Route::middleware('admin')->group(function () {
     Route::resource('ad', AdController::class);
     Route::resource('sport', SportController::class);
     Route::resource('setting', SettingController::class);
+    Route::get('photos/get_photo', [PhotosController::class, 'get_photo']);
+    Route::get('photos/total_photo', [PhotosController::class, 'total_photo']);
+    Route::get('photos/delete/{id}', [PhotosController::class, 'delete_photo']);
 });
 
 // ===================== Route login with google =====================

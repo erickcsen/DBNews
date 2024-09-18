@@ -12,14 +12,13 @@ use Illuminate\Queue\SerializesModels;
 class EmailVerification extends Mailable
 {
     use Queueable, SerializesModels;
-    public $kode_verification;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($kode_verification){
-        $this->kode_verification = $kode_verification;
-    }
+    public function __construct(
+        public $kode_verification
+    ){}
 
     /**
      * Get the message envelope.

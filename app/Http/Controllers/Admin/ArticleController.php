@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\Category;
+use App\Models\Photos;
 use App\Models\Subcategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -61,9 +62,10 @@ class ArticleController extends Controller
             'description' => 'required|string',
             'category_id' => 'required|exists:categories,id',
             'subcategory_id' => 'nullable|exists:subcategories,id',
-            'article_img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'deskripsi_meta'=> 'string',
-            'kata_kunci_meta'=> 'string',
+            'article_img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'article_img_txt' => 'nullable|string',
+            'deskripsi_meta'=> 'nullable|string',
+            'kata_kunci_meta'=> 'nullable|string',
             'is_active' => 'required|in:publish,draft'
         ]);
     
@@ -82,6 +84,20 @@ class ArticleController extends Controller
         if ($request->hasFile('article_img')) {
             $path = $request->file('article_img')->store('public/images/article');
             $art->article_img = $path;
+            /** Tambahkan Database Table Photos */
+            $name = $request->file('article_img')->getClientOriginalName();
+            $size = $request->file('article_img')->getSize();
+            $size_txt = ($size > 1024) ? intval($size / 1024)." mb": $size ." kb";
+            Photos::create([
+                "user_id" => Auth::user()->id,
+                "name" => $name,
+                "path" => $path,
+                "size" => $size,
+                "size_txt" => $size_txt
+            ]);
+        } else {
+            if ($request->article_img_txt == null) return redirect()->route("article.create");
+            $art->article_img = $request->article_img_txt;
         }
         
         $art->save();
@@ -103,6 +119,9 @@ class ArticleController extends Controller
             'category_id' => 'required|exists:categories,id',
             'subcategory_id' => 'nullable|exists:subcategories,id',
             'article_img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'article_img_txt' => 'nullable|string',
+            'deskripsi_meta' => 'nullable|string',
+            'kata_kunci_meta' => 'nullable|string',
             'is_active' => 'required|in:publish,draft'
         ]);
     
@@ -119,11 +138,26 @@ class ArticleController extends Controller
         if ($request->hasFile('article_img')) {
             
             // Hapus gambar lama jika ada
-            if ($article->article_img && file_exists(storage_path('app/public/images/article/' . basename($article->article_img)))) {
-                unlink(storage_path('app/public/images/article/' . basename($article->article_img)));
-            }
+            // if ($article->article_img && file_exists(storage_path('app/public/images/article/' . basename($article->article_img)))) {
+            //     unlink(storage_path('app/public/images/article/' . basename($article->article_img)));
+            // }
+
             $path = $request->file('article_img')->store('public/images/article');
             $article->article_img = $path;
+
+            /** Tambahkan Database Table Photos */
+            $name = $request->file('article_img')->getClientOriginalName();
+            $size = $request->file('article_img')->getSize();
+            $size_txt = ($size > 1024) ? intval($size / 1024) . " mb" : $size . " kb";
+            Photos::create([
+                "user_id" => Auth::user()->id,
+                "name" => $name,
+                "path" => $path,
+                "size" => $size,
+                "size_txt" => $size_txt
+            ]);
+        } else {
+            $article->article_img = $request->article_img_txt;
         }
     
         $article->save();
@@ -135,9 +169,15 @@ class ArticleController extends Controller
         $article = Article::findOrFail($id);
     
         // Hapus gambar terkait jika ada
-        // if ($article->article_img && file_exists(storage_path('app/public/images/article/' . basename($article->article_img)))) {
-            // unlink(storage_path('app/public/images/article/' . basename($article->article_img)));
-        // }
+        $photo = Photos::where("path",'like',$article->article_img)->count();
+        if ($photo == 0){
+            $photo = Article::where("article_img",'like',$article->article_img)->count();
+            if ($photo == 0) {
+                if ($article->article_img && file_exists(storage_path('app/public/images/article/' . basename($article->article_img)))) {
+                    unlink(storage_path('app/public/images/article/' . basename($article->article_img)));
+                }
+            }
+        }
     
         $article->delete();
         Alert::success('Success', 'Article deleted successfully');
