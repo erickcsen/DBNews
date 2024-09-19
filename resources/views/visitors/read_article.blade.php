@@ -29,10 +29,16 @@
                                 <span class="text-muted">
                                     /
                                 </span>
-                                <b>
+                                <span class="text-muted">
                                     {{ $article->subcategory->name }}
-                                </b>
+                                </span>
                             @endif
+                            <span class="text-muted">
+                                /
+                            </span>
+                            <span class="fw-bold">
+                                {{ substr($article->title,0,30).'...' }}
+                            </span>
                         </div>
                         <div class="col-12">
                             <span class="color4a25a9 fw-bold" style="font-size: 35px;">
@@ -390,10 +396,16 @@
                                 <span class="text-muted">
                                     /
                                 </span>
-                                <b>
+                                <span class="text-muted">
                                     {{ $article->subcategory->name }}
-                                </b>
+                                </span>
                             @endif
+                            <span class="text-muted">
+                                /
+                            </span>
+                            <span class="fw-bold">
+                                {{ substr($article->title,0,30).'...' }}
+                            </span>
                         </div>
                         <div class="col-12 pb-3">
                             <span class="color4a25a9 fw-bold" style="font-size:16pt">

@@ -223,7 +223,52 @@
         </div>
     </div>
 </div>
+<style>
+    /* Styling untuk Snackbar */
+    .snackbar {
+        visibility: hidden;
+        min-width: 250px;
+        margin-left: -145px;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        border-radius: 2px;
+        position: fixed;
+        z-index: 1;
+        left: 50%;
+        bottom: 30px;
+        font-size: 17px;
+        white-space: nowrap;
+        padding: 16px;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+    }
 
+    .snackbar.show {
+        visibility: visible;
+        -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    }
+
+    @-webkit-keyframes fadein {
+        from { bottom: 0; opacity: 0; }
+        to { bottom: 30px; opacity: 1; }
+    }
+
+    @keyframes fadein {
+        from { bottom: 0; opacity: 0; }
+        to { bottom: 30px; opacity: 1; }
+    }
+
+    @-webkit-keyframes fadeout {
+        from { opacity: 1; }
+        to { opacity: 0; }
+    }
+
+    @keyframes fadeout {
+        from { opacity: 1; }
+        to { opacity: 0; }
+    }
+</style>
 <div id="popup_file" class="position-fixed top-0 bottom-0 start-0 end-0 pb-5 px-0"
     style="background-color: rgba(0, 0, 0, 0.5);z-index:2000;overflow-y:auto;" hidden>
     <div class="container-fluid">
@@ -749,7 +794,7 @@
                                     } else {
                                         var snackbar = document.getElementById('snackbar');
                                         snackbar.className = 'snackbar show';
-                                        fileInput.value = '';
+                                        document.getElementById('file-input').value = '';
                                         setTimeout(function() {
                                             snackbar.className = snackbar.className.replace('show', '');
                                         }, 3000); // Snackbar tampil selama 3 detik
@@ -841,7 +886,7 @@
                                         } else {
                                             var snackbar = document.getElementById('snackbar');
                                             snackbar.className = 'snackbar show';
-                                            fileInput.value = '';
+                                            document.getElementById('file-input').value = '';
                                             setTimeout(function() {
                                                 snackbar.className = snackbar.className.replace('show', '');
                                             }, 3000); // Snackbar tampil selama 3 detik
