@@ -349,15 +349,16 @@ class VisitorsController extends Controller
         }
 
         if (Auth::check()) {
-            $article->increment('share');
             $viewExists = ArticleShare::where('article_id', $id)
                 ->where('email', Auth::user()->email)
                 ->exists();
-            if (!$viewExists)
+            if (!$viewExists) {
+                $article->increment('share');
                 ArticleShare::create([
                     'article_id' => $id,
                     'email' => Auth::user()->email,
                 ]);
+            }
         }
 
         $id = $article->id;
