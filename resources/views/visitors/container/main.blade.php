@@ -7,6 +7,7 @@
         <meta name="title" content="{{$title_page}}" />
         <meta name="description" content="Indeks berita terkini dan terbaru hari ini dari news, hiburan, lifestyle, sport, dan tech,  di Indonesia dan Internasional" />
         <meta name="keywords" content="berita hari ini, berita terkini, berita terbaru, info berita, peristiwa, kecelakaan, kriminal, hukum, berita unik, Politik, liputan khusus, news, hiburan, lifestyle, sport, dan tech, Indonesia, Internasional">
+        <meta name="author" content="DBNews developer">
         <meta content="Indeks berita terkini dan terbaru hari ini dari news, hiburan, lifestyle, sport, dan tech di Indonesia dan Internasional" itemprop="headline">
         <meta property="og:type" content="article">
         <meta property="og:type" content="article">
