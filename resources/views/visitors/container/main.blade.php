@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- SEO -->
+        <meta name="google-adsense-account" content="ca-pub-1326912091817850">
         <meta name="title" content="{{$title_page}}" />
         <meta name="description" content="Indeks berita terkini dan terbaru hari ini dari news, hiburan, lifestyle, sport, dan tech,  di Indonesia dan Internasional" />
         <meta name="keywords" content="berita hari ini, berita terkini, berita terbaru, info berita, peristiwa, kecelakaan, kriminal, hukum, berita unik, Politik, liputan khusus, news, hiburan, lifestyle, sport, dan tech, Indonesia, Internasional">
