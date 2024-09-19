@@ -4,12 +4,19 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- SEO -->
+        {{-- Custom Description --}}
+        @php
+            $description = (isset($description))?$description:"Indeks berita terkini dan terbaru hari ini dari news, hiburan, lifestyle, sport, dan tech,  di Indonesia dan Internasional";
+            $keywords = (isset($keywords))?$keywords:"berita hari ini, berita terkini, berita terbaru, info berita, peristiwa, kecelakaan, kriminal, hukum, berita unik, Politik, liputan khusus, news, hiburan, lifestyle, sport, dan tech, Indonesia, Internasional";
+            $headline = "Indeks berita terkini dan terbaru hari ini dari news, hiburan, lifestyle, sport, dan tech di Indonesia dan Internasional";
+        @endphp
+        {{-- Custom Description --}}
         <meta name="google-site-verification" content="swbYCX40Jzwr8WC4vGNh43dhsNX_a_3-_Q2Fc0XjUJU" />
         <meta name="title" content="{{$title_page}}" />
-        <meta name="description" content="Indeks berita terkini dan terbaru hari ini dari news, hiburan, lifestyle, sport, dan tech,  di Indonesia dan Internasional" />
-        <meta name="keywords" content="berita hari ini, berita terkini, berita terbaru, info berita, peristiwa, kecelakaan, kriminal, hukum, berita unik, Politik, liputan khusus, news, hiburan, lifestyle, sport, dan tech, Indonesia, Internasional">
+        <meta name="description" content="{{$description}}" />
+        <meta name="keywords" content="{{$keywords}}">
         <meta name="author" content="DBNews developer">
-        <meta content="Indeks berita terkini dan terbaru hari ini dari news, hiburan, lifestyle, sport, dan tech di Indonesia dan Internasional" itemprop="headline">
+        <meta content="{{$headline}}" itemprop="headline">
         <meta property="og:type" content="website">
         <meta property="og:site_name" content="dbnews">
         <meta property="og:title" content="{{$title_page}}">
@@ -22,13 +29,13 @@
         <meta name="robots" content="index, follow">
         <meta name="googlebot" content="index, follow">
         <meta name="googlebot-news" content="index, follow">
-        <meta content="Indeks berita terkini dan terbaru hari ini dari peristiwa, kecelakaan, kriminal, hukum, berita unik, Politik, dan liputan khusus di Indonesia dan Internasional" itemprop="headline">
-        <meta name="keywords" content="berita hari ini, berita terkini, berita terbaru, info berita, peristiwa, kecelakaan, kriminal, hukum, berita unik, Politik, liputan khusus, Indonesia, Internasional" itemprop="keywords">
+        <meta content="{{$headline}}" itemprop="headline">
+        <meta name="keywords" content="{{$keywords}}" itemprop="keywords">
         <meta name="thumbnailUrl" content="{{asset('images/favicon.png')}}" itemprop="thumbnailUrl">
         <meta content="{{asset('')}}" itemprop="url">
         
         <meta itemprop="title" content="{{$title_page}}" />
-        <meta itemprop="description" content="Indeks berita terkini dan terbaru hari ini dari news, hiburan, lifestyle, sport, dan tech,  di Indonesia dan Internasional" />
+        <meta itemprop="description" content="{{$description}}" />
         <meta itemprop="image" content="{{asset('/images/favicon.png')}}">
         <meta name="app-url" content="{{asset('')}}">
         <meta name="file-base-url" content="{{asset('')}}">
