@@ -1,5 +1,5 @@
 <?php $title_page = $youtube_video->title ?>
-@extends("visitors.container.main")
+@extends("visitors.container.video")
 @section("container")
     {{-- Tampilan Desktop --}}
     <div id="content" class="col-12 d-none d-lg-inline-block">

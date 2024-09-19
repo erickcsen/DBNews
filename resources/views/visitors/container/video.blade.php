@@ -6,7 +6,7 @@
         <!-- SEO -->
         <meta name="title" content="{{$title_page}}" />
         <meta name="description" content="{{$youtube_video->deskripsi_meta}}" />
-        <meta name="keywords" content="{{$youtube_video->kata_kunci_meta}}">
+        <meta name="keywords" content="{{preg_replace('/ /',', ',preg_replace('/#/','',$youtube_video->kata_kunci_meta))}}">
         <meta property="og:site_name" content="dbnews">
         <meta property="og:type" content="website" />
         <meta property="og:url" content="{{asset('read_article/'.$youtube_video->slug)}}"/>
