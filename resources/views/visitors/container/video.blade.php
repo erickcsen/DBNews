@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- SEO -->
         <meta name="title" content="{{$title_page}}" />
-        <meta name="description" content="{{$youtube_video->deskripsi_meta}}" />
+        <meta name="description" content="{{$youtube_video->description}}" />
         <meta name="keywords" content="{{preg_replace('/ /',', ',preg_replace('/#/','',$youtube_video->kata_kunci_meta))}}">
         <meta property="og:site_name" content="dbnews">
         <meta property="og:type" content="website" />
