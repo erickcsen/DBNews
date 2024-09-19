@@ -4,20 +4,23 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- SEO -->
+        <?php $link_domain = 'https://youtu.be/' ?>
+        <?php $link_id_and_value = substr($youtube_video->link,strlen($link_domain),strlen($youtube_video->link))?>
+        <?php $link_image = 'https://i.ytimg.com/vi/'.$link_id = substr($link_id_and_value, 0, strpos($link_id_and_value, "?")).'/hq720.jpg' ?>
         <meta name="title" content="{{$title_page}}" />
         <meta name="description" content="{{$youtube_video->description}}" />
         <meta name="keywords" content="{{preg_replace('/ /',', ',preg_replace('/#/','',$youtube_video->kata_kunci_meta))}}">
         <meta property="og:site_name" content="dbnews">
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="{{asset('read_article/'.$youtube_video->slug)}}"/>
+        <meta property="og:url" content="{{asset('watch_vidio/'.$youtube_video->slug)}}"/>
         <meta property="og:title" content="{{$title_page}}" />
         <meta property="og:description" content="{{$youtube_video->deskripsi_meta}}" />
         <meta property="og:description" content="{{$youtube_video->deskripsi_meta}}" />
-        <meta property="og:image" content="{{asset(Storage::url($youtube_video->article_img))}}" />
+        <meta property="og:image" content="{{$link_image}}" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="{{asset(Storage::url($youtube_video->article_img))}}" />
-        <meta name="twitter:image" content="{{asset(Storage::url($youtube_video->article_img))}}" />
-        <link rel="canonical" href="{{asset('read_article/'.$youtube_video->slug)}}">
+        <meta name="twitter:image" content="{{$link_image}}" />
+        <meta name="twitter:image" content="{{$link_image}}" />
+        <link rel="canonical" href="{{asset('watch_vidio/'.$youtube_video->slug)}}">
         <meta name="language" content="id" />
         <meta name="geo.country" content="id" />
         <meta name="geo.placename" content="Indonesia" />
@@ -29,17 +32,17 @@
         <meta name="googlebot" content="index, follow" />
         <meta name="googlebot-news" content="index, follow" />
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-        <meta name="keywords" content="{{$youtube_video->kata_kunci_meta}}">
-        <meta name="news_keywords" content="{{$youtube_video->kata_kunci_meta}}">
+        <meta name="keywords" content="{{preg_replace('/ /',', ',preg_replace('/#/','',$youtube_video->kata_kunci_meta))}}">
+        <meta name="news_keywords" content="{{preg_replace('/ /',', ',preg_replace('/#/','',$youtube_video->kata_kunci_meta))}}">
         <script type="application/ld+json">
             {
                 "@context": "https://schema.org",
                 "@type": "NewsArticle",
                 "headline": "{{$title_page}}",
                 "image": [
-                    "{{asset(Storage::url($youtube_video->article_img))}}"
+                    "{{$link_image}}"
                 ],
-                "thumbnailUrl": "{{asset(Storage::url($youtube_video->article_img))}}",
+                "thumbnailUrl": "{{$link_image}}",
                 "datePublished": "{{$youtube_video->created_at}}",
                 "dateModified": "{{$youtube_video->updated_at}}",
                 "author": [{
@@ -79,7 +82,7 @@
                         "name": "{{$title}}",
                         "item": {
                             "@type": "Thing",
-                            "@id": "{{asset('read_article/'.$youtube_video->slug)}}"
+                            "@id": "{{asset('watch_vidio/'.$youtube_video->slug)}}"
                         }
                     }
                 ]
