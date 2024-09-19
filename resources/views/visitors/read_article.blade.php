@@ -908,7 +908,7 @@
     </script>
     <script>
         function share_button_increase(){
-            $.get("/read_article/1/share", function(data){
+            $.get("/read_article/{{$article->id}}/share", function(data){
                 console.log(data)
             });
         }                   
