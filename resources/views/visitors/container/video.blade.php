@@ -35,6 +35,14 @@
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <meta name="keywords" content="{{preg_replace('/ /',', ',preg_replace('/#/','',$youtube_video->kata_kunci_meta))}}">
         <meta name="news_keywords" content="{{preg_replace('/ /',', ',preg_replace('/#/','',$youtube_video->kata_kunci_meta))}}">
+
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta itemprop="name" content="{{$title}}">
+        <meta itemprop="description" content="{{preg_replace('/ {2,}/', ' ', str_replace('&nbsp;', ' ',strip_tags(substr($youtube_video->description,3,strlen($youtube_video->description)))))}}">
+        <meta itemprop="image" content="{{$link_image}}">
+        <meta name="app-url" content="{{asset('')}}">
+        <meta name="file-base-url" content="{{asset('')}}">
+
         <script type="application/ld+json">
             {
                 "@context": "https://schema.org",

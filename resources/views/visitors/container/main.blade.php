@@ -27,6 +27,13 @@
         <meta name="keywords" content="berita hari ini, berita terkini, berita terbaru, info berita, peristiwa, kecelakaan, kriminal, hukum, berita unik, Politik, liputan khusus, Indonesia, Internasional" itemprop="keywords">
         <meta name="thumbnailUrl" content="{{asset('images/favicon.png')}}" itemprop="thumbnailUrl">
         <meta content="{{asset('')}}" itemprop="url">
+        
+        <meta itemprop="title" content="{{$title_page}}" />
+        <meta itemprop="description" content="Indeks berita terkini dan terbaru hari ini dari news, hiburan, lifestyle, sport, dan tech,  di Indonesia dan Internasional" />
+        <meta itemprop="image" content="{{asset('/images/favicon.png')}}">
+        <meta name="app-url" content="{{asset('')}}">
+        <meta name="file-base-url" content="{{asset('')}}">
+
         <script type="application/ld+json">
             {
                 "@context" : "https://schema.org",

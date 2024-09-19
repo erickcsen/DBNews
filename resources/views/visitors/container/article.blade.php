@@ -32,6 +32,13 @@
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <meta name="keywords" content="{{$article->kata_kunci_meta}}">
         <meta name="news_keywords" content="{{$article->kata_kunci_meta}}">
+
+        <meta itemprop="name" content="{{$title_page}}">
+        <meta itemprop="description" content="{{$article->deskripsi_meta}}">
+        <meta itemprop="image" content="{{asset(Storage::url($article->article_img))}}">
+        <meta name="app-url" content="{{asset('')}}">
+        <meta name="file-base-url" content="{{asset('')}}">
+
         <script type="application/ld+json">
             {
                 "@context": "https://schema.org",
