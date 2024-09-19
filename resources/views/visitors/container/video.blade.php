@@ -8,14 +8,14 @@
         <?php $link_id_and_value = substr($youtube_video->link,strlen($link_domain),strlen($youtube_video->link))?>
         <?php $link_image = 'https://i.ytimg.com/vi/'.$link_id = substr($link_id_and_value, 0, strpos($link_id_and_value, "?")).'/hq720.jpg' ?>
         <meta name="title" content="{{$title_page}}" />
-        <meta name="description" content="{{$youtube_video->description}}" />
+        <meta name="description" content="{{preg_replace('/ {2,}/', ' ', str_replace('&nbsp;', ' ',strip_tags(substr($youtube_video->description,3,strlen($youtube_video->description)))))}}" />
         <meta name="keywords" content="{{preg_replace('/ /',', ',preg_replace('/#/','',$youtube_video->kata_kunci_meta))}}">
         <meta property="og:site_name" content="dbnews">
         <meta property="og:type" content="website" />
         <meta property="og:url" content="{{asset('watch_vidio/'.$youtube_video->slug)}}"/>
         <meta property="og:title" content="{{$title_page}}" />
-        <meta property="og:description" content="{{$youtube_video->deskripsi_meta}}" />
-        <meta property="og:description" content="{{$youtube_video->deskripsi_meta}}" />
+        <meta property="og:description" content="{{preg_replace('/ {2,}/', ' ', str_replace('&nbsp;', ' ',strip_tags(substr($youtube_video->description,3,strlen($youtube_video->description)))))}}" />
+        <meta property="og:description" content="{{preg_replace('/ {2,}/', ' ', str_replace('&nbsp;', ' ',strip_tags(substr($youtube_video->description,3,strlen($youtube_video->description)))))}}" />
         <meta property="og:image" content="{{$link_image}}" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content="{{$link_image}}" />
