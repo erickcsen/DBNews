@@ -1,5 +1,5 @@
 <?php $title_page = "Youtube Video - DB News" ?>
-@extends("visitors.container.main")
+@extends("visitors.container.video")
 @section("container")
     <div id="content" class="col-12 d-none d-lg-inline-block">
         <div class="container">
