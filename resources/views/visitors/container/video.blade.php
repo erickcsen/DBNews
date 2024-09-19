@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- SEO -->
+        <meta name="google-site-verification" content="swbYCX40Jzwr8WC4vGNh43dhsNX_a_3-_Q2Fc0XjUJU" />
         <?php $link_domain = 'https://youtu.be/' ?>
         <?php $link_id_and_value = substr($youtube_video->link,strlen($link_domain),strlen($youtube_video->link))?>
         <?php $link_image = 'https://i.ytimg.com/vi/'.$link_id = substr($link_id_and_value, 0, strpos($link_id_and_value, "?")).'/hq720.jpg' ?>

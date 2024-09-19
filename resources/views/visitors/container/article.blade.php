@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- SEO -->
+        <meta name="google-site-verification" content="swbYCX40Jzwr8WC4vGNh43dhsNX_a_3-_Q2Fc0XjUJU" />
         <meta name="title" content="{{$title_page}}" />
         <meta name="description" content="{{$article->deskripsi_meta}}" />
         <meta name="keywords" content="{{$article->kata_kunci_meta}}">
