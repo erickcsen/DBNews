@@ -104,6 +104,37 @@
                                 Follow on Tiktok
                             </a>
                         </div>
+                        <!-- Tags - -->
+                        <div class="col-12">
+                            <input name="kata_kunci_meta" id="kata_kunci_meta" value="{{$youtube_video->kata_kunci_meta}}" onkeyup="tags_event(this)" class="form-control" placeholder="Masukkan Kata Kunci" style="resize: none" hidden/>
+                            <script>
+                                window.addEventListener('load', function() {
+                                    tags_event(kata_kunci_meta)
+                                });
+                                function tags_event(e){
+                                    let txt = e.value;
+                                    let arry_txt = txt.split("#");
+                                    tags.innerHTML = '';
+                                    tags2.innerHTML = '';
+                                    for (let i = 0; i < arry_txt.length; i++) {
+                                        let txt = arry_txt[i];
+                                        let short_txt = txt.length > 25 ? txt.substring(0,25)+'..' : txt;
+                                        tags.innerHTML = tags2.innerHTML += (txt!="")?`
+                                            <a href='{{asset('pencarian')}}?tags=`+txt+`&tipe=video' class='nolink'>
+                                                <div class="d-inline-block mb-2 me-0 ms-0">
+                                                    <div class="d-inline rounded px-2 py-1 fw-bold text-white" style="background: gray; width:fit-content;">
+                                                        #`+short_txt+`
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        `:"";
+                                    }
+                                }
+                            </script>
+                            <div id="tags" class="col-12 p-0 pt-3 mb-3 text-capitalize">
+                            </div>
+                        </div>
+                        <!-- Tags - -->
                     </div>
                     <div class="row d-none">
                         <div class="col-12">
@@ -259,6 +290,15 @@
                         </button>
                     </div>
                 </div>
+                <!-- Isi Artikel -->
+                <!-- Tags -->
+                <div class="row">
+                    <div class="col-12">
+                        <div id="tags2" class="col-12 p-0 pt-3 mb-3 text-capitalize">
+                        </div>
+                    </div>
+                </div>
+                <!-- Tags -->
                 <div class="row d-none">
                     <div class="col-12">
                         <hr>
