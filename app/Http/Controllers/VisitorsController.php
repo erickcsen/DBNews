@@ -597,7 +597,7 @@ class VisitorsController extends Controller
         // Enable query logging
         $article = Article::with(["category", "user", "subcategory"])->where(function ($query) use ($txt_pencarian) {
             $query->where('title', 'like', "%{$txt_pencarian}%")
-            ->where('kata_kunci_meta', 'like', "%{$txt_pencarian}%");
+            ->orWhere('kata_kunci_meta', 'like', "%{$txt_pencarian}%");
         });
         
         $youtube_video =
