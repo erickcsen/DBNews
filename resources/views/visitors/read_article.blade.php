@@ -145,7 +145,7 @@
                                         let txt = arry_txt[i];
                                         let short_txt = txt.length > 25 ? txt.substring(0,25)+'..' : txt;
                                         tags.innerHTML = tags2.innerHTML += (txt!="")?`
-                                            <a href='{{asset('pencarian')}}?tags=`+txt+`' class='nolink'>
+                                            <a href='{{asset('pencarian')}}?txt_pencarian=`+txt+`' class='nolink'>
                                                 <div class="d-inline-block mb-2 me-0 ms-0">
                                                     <div class="d-inline rounded px-2 py-1 fw-bold text-white" style="background: gray; width:fit-content;">
                                                         #`+short_txt+`

@@ -593,14 +593,18 @@ class VisitorsController extends Controller
         $orderBy = "views";
         if ($urut == "baru") $orderBy="created_at";
 
-        $article = Article::with(["category", "user", "subcategory"])
-                    ->where('title', 'like', "%{$txt_pencarian}%")
-                    ->where('kata_kunci_meta', 'like', "%{$txt_pencarian}%");
-                    
-        $youtube_video =
-            Video::with(["category", "user"])
-            ->where('title', 'like', "%{$txt_pencarian}%")
+
+        // Enable query logging
+        $article = Article::with(["category", "user", "subcategory"])->where(function ($query) use ($txt_pencarian) {
+            $query->where('title', 'like', "%{$txt_pencarian}%")
             ->where('kata_kunci_meta', 'like', "%{$txt_pencarian}%");
+        });
+        
+        $youtube_video =
+            Video::with(["category", "user"])->where(function ($query) use ($txt_pencarian) {
+            $query->where('title', 'like', "%{$txt_pencarian}%")
+            ->orWhere('kata_kunci_meta', 'like', "%{$txt_pencarian}%");
+        });
 
         if ($pilih_kategori != "" && $pilih_kategori!=null) {
             $article = $article->whereHas("category", function ($query) use ($pilih_kategori) {
