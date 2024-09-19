@@ -1,4 +1,4 @@
-<?php $title_page = "Berita Terbaru - DB News" ?>
+<?php $title_page = "Latest News - DBNews ID" ?>
 @extends("visitors.container.main")
 @section("container")
     <div id="content" class="col-12 d-none d-lg-inline-block">
