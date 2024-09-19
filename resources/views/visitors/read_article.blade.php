@@ -128,6 +128,40 @@
                         <!-- Isi Article -->
                     </div>
                     <!-- Isi Artikel - -->
+                    <!-- Tags - -->
+                    <div class="row">
+                        <div class="col-12">
+                            <input name="kata_kunci_meta" id="kata_kunci_meta" value="{{$article->kata_kunci_meta}}" onkeyup="tags_event(this)" class="form-control d-none" placeholder="Masukkan Kata Kunci" style="resize: none"/>
+                            <script>
+                                window.addEventListener('load', function() {
+                                    tags_event(kata_kunci_meta)
+                                });
+                                function tags_event(e){
+                                    let txt = e.value;
+                                    let arry_txt = txt.split(",");
+                                    tags.innerHTML = '';
+                                    tags2.innerHTML = '';
+                                    for (let i = 0; i < arry_txt.length; i++) {
+                                        let txt = arry_txt[i];
+                                        txt = txt.length > 25 ? txt.substring(0,25)+'..' : txt;
+                                        tags.innerHTML = tags2.innerHTML += (txt!="")?`
+                                            <a href='{{asset('pencarian')}}?tags=`+txt+`' class='nolink'>
+                                                <div class="d-inline-block mb-2 me-0 ms-0">
+                                                    <div class="d-inline rounded px-2 py-1 fw-bold text-white" style="background: gray; width:fit-content;">
+                                                        `+txt+`
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        `:"";
+                                    }
+                                }
+                            </script>
+                            <div id="tags" class="col-12 p-0 pt-3 mb-3 text-capitalize">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Tags - -->
+                    <!-- Comments - -->
                     <div class="row">
                         <div id="isi_komentar" class="col-12">
                             <b style="font-size: 18pt">Comment ({{count($comments)}})</b>
@@ -294,6 +328,7 @@
                             @endif
                         @endforeach
                     </div>
+                    <!-- Comments - -->
                 </div>
                 <div class="col-3">
                     <div class="col-12 mb-4">
@@ -495,6 +530,14 @@
                             <?php echo $article->description; ?>
                         </div>
                         <!-- Isi Article -->
+                        <!-- Tags -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div id="tags2" class="col-12 p-0 pt-3 mb-3 text-capitalize">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Tags -->
                     </div>
                     <!-- Isi Artikel - -->
                 </div>

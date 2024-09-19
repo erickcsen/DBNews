@@ -585,7 +585,7 @@ class VisitorsController extends Controller
 
         // Mengambil data dari form
         $data = Request::all(); // atau $request->input('field_name')
-        $txt_pencarian = $data["txt_pencarian"]; // --> dapatkan data txt_pencarian
+        $txt_pencarian = (isset($data["txt_pencarian"]))? $data["txt_pencarian"]:""; // --> dapatkan data txt_pencarian
         $urut = (isset($data["urut"]))?$data["urut"]:""; // --> dapatkan data urut
         $pilih_kategori = (isset($data["pilih_kategori"]))? $data["pilih_kategori"]:""; // --> dapatkan data pilih_kategori
         // return response($data, 200); // Melihat isi respon dari data text yang dikirimkan

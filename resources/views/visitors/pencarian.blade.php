@@ -92,7 +92,7 @@
                     @endif ">
                         @for ($i = 0; $i < count($article); $i++)
                             <?php $item=$article[$i]; ?>
-                            <a href="/read_article/{{$item->id}}" class="nolink">
+                            <a href="/read_article/{{$item->slug}}" class="nolink">
                                 <div class="col-12 border rounded pe-2 mb-2">
                                     <div class="row">
                                         <div class="col-4">
@@ -137,7 +137,7 @@
                             <?php $link_id_and_value = substr($item->link,strlen($link_domain),strlen($item->link))?>
                             <?php $link_image = 'https://i.ytimg.com/vi/'.$link_id = substr($link_id_and_value, 0, strpos($link_id_and_value, "?")).'/hq720.jpg' ?>
                             
-                            <a href="/watch_vidio/{{$item->id}}" class="nolink">
+                            <a href="/watch_vidio/{{$item->slug}}" class="nolink">
                                 <div class="col-12 border rounded pe-2 mb-2">
                                     <div class="row">
                                         <div class="col-4">
@@ -253,7 +253,7 @@
                                 $title = $item->title;
                                 $tanggal = date_format($item->created_at,'d M Y');
                             ?>
-                            <a href="/read_article/{{$item->id}}" class="nolink">
+                            <a href="/read_article/{{$item->slug}}" class="nolink">
                                 @include('visitors.partials.card_2_mobile')
                             </a>
                         @endfor
@@ -282,7 +282,7 @@
                                 $title = $item->title;
                                 $tanggal = date_format($item->created_at,'d M Y');
                             ?>
-                            <a href="/watch_vidio/{{$item->id}}" class="nolink">
+                            <a href="/watch_vidio/{{$item->slug}}" class="nolink">
                                 @include('visitors.partials.card_2_mobile')
                             </a>
                         @endfor
