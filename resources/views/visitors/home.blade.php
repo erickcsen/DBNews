@@ -1,10 +1,12 @@
-<?php $title_page = "DBNews - Informasi Berita Terkini dan Terbaru Hari Ini" ?>
-@extends("visitors.container.main")
-@section("container")
+<?php $title_page = 'Informasi Berita Terkini dan Terbaru Hari Ini - DBNews ID'; ?>
+@extends('visitors.container.main')
+@section('container')
     @php
-        $link_url = ""
+        $link_url = '';
     @endphp
-    <?php if (isset($article)==false) $article = [] ;?>
+    <?php if (isset($article) == false) {
+        $article = [];
+    } ?>
     @if (count($article) > 0)
         <div id="content" class="col-12 d-none d-lg-inline-block">
             <div class="container">
@@ -16,7 +18,7 @@
                     </div>
                 @endif --}}
 
-                
+
                 @include('visitors.partials.home.today_headline_news')
                 @include('visitors.partials.home.berita_terpopuler')
                 <div>&nbsp;</div>
@@ -26,8 +28,9 @@
                     <div class="col-12 my-4" style="height: 200px">
                         <div class="col-12">
                             @foreach ($ads_bottom as $item)
-                                <a href="{{$item->link}}" target="_blank">
-                                    <img class="iklan_bottom_1 rounded" src="{{Storage::url($item->ad_img)}}" style="width:100%">
+                                <a href="{{ $item->link }}" target="_blank">
+                                    <img class="iklan_bottom_1 rounded" src="{{ Storage::url($item->ad_img) }}"
+                                        style="width:100%">
                                 </a>
                             @endforeach
                         </div>
@@ -39,11 +42,13 @@
                                 var i;
                                 var x = document.getElementsByClassName("iklan_bottom_1");
                                 for (i = 0; i < x.length; i++) {
-                                    x[i].style.display = "none";  
+                                    x[i].style.display = "none";
                                 }
                                 myIndex++;
-                                if (myIndex > x.length) {myIndex = 1}    
-                                x[myIndex-1].style.display = "block";  
+                                if (myIndex > x.length) {
+                                    myIndex = 1
+                                }
+                                x[myIndex - 1].style.display = "block";
                                 setTimeout(carousel1, 2000); // Change image every 2 seconds
                             }
                         </script>
@@ -55,10 +60,11 @@
                 <div class="row">
                     <div class="col-12 my-4" style="height: 200px">
                         <div class="col-12">
-                            @for ($i = count($ads_bottom)-1; count($ads_bottom) > 0 && $i >= 0; $i--)
+                            @for ($i = count($ads_bottom) - 1; count($ads_bottom) > 0 && $i >= 0; $i--)
                                 <?php $item = $ads_bottom[$i]; ?>
-                                <a href="{{$item->link}}" target="_blank">
-                                    <img class="iklan_bottom_2 rounded" src="{{Storage::url($item->ad_img)}}" style="width:100%">
+                                <a href="{{ $item->link }}" target="_blank">
+                                    <img class="iklan_bottom_2 rounded" src="{{ Storage::url($item->ad_img) }}"
+                                        style="width:100%">
                                 </a>
                             @endfor
                         </div>
@@ -70,11 +76,13 @@
                                 var i;
                                 var x = document.getElementsByClassName("iklan_bottom_2");
                                 for (i = 0; i < x.length; i++) {
-                                    x[i].style.display = "none";  
+                                    x[i].style.display = "none";
                                 }
                                 myIndex2++;
-                                if (myIndex2 > x.length) {myIndex2 = 1}    
-                                x[myIndex2-1].style.display = "block";  
+                                if (myIndex2 > x.length) {
+                                    myIndex2 = 1
+                                }
+                                x[myIndex2 - 1].style.display = "block";
                                 setTimeout(carousel2, 2000); // Change image every 2 seconds
                             }
                         </script>
@@ -90,7 +98,7 @@
                 @include('visitors.partials.home.youtube_mobile')
                 @include('visitors.partials.home.berita_terbaik_mingguan_mobile')
             </div>
-        </div>        
+        </div>
     @elseif (count($youtube_video) > 0)
         <div id="content" class="col-12 d-none d-lg-inline-block">
             <div class="container">
@@ -105,7 +113,8 @@
     @else
         <div id="content" class="col-12">
             <div class="container">
-                <div class="col-12 text-center text-muted" style="margin:10% 0;margin-bottom:15%;" <?=count($article)>0?"hidden":""?> >
+                <div class="col-12 text-center text-muted" style="margin:10% 0;margin-bottom:15%;"
+                    <?= count($article) > 0 ? 'hidden' : '' ?>>
                     <i class="fa fa-filter" style="font-size: 100px"></i>
                     <i class="fa fa-ban" style="font-size: 50px;margin-left:-20px"></i>
                     <h3>Belum ada Article</h3>
@@ -113,7 +122,7 @@
             </div>
         </div>
     @endif
-    
+
     <script>
         async function get_sports_schedule() {
             var settings = {
@@ -121,8 +130,8 @@
                 "method": "GET",
                 "timeout": 0,
             };
-    
-            $.ajax(settings).done(function (response) {
+
+            $.ajax(settings).done(function(response) {
                 let events = response.events;
                 console.log(response.events);
                 no_data_sports.hidden = response.events.length > 0;
@@ -133,27 +142,29 @@
                 let liga = []
                 if (events.length > 0)
                     liga = events[0];
-                    for (let i = 0; i < liga.length && i < 2; i++) {
-                        const event = liga[i];
-                        tanggal = formatDateToText(event.match_date);
-                        
-                        let element = `
+                for (let i = 0; i < liga.length && i < 2; i++) {
+                    const event = liga[i];
+                    tanggal = formatDateToText(event.match_date);
+
+                    let element = `
                             <div class="col-12 p-0 p-2">
                                 <div class="row">
                                     <div class="col-md-8 col-7 border-end">
-                                        <img src="`+event.team_away_badge+`" onerror="this.onerror=null; this.src='`+event.league_logo+`';" height="30px"/>
+                                        <img src="` + event.team_away_badge +
+                        `" onerror="this.onerror=null; this.src='` + event.league_logo + `';" height="30px"/>
                                         <small class="text-muted">
-                                            `+event.match_awayteam_name+`
+                                            ` + event.match_awayteam_name + `
                                         </small> <br>
-                                        <img src="`+event.team_home_badge+`" onerror="this.onerror=null; this.src='`+event.league_logo+`';" height="30px"/>
+                                        <img src="` + event.team_home_badge +
+                        `" onerror="this.onerror=null; this.src='` + event.league_logo + `';" height="30px"/>
                                         <small class="text-muted">
-                                            `+event.match_hometeam_name +`
+                                            ` + event.match_hometeam_name + `
                                         </small>
                                     </div>
                                     <div class="col-md-4 col-5 text-center text-muted mt-1">
                                         <small>
-                                        `+tanggal+` <br>
-                                        `+event.match_time+`
+                                        ` + tanggal + ` <br>
+                                        ` + event.match_time + `
                                         </small>
                                     </div>
                                     <div class="col-1"></div>
@@ -164,9 +175,9 @@
                                 </div>
                             </div>
                         `;
-                        data_sports.innerHTML += element;
-                        data_sports_mobile.innerHTML += element;
-                    }
+                    data_sports.innerHTML += element;
+                    data_sports_mobile.innerHTML += element;
+                }
                 // });
                 loadingSports.hidden = true;
                 loadingSports_mobile.hidden = true;
@@ -199,9 +210,8 @@
             } else if (diffDays > 30 && diffDays <= 60) {
                 return "Minggu depan";
             } else if (diffDays > 60) {
-                return tanggal.getDate()+"/"+tanggal.getMonth()+"/"+tanggal.getFullYear(); // Format default
+                return tanggal.getDate() + "/" + tanggal.getMonth() + "/" + tanggal.getFullYear(); // Format default
             }
         }
-
     </script>
 @endsection
