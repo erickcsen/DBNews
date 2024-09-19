@@ -45,7 +45,8 @@ class VideoController extends Controller
             'link' => 'required|string',
             'description' => 'required|string',
             'category_id' => 'required|exists:categories,id',
-            'is_active' => 'required|in:publish,draft'
+            'is_active' => 'required|in:publish,draft',
+            'kata_kunci_meta' => 'nullable|string',
         ]);
     
         $vid = new Video();
@@ -54,6 +55,7 @@ class VideoController extends Controller
         $vid->slug = Str::slug($request->title);
         $vid->description = $request->description; 
         $vid->category_id = $request->category_id; 
+        $vid->kata_kunci_meta = $request->kata_kunci_meta; 
         $vid->user_id = Auth::id();
         $vid->is_active = $request->is_active;
         $vid->views = 0;
@@ -76,6 +78,7 @@ class VideoController extends Controller
             'link' => 'required|string',
             'description' => 'required|string',
             'category_id' => 'required|exists:categories,id',
+            'kata_kunci_meta' => 'nullable|string',
             'is_active' => 'required|in:publish,draft'
         ]);
     
@@ -84,7 +87,8 @@ class VideoController extends Controller
         $vid->link = $request->link;
         $vid->slug = Str::slug($request->title);
         $vid->description = $request->description; 
-        $vid->category_id = $request->category_id; 
+        $vid->category_id = $request->category_id;
+        $vid->kata_kunci_meta = $request->kata_kunci_meta; 
         $vid->user_id = Auth::id();
         $vid->is_active = $request->is_active; 
 

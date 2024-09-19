@@ -6,6 +6,7 @@
     // $title = $article_utama->title 
     // $views = "";
     // $comments_number = "";
+    if (!isset($comments_number)) $comments_number = 0;
 ?>
 <a href="{{$link_id}}" class="nolink">
     <div class="col-12 p-0">

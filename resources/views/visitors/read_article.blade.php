@@ -35,11 +35,9 @@
                             @endif
                         </div>
                         <div class="col-12">
-                            <a href="/read_article/{{ $article->slug }}" class="nolink">
-                                <span class="color4a25a9 fw-bold" style="font-size: 35px;">
-                                    {{ $article->title }}
-                                </span>
-                            </a>
+                            <span class="color4a25a9 fw-bold" style="font-size: 35px;">
+                                {{ $article->title }}
+                            </span>
                         </div>
                         <div class="col-12">
                             <b class="text-dark" style="font-size:10pt">
@@ -47,10 +45,55 @@
                             </b> <br>
                         </div>
                         <div class="col-6" style="font-size:10pt">
-                            <span class="text-muted text-capitalize">
-                                {{ $article->user->name }}
-                            </span>
-                            - <b>Dbmedianews</b>
+                            <div class="col-12">
+                                <span class="text-muted text-capitalize">
+                                    {{ $article->user->name }}
+                                </span>
+                                - <b>Dbmedianews</b>
+                            </div>
+                            <div class="col-12 text-muted fw-bold">
+                                <span class="me-1">
+                                    <i class="fa fa-eye"></i>
+                                </span>
+                                <?php
+                                    $views = $article->views;
+                                    $comments_number = count($article->comments->where("parent_id","is",null));
+                                    $share_number = ($article->share)?$article->share:0;
+
+                                    $views = $views == null ? 0 :$views;
+                                    $singkatan = "";
+                                    if ($views >= 1000) {
+                                        $singkatan = "K" ;
+                                    } else if ($views >= 1000000) {
+                                        $singkatan = "M";
+                                    }
+
+                                    $more_than_million = "";
+                                    if ($views >= 1000000000) {
+                                        $more_than_million = ">= 1B";
+                                    }
+
+                                    if ($views >= 1000) {
+                                        $views = $views / 1000;
+                                    } else if ($views >= 1000000){
+                                        $views = $views / 1000000;
+                                    }
+                                ?>
+                                @if ($more_than_million == "") 
+                                    <span class="me-2"> {{$views}} {{$singkatan}} </span>
+                                @else
+                                    <span class="me-2"> {{$views}} {{$singkatan}} </span>   
+                                @endif
+                                <span class="me-2">
+                                    <i class="fa fa-comment"></i> {{$comments_number}}
+                                </span>
+                                <span class="me-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 448 512">
+                                        <!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                        <path fill="gray" d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z" />
+                                    </svg> {{$share_number}}
+                                </span>
+                            </div>
                         </div>
                         <div class="col-6 text-end pb-3">
                             <button onclick="share_to_medsos.hidden=false;share_button_increase()"
@@ -77,51 +120,6 @@
                             </div>
                         </div>
                         <!-- Isi Article -->
-                    </div>
-                    <div class="row">
-                        <div class="col-12 mb-4 text-end text-muted fw-bold">
-                            <span class="me-2">
-                                <i class="fa fa-eye"></i>
-                            </span>
-                            <?php
-                                $views = $article->views;
-                                $comments_number = count($article->comments->where("parent_id","is",null));
-                                $share_number = ($article->share)?$article->share:0;
-
-                                $views = $views == null ? 0 :$views;
-                                $singkatan = "";
-                                if ($views >= 1000) {
-                                    $singkatan = "K" ;
-                                } else if ($views >= 1000000) {
-                                    $singkatan = "M";
-                                }
-
-                                $more_than_million = "";
-                                if ($views >= 1000000000) {
-                                    $more_than_million = ">= 1B";
-                                }
-
-                                if ($views >= 1000) {
-                                    $views = $views / 1000;
-                                } else if ($views >= 1000000){
-                                    $views = $views / 1000000;
-                                }
-                            ?>
-                            @if ($more_than_million == "") 
-                                <span class="me-2"> {{$views}} {{$singkatan}} </span>
-                            @else
-                                <span class="me-2"> {{$views}} {{$singkatan}} </span>   
-                            @endif
-                            <span class="me-2">
-                                <i class="fa fa-comment"></i> {{$comments_number}}
-                            </span>
-                            <span class="me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 448 512">
-                                    <!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                                    <path fill="gray" d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z" />
-                                </svg> {{$share_number}}
-                            </span>
-                        </div>
                     </div>
                     <!-- Isi Artikel - -->
                     <div class="row">
@@ -398,43 +396,25 @@
                             @endif
                         </div>
                         <div class="col-12 pb-3">
-                            <a href="/read_article" class="nolink">
-                                <span class="color4a25a9 fw-bold" style="font-size:16pt">
-                                    {{ $article->title }}
-                                </span>
-                            </a>
+                            <span class="color4a25a9 fw-bold" style="font-size:16pt">
+                                {{ $article->title }}
+                            </span>
                         </div>
                     </div>
                     <!-- Judul -->
-                    <!-- Isi Artikel -->
+                    <!-- Share Article -->
                     <div class="row">
-                        <!-- Foto -->
-                        <div class="col-12 rounded border p-0 overflow-hidden">
-                            <img src="{{ $link_image_article }}" width="100%" alt="">
-                        </div>
-                        <!-- Foto -->
-                        <!-- Isi Article -->
-                        <style>
-                            #isi_article img{
-                                width: 100%;
-                            }
-                        </style>
-                        <div id="isi_article" class="col-12 mt-3" style="text-align: justify;font-size:12pt">
-                            <?php echo $article->description; ?>
-                        </div>
-                        <!-- Isi Article -->
-                    </div>
-                    <!-- Isi Artikel - -->
-                    <div class="row">
-                        <div class="col-6 py-1 pb-3">
-                            <button onclick="share_to_medsos.hidden=false;share_button_increase()"
-                                class="btn btn-light border rounded-pill text-muted">
-                                <i class="fa fa-share"></i>
-                                Share Article
-                            </button>
-                        </div>
-                        <div class="col-6 mt-2 text-end text-muted fw-bold" style="font-size: 10pt;">
-                            <span class="me-2">
+                        <div class="col-8 text-muted fw-bold" style="font-size: 10pt;">
+                            <div class="col-12">
+                                <span class="text-muted text-capitalize d-md-inline-block d-none">
+                                    {{ $article->user->name, 0, 20 }}
+                                </span>
+                                <span class="text-muted text-capitalize d-inline-block d-md-none">
+                                    {{ substr($article->user->name, 0, 8).'...' }}
+                                </span>
+                                - <b>Dbmedianews</b>
+                            </div>
+                            <span class="me-1">
                                 <i class="fa fa-eye"></i>
                             </span>
                             <?php
@@ -476,7 +456,35 @@
                                 </svg> {{$share_number}}
                             </span>
                         </div>
+                        <div class="col-4 text-end">
+                            <button onclick="share_to_medsos.hidden=false;share_button_increase()"
+                                class="btn btn-light border rounded-pill text-muted">
+                                <i class="fa fa-share"></i>
+                                Share
+                            </button>
+                        </div>
+                        <div class="col-12">&nbsp;</div>
                     </div>
+                    <!-- Share Article -->
+                    <!-- Isi Artikel -->
+                    <div class="row">
+                        <!-- Foto -->
+                        <div class="col-12 rounded border p-0 overflow-hidden">
+                            <img src="{{ $link_image_article }}" width="100%" alt="">
+                        </div>
+                        <!-- Foto -->
+                        <!-- Isi Article -->
+                        <style>
+                            #isi_article img{
+                                width: 100%;
+                            }
+                        </style>
+                        <div id="isi_article" class="col-12 mt-3" style="text-align: justify;font-size:12pt">
+                            <?php echo $article->description; ?>
+                        </div>
+                        <!-- Isi Article -->
+                    </div>
+                    <!-- Isi Artikel - -->
                 </div>
                 <div class="col-12">
                     <div class="row">

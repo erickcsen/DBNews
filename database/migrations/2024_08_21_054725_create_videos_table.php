@@ -19,6 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('category_id')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->text('description')->nullable();
+            $table->text('kata_kunci_meta')->nullable();
             $table->string('is_active')->default('draft');
             $table->integer('views')->nullable();
             $table->timestamps();

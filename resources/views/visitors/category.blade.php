@@ -1,6 +1,7 @@
 <?php $title_page = ucwords($category_selected) ?>
 @extends("visitors.container.main")
 @section("container")
+    <?php if (isset($ads_bottom_id)==false) $ads_bottom_id = 0; ?>
     {{-- Tampilan Desktop --}}
     <div id="content" class="col-12 d-none d-lg-inline-block">
         <div class="container">
