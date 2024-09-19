@@ -1,4 +1,4 @@
-<?php $title_page = "Db News Landing Page" ?>
+<?php $title_page = "DBNews - Informasi Berita Terkini dan Terbaru Hari Ini" ?>
 @extends("visitors.container.main")
 @section("container")
     @php
