@@ -68,10 +68,14 @@ class ArticleController extends Controller
             'kata_kunci_meta'=> 'nullable|string',
             'is_active' => 'required|in:publish,draft'
         ]);
-    
+
+        $slug = Str::slug($request->title);
+        $jumlah_slug = Article::where('slug', 'like', $slug)->count();
+        $slug = ($jumlah_slug > 0) ? $slug . '' . $jumlah_slug : $slug;
+        
         $art = new Article();
         $art->title = $request->title;
-        $art->slug = Str::slug($request->title);
+        $art->slug = $slug;
         $art->description = $request->description; 
         $art->category_id = $request->category_id; 
         $art->subcategory_id = $request->subcategory_id; 
@@ -124,19 +128,23 @@ class ArticleController extends Controller
             'kata_kunci_meta' => 'nullable|string',
             'is_active' => 'required|in:publish,draft'
         ]);
-    
+
+        $slug = Str::slug($request->title);
+        $jumlah_slug = Article::where('slug', 'like', $slug)->count();
+        $slug = ($jumlah_slug > 0) ? $slug . '' . $jumlah_slug : $slug;
+
         $article = Article::findOrFail($id);
         $article->title = $request->title;
-        $article->slug = Str::slug($request->title);
+        $article->slug = $slug;
         $article->description = $request->description;
         $article->category_id = $request->category_id;
         $article->subcategory_id = $request->subcategory_id;
         $article->deskripsi_meta = $request->deskripsi_meta;
         $article->kata_kunci_meta = $request->kata_kunci_meta;
         $article->is_active = $request->is_active;
-    
+
         if ($request->hasFile('article_img')) {
-            
+
             // Hapus gambar lama jika ada
             // if ($article->article_img && file_exists(storage_path('app/public/images/article/' . basename($article->article_img)))) {
             //     unlink(storage_path('app/public/images/article/' . basename($article->article_img)));
@@ -169,16 +177,16 @@ class ArticleController extends Controller
         $article = Article::findOrFail($id);
     
         // Hapus gambar terkait jika ada
-        $photo = Photos::where("path",'like',$article->article_img)->count();
-        if ($photo == 0){
-            $photo = Article::where("article_img",'like',$article->article_img)->count();
+        $photo = Photos::where("path", 'like', $article->article_img)->count();
+        if ($photo == 0) {
+            $photo = Article::where("article_img", 'like', $article->article_img)->count();
             if ($photo == 0) {
                 if ($article->article_img && file_exists(storage_path('app/public/images/article/' . basename($article->article_img)))) {
                     unlink(storage_path('app/public/images/article/' . basename($article->article_img)));
                 }
             }
         }
-    
+
         $article->delete();
         Alert::success('Success', 'Article deleted successfully');
         return redirect()->route('article.index');

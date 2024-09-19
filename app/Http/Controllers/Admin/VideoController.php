@@ -48,11 +48,15 @@ class VideoController extends Controller
             'is_active' => 'required|in:publish,draft',
             'kata_kunci_meta' => 'nullable|string',
         ]);
-    
+
+        $slug = Str::slug($request->title);
+        $jumlah_slug = Video::where('slug', 'like', $slug)->count();
+        $slug = ($jumlah_slug > 0) ? $slug . '' . $jumlah_slug : $slug;
+        
         $vid = new Video();
         $vid->title = $request->title;
         $vid->link = $request->link;
-        $vid->slug = Str::slug($request->title);
+        $vid->slug = $slug;
         $vid->description = $request->description; 
         $vid->category_id = $request->category_id; 
         $vid->kata_kunci_meta = $request->kata_kunci_meta; 
@@ -81,11 +85,15 @@ class VideoController extends Controller
             'kata_kunci_meta' => 'nullable|string',
             'is_active' => 'required|in:publish,draft'
         ]);
-    
+
+        $slug = Str::slug($request->title);
+        $jumlah_slug = Video::where('slug', 'like', $slug)->count();
+        $slug = ($jumlah_slug > 0) ? $slug . '' . $jumlah_slug : $slug;
+        
         $vid = Video::findOrFail($id);
         $vid->title = $request->title;
         $vid->link = $request->link;
-        $vid->slug = Str::slug($request->title);
+        $vid->slug = $slug;
         $vid->description = $request->description; 
         $vid->category_id = $request->category_id;
         $vid->kata_kunci_meta = $request->kata_kunci_meta; 
