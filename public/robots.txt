@@ -1,2 +1,8 @@
+User-agent: Googlebot
+Disallow: /nogooglebot/
+
 User-agent: *
 Allow: /
+
+User-agent: *
+Disallow: /admin/
