@@ -70,6 +70,7 @@
                                     function tags_event(e) {
                                         let txt = e.value;
                                         let arry_txt = txt.split("#");
+                                        arry_txt = (arry_txt.length == 0)?txt.split(","):arry_txt;
                                         tags.innerHTML = '';
                                         for (let i = 0; i < arry_txt.length; i++) {
                                             const txt = arry_txt[i];
