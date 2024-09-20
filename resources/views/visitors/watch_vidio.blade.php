@@ -339,7 +339,7 @@
                             $user = "Admin";
                             $tanggal = $tanggal;
                         ?>
-                        <a href="/watch_vidio/{{$link_id}}" class="nolink">
+                        <a href="/watch_vidio/{{$link_page_id}}" class="nolink">
                             @include("visitors.partials.card_3_mobile")
                         </a>
                     @endfor
