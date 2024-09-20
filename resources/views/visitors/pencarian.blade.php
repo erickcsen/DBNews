@@ -186,7 +186,9 @@
                         <div class="col-12 p-0 @if ($data["tipe"]!="video")
                             d-none
                         @endif">
-                            {{ $youtube_video->links('pagination::bootstrap-4') }}
+                            <div class="pagination justify-content-center">
+                                {{ $youtube_video->links('pagination::bootstrap-4') }}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -311,7 +313,9 @@
                     <div class="col-12 p-0 @if ($data["tipe"]!="video")
                         d-none
                     @endif">
-                        {{ $youtube_video->links('pagination::bootstrap-4') }}
+                        <div class="pagination justify-content-center">
+                            {{ $youtube_video->links('pagination::bootstrap-4') }}
+                        </div>
                     </div>
                 </div>
             </div>
