@@ -113,7 +113,7 @@
                                 });
                                 function tags_event(e){
                                     let txt = e.value;
-                                    let arry_txt = txt.split("#");
+                                    let arry_txt = txt.split(",");
                                     tags.innerHTML = '';
                                     tags2.innerHTML = '';
                                     for (let i = 0; i < arry_txt.length; i++) {
@@ -222,7 +222,7 @@
                         <span class="text-muted">
                             / 
                         </span>
-                        <a href="/category/{{$youtube_video->category->name}}" class="nolink text-muted text-capitalize">
+                        <a href="/visit_category/{{$youtube_video->category->name}}" class="nolink text-muted text-capitalize">
                             {{$youtube_video->category->name}}
                         </a>
                         <span class="text-muted">
@@ -344,7 +344,7 @@
                         </a>
                     @endfor
                 </div>
-                <div class="col-12 text-center pb-3">
+                <div class="col-12 text-center pb-3 d-none">
                     <a href="#" class="btn btn-default border-color4a25a9 bgcolor4a25a9 text-white">
                         Load More
                     </a>
