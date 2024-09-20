@@ -131,7 +131,7 @@ class ArticleController extends Controller
 
         $slug = Str::slug($request->title);
         $jumlah_slug = Article::where('slug', 'like', $slug)->count();
-        $slug = ($jumlah_slug > 0) ? $slug . '' . $jumlah_slug : $slug;
+        $slug = ($jumlah_slug > 1) ? $slug . '' . $jumlah_slug : $slug;
 
         $article = Article::findOrFail($id);
         $article->title = $request->title;
