@@ -13,10 +13,8 @@
         <meta property="og:url" content="{{asset('read_article/'.$article->slug)}}"/>
         <meta property="og:title" content="{{$title_page}}" />
         <meta property="og:description" content="{{$article->deskripsi_meta}}" />
-        <meta property="og:description" content="{{$article->deskripsi_meta}}" />
         <meta property="og:image" content="{{asset(Storage::url($article->article_img))}}" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="{{asset(Storage::url($article->article_img))}}" />
         <meta name="twitter:image" content="{{asset(Storage::url($article->article_img))}}" />
         <link rel="canonical" href="{{asset('read_article/'.$article->slug)}}">
         <meta name="language" content="id" />
