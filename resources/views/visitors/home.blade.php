@@ -1,4 +1,4 @@
-<?php $title_page = 'Informasi Berita Terkini dan Terbaru Hari Ini - DBNews ID'; ?>
+<?php $title_page = 'DB News'; ?>
 @extends('visitors.container.main')
 @section('container')
     @php
