@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Allow: /berita_terbaru
