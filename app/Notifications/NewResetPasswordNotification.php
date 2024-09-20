@@ -37,9 +37,10 @@ class NewResetPasswordNotification extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->line('Line Pertama')
-                    ->action('Reset', url('reset-password', $this->token)) 
-                    ->line('Line Kedua');
+                    ->line('Anda menerima email ini karena kami menerima permintaan pengaturan ulang kata sandi untuk akun Anda.')
+                    ->action('Reset Password', url('reset-password', $this->token)) 
+                    ->line('Tautan pengaturan ulang kata sandi ini akan kedaluwarsa dalam 60 menit.')
+                    ->line('Jika Anda tidak meminta pengaturan ulang kata sandi, tidak ada tindakan lebih lanjut yang diperlukan.');
     }
 
     /**
