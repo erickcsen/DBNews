@@ -114,7 +114,7 @@
                                 function tags_event(e){
                                     let txt = e.value;
                                     let arry_txt = txt.split(",");
-                                    arry_txt = arry_txt.split("#");
+                                    arry_txt = (arry_txt).toString().split("#");
                                     tags.innerHTML = '';
                                     tags2.innerHTML = '';
                                     for (let i = 0; i < arry_txt.length; i++) {
