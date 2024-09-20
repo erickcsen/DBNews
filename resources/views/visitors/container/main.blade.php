@@ -11,7 +11,7 @@
             $headline = "Indeks berita terkini dan terbaru hari ini dari news, hiburan, lifestyle, sport, dan tech di Indonesia dan Internasional";
         @endphp
         {{-- Custom Description --}}
-        <meta name="google-site-verification" content="swbYCX40Jzwr8WC4vGNh43dhsNX_a_3-_Q2Fc0XjUJU" />
+        <meta name="google-site-verification" content="BbqCqP62zW_GDLgQiNlcOy-5u-FG_GKtce1A_ubvA0c" />
         <meta name="title" content="{{$title_page}}" />
         <meta name="description" content="{{$description}}" />
         <meta name="keywords" content="{{$keywords}}">
