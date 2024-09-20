@@ -389,7 +389,7 @@
         document.querySelectorAll('a.page-link').forEach(link => {
             link.addEventListener('click', function(event) {
                 event.preventDefault();
-                window.location.href = event.srcElement.attributes[1].nodeValue+"&txt_pencarian={{$txt_pencarian}}";
+                window.location.href = event.srcElement.attributes[1].nodeValue+"&txt_pencarian={{$txt_pencarian}}&urut={{$data['urut']}}&tipe={{$data['tipe']}}";
             });
         });
     </script>
