@@ -46,7 +46,7 @@
         <script type="application/ld+json">
             {
                 "@context": "https://schema.org",
-                "@type": "NewsArticle",
+                "@type": "VideoObject",
                 "headline": "{{$title_page}}",
                 "image": [
                     "{{$link_image}}"
