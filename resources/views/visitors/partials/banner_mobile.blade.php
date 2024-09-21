@@ -11,7 +11,7 @@
         <div class="col-12">
             <div class="col-12 mb-3 rounded overflow-hidden">
                 <?php $article_img = asset('storage/images/article/' . basename($article_img)) ?>
-                <div class="col-12 p-0 border">
+                <div class="col-12 p-0 border bg-black rounded">
                     <div class="col-12 mb-3 rounded" style="background-image: url('{{ asset('storage/images/article/' . basename($article_img)) }}');height:200px;background-size:100% auto;background-position:center;background-repeat:no-repeat;">
                         <div class="col-12 mb-3 rounded" style="background-image: linear-gradient(to bottom, rgba(255,0,0,0), rgba(0,0,0,1));height:200px;"></div>
                     </div>

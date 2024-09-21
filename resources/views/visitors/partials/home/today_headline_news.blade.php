@@ -1,18 +1,28 @@
 <!-- Today Headline News -->
 <div class="row">
-    <div class="col-9 p-0">
+    <div class="col-9 p-0" style="height: 610px">
         <?php if (isset($today_headline)==false) $today_headline = []; ?>
         @if (count($today_headline) > 0)
-            <?php 
-                $link_id = $today_headline[0]->slug;
-                $article_img = $today_headline[0]->article_img;
-                $category_name = $today_headline[0]->category->name;
-                $title = $today_headline[0]->title;
-                $views = $today_headline[0]->views;
-                $comments_number = count($today_headline[0]->comments->where("parent_id","is",null));
-                $share_number = ($today_headline[0]->share)?$today_headline[0]->share:0;
-            ?>
-            @include('visitors.partials.banner')            
+            <div class="carousel slide" data-bs-ride="carousel">
+                <!-- The slideshow/carousel -->
+                <div class="carousel-inner">
+                    @for ($i=0;$i<count($today_headline);$i++)
+                        <?php 
+                            $item = $today_headline[$i];
+                            $link_id = $item->slug;
+                            $article_img = $item->article_img;
+                            $category_name = $item->category->name;
+                            $title = $item->title;
+                            $views = $item->views;
+                            $comments_number = count($item->comments->where("parent_id","is",null));
+                            $share_number = ($item->share)?$item->share:0;
+                        ?>
+                        <div class="carousel-item <?=$i==0?"active":""?>">
+                            @include('visitors.partials.banner')
+                        </div>
+                    @endfor
+                </div>
+            </div>
         @else
             variabel $today_headline tidak ada data
         @endif
