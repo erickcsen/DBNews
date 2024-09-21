@@ -5,6 +5,7 @@ use App\Mail\EmailVerification;
 use App\Http\Controllers\Superadmin;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Spatie\Sitemap\SitemapGenerator;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Request;
 use App\Http\Controllers\HomeController;
@@ -140,6 +141,7 @@ Route::middleware('admin')->group(function () {
     Route::get('photos/get_photo', [PhotosController::class, 'get_photo']);
     Route::get('photos/total_photo', [PhotosController::class, 'total_photo']);
     Route::get('photos/delete/{id}', [PhotosController::class, 'delete_photo']);
+    Route::resource('about', AboutController::class);
 });
 
 // ===================== Route login with google =====================

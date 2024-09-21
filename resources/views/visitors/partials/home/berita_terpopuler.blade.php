@@ -26,7 +26,9 @@
                             $link_id = route('read_article',["id"=>$link_id]);
                             $photo = asset('storage/images/article/' . basename($berita_terpopuler[$i]->article_img));
                             $title = $berita_terpopuler[$i]->title;
-                            $user = "By Admin"; 
+                            $user = $berita_terpopuler[$i]->user->name; 
+                            $user = (strlen($user) >= 10)?substr($user, 0, 10).'..':$user; 
+                            $user = 'By '.$user;
                             $category = $berita_terpopuler[$i]->category->name; 
                             $tanggal = date_format($berita_terpopuler[$i]->created_at,"d M Y"); 
                         ?>

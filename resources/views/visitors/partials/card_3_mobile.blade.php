@@ -7,7 +7,7 @@
 ?>
 <div class="col-12 ps-3 mb-2">
     <div class="row">
-        <div class="col-4 rounded border bg-black p-0">
+        <div class="col-4 rounded border bg-black p-0" style="height: fit-content;">
             <div class="col-12" style="background-image: url('<?=$gambar?>');height:100px;background-size:auto 100%;background-position:center;background-repeat:no-repeat;">
             </div>
         </div>

@@ -64,7 +64,8 @@
                                 <?php $tipe = $item->category->name ?>
                                 <?php $category = ($item->subcategory)?$item->subcategory->name:$tipe ?>
                                 <?php $tanggal = $item->created_at ?>
-                                <?php $user = "Admin" ?>
+                                <?php $user = $item->user->name ?>
+                                <?php $user = (strlen($user) > 10)?substr($user,0,10).'..':$user; ?>
                                 <?php $menit = date_format($tanggal,"H:i") ?>
                                 <?php $tanggal = date_format($tanggal,"d M Y") ?>
                                 <?php $description = substr($item->description,0,97).'...' ?>
@@ -198,7 +199,7 @@
                             $link_id = '/watch_vidio'.'/'.$item->slug;
                             $photo = $link_image;
                             $title = $youtube_video[$i]->title;
-                            $user = "By Admin"; 
+                            $user = "@dbnewsid"; 
                             $category = $youtube_video[$i]->category->name; 
                             $tanggal = "27 Agustus 2024"; 
                             $description = $youtube_video[$i]->description;
@@ -265,7 +266,8 @@
                                 <?php $tipe = $value_article->category->name ?>
                                 <?php $category = ($value_article->subcategory)?$value_article->subcategory->name:$tipe ?>
                                 <?php $tanggal = $value_article->created_at ?>
-                                <?php $user = "Admin" ?>
+                                <?php $user = $value_article->user->name ?>
+                                <?php $user = (strlen($user) > 10)?substr($user,0,10).'..':$user; ?>
                                 <?php $menit = date_format($tanggal,"H:i") ?>
                                 <?php $tanggal = date_format($tanggal,"d M Y") ?>
                                 <?php $description = substr($value_article->description,0,95).'...' ?>
@@ -393,7 +395,9 @@
                                             <div class="text-muted pt-2" style="font-size: 8pt;">
                                                 <span class="text-uppercase me-3">
                                                     <i class="fa fa-user"></i>
-                                                    <b>By Admin</b>
+                                                    <b>
+                                                        By @dbnewsid
+                                                    </b>
                                                 </span>
                                                 <span class="text-capitalize">
                                                     <i class="fa fa-calendar"></i> 
@@ -417,7 +421,7 @@
                                         $gambar = $link_image;
                                         $tipe = $youtube_video[$i]->category->name;
                                         $title = $youtube_video[$i]->title;
-                                        $user = "Admin";
+                                        $user = "@dbnewsid";
                                         $tanggal = $tanggal;
                                     ?>
                                     <a href="{{route('watch_vidio',["id"=>$link_page_id])}}" class="nolink">

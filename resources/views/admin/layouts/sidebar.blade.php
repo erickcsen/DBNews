@@ -70,7 +70,14 @@
                             <p>Ad</p>
                         </a>
                     </li>
-
+                    
+                    <li class="nav-item {{ request()->routeIs('about.index') ? 'active' : '' }}">
+                        <a href="{{route('about.index')}}">
+                            <i class="fas fa-info-circle"></i>
+                            <p>About</p>
+                        </a>
+                    </li>
+                    
                     <li class="nav-section">
                         <span class="sidebar-mini-icon">
                             <i class="fa fa-ellipsis-h"></i>

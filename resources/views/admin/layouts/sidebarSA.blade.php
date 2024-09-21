@@ -94,7 +94,7 @@
                             <p>Ad</p>
                         </a>
                     </li>
-                    <li class="nav-item d-none {{ request()->routeIs('about.index') ? 'active' : '' }}">
+                    <li class="nav-item {{ request()->routeIs('about.index') ? 'active' : '' }}">
                         <a href="{{route('about.index')}}">
                             <i class="fas fa-info-circle"></i>
                             <p>About</p>

@@ -46,7 +46,7 @@
                                     <div class="text-muted" style="font-size: 8pt;">
                                         <span class="text-uppercase me-3">
                                             <i class="fa fa-user"></i>
-                                            <b>By Admin</b>
+                                            <b>@dbnewsid</b>
                                         </span>
                                         <span class="text-capitalize"> 
                                             <i class="fa fa-calendar"></i> <?=date_format($youtube_video[$i]->created_at,"d M Y")?>
@@ -67,7 +67,7 @@
                             $gambar = $link_image;
                             $tipe = $youtube_video[$i]->category->name;
                             $title = $youtube_video[$i]->title;
-                            $user = "Admin";
+                            $user = "@dbnewsid";
                             $tanggal = date_format($youtube_video[$i]->created_at,"d M Y");
                         ?>
                         <a href="{{route('watch_vidio',["id"=>$link_page_id])}}" class="nolink">

@@ -11,7 +11,9 @@
                     $link_id = $berita_terbaik_mingguan[$i]->slug;
                     $photo = asset('storage/images/article/'.basename($berita_terbaik_mingguan[$i]->article_img));
                     $title = $berita_terbaik_mingguan[$i]->title;
-                    $user = "By Admin"; 
+                    $user = $berita_terbaik_mingguan[$i]->user->name; 
+                    $user = (strlen($user)>10)?substr($user,0,10).'..':$user; 
+                    $user = 'By '.$user; 
                     $category = $berita_terbaik_mingguan[$i]->category->name;
                     $tanggal = $berita_terbaik_mingguan[$i]->created_at; 
                     $tanggal = date_format($tanggal,"d M Y");

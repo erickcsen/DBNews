@@ -42,7 +42,7 @@
                             <?php $tipe = $item->category->name ?>
                             <?php $category = $tipe ?>
                             <?php $tanggal = $item->created_at ?>
-                            <?php $user = "Admin" ?>
+                            <?php $user = "@dbnewsid" ?>
                             <?php $menit = date_format($tanggal,"H:i") ?>
                             <?php $tanggal = date_format($tanggal,"d M Y") ?>
                             <?php $description = substr($item->description,0,255).'...' ?>

@@ -40,8 +40,8 @@ class VisitorsController extends Controller
 
         $today_headline = 
             Article::with(["category","user","subcategory"])->
-                orderBy("views", "desc")->
-                paginate(1);
+                orderBy("created_at", "desc")->
+                paginate(2);
 
         $berita_terpopuler = 
             Article::with(["category","user","subcategory"])->
@@ -132,13 +132,13 @@ class VisitorsController extends Controller
         $about_value = About::orderBy("id","desc")->paginate(1);
         if(count($about_value) > 0){
             $value = $about_value[0];
-            // $TextAbout = $value->;
+            $TextAbout = $value->description;
             // $AudienceReached = $value->;
             // $TopArticles = $value->;
             // $VisitorGrowth = $value->;
             // $ActiveReader = $value->;
             // $Phone = $value->;
-            // $Commitments = $value->;
+            $Commitments = $value->commitment;
         }
 
         $TopArticles = Article::where("views",">","0")->count();

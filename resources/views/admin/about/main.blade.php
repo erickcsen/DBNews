@@ -9,7 +9,7 @@
 						<div class="card-title">
 							Data About
 						</div>
-						<a href="{{route('about.create')}}" class="btn btn-primary btn-sm ml-auto">Add About</a>
+						<a href="{{route('about.create')}}" class="btn btn-primary btn-sm ml-auto {{count($abts)>0?'d-none':''}}">Add About</a>
 					</div>
 					<!-- Form pencarian -->
 					{{-- <form id="search-form" method="GET" action="{{ route('about.index') }}" class="mt-2">
@@ -27,19 +27,17 @@
 								<thead>
 									<tr>
 										<th scope="col">No</th>
-										<th scope="col">Title</th>
-										<th scope="col">Image</th>
 										<th scope="col">Description</th>
-										<th scope="col">action</th>
+										<th scope="col">Commitment</th>
+										<th scope="col">Action</th>
 									</tr>
 								</thead>
 								<tbody>
 									@foreach ($abts as $abt)
 									<tr>
 										<td >{{ $loop->iteration + ($abts->currentPage() - 1) * $abts->perPage() }}</td>
-										<td>{{$abt->title}}</td>
-										<td><img src="{{ asset('storage/images/about/' . basename($abt->about_img)) }}" alt="video Image" width="50"></td>
-										<td>{{$abt->description}}</td>
+										<td>{{preg_replace('/ {2,}/', ' ', str_replace('&nbsp;', ' ',strip_tags(substr($abt->description,0, 255).'...')))}}</td>
+										<td>{{$abt->commitment}}</td>
 										<td>
 											<a href="{{route('about.edit',$abt->id)}}" class="btn btn-warning btn-sm">Edit</a>
 											<form action="{{ route('about.destroy', $abt->id) }}" method="POST" style="display:inline;" class="delete-form">
