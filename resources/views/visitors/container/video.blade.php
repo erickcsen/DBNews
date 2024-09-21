@@ -48,6 +48,8 @@
                 "@context": "https://schema.org",
                 "@type": "VideoObject",
                 "headline": "{{$title_page}}",
+                "name":"{{$title_page}}",
+                "uploadDate":"{{$youtube_video->uploadDate}}",
                 "image": [
                     "{{$link_image}}"
                 ],
