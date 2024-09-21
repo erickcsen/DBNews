@@ -49,7 +49,7 @@
                 "@type": "VideoObject",
                 "headline": "{{$title_page}}",
                 "name":"{{$title_page}}",
-                "uploadDate":"{{$youtube_video->uploadDate}}",
+                "uploadDate":"{{$youtube_video->created_at}}",
                 "image": [
                     "{{$link_image}}"
                 ],
