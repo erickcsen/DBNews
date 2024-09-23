@@ -60,6 +60,12 @@
                                 </div>
                             @endfor
                         </div>
+                        <div class="row">
+                            <!-- Pagination Links -->
+                            <div class="pagination justify-content-center mt-4">
+								{{ $views->links('pagination::bootstrap-4') }}
+							</div>
+                        </div>
                     </div>
                 </div>
             </div>

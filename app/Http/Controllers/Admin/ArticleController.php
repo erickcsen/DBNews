@@ -209,7 +209,7 @@ class ArticleController extends Controller
         if (count($arts) == 0) return abort(404);
         
         $emails = [];
-        $views = ArticleView::where("article_id", $id)->get();
+        $views = ArticleView::where("article_id", $id)->paginate(10);
         foreach ($views as $item) {
             $email = $item->email;
             $emails[count($emails)] = $email;
