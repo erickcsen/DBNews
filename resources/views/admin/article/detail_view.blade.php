@@ -20,7 +20,7 @@
                     <div class="card-body">
                         <div class="row">
                             @for ($i = 0; $i < count($views); $i++)
-                                <div class="col-6 col-md-4 col-lg-3 p-0 px-1">
+                                <div class="col-6 col-md-4 col-lg-3 p-0 px-1 py-2">
                                     <div class="col-12 border p-0 border rounded">
                                         <div class="text-center py-3">
                                             <i class="fa fa-user" style="font-size: 30px"></i> 
