@@ -30,7 +30,7 @@
 										<th scope="col">Article</th>
 										<th scope="col">Category</th>
 										<th scope="col">Sub Cat</th>
-										<th scope="col">Author</th>
+										<th class="d-none" scope="col">Author</th>
 										<th scope="col">Image</th>
 										<th scope="col">Views</th>
 										<th scope="col">action</th>
@@ -43,9 +43,9 @@
 										<td>{{$art->title}}</td>
 										<td>{{$art->category->name}}</td>
 										<td>{{ optional($art->subcategory)->name }}</td>
-										<td>{{$art->user->name}}</td>
+										<td class="d-none">{{$art->user->name}}</td>
 										<td><img src="{{ asset('storage/images/article/' . basename($art->article_img)) }}" alt="Article Image" width="50"></td>
-										<td>{{$art->views}}</td>
+										<td><a href="/article/{{$art->id}}" class="btn btn-sm btn-light border">Lihat Kunjungan</a></td>
 										<td>
 											<a href="{{route('article.edit',$art->id)}}" class="btn btn-warning btn-sm">Edit</a>
 											<form action="{{ route('article.destroy', $art->id) }}" method="POST" style="display:inline;" class="delete-form">

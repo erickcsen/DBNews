@@ -37,4 +37,8 @@ class Article extends Model
     public function comments() {
         return $this->hasMany(Comment::class);
     }
+
+    public function article_view(){
+        return $this->hasMany(ArticleView::class);
+    }
 }

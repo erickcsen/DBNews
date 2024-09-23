@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
+use App\Models\Photos;
 use App\Models\Article;
 use App\Models\Category;
-use App\Models\Photos;
 use App\Models\Subcategory;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\ArticleView;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class ArticleController extends Controller
@@ -192,4 +194,34 @@ class ArticleController extends Controller
         return redirect()->route('article.index');
     }
     
+    public function show($id) {
+        $query = Article::with(['category', 'subcategory']);
+
+        $user_id = Auth::user()->id;
+        $role = Auth::user()->role;
+        if ($role == 1) $query->whereHas('user', function ($query) use ($user_id) {
+            $query->where("id", $user_id);
+        });
+
+        $query->where("id", $id);
+
+        $arts = $query->get();
+        if (count($arts) == 0) return abort(404);
+        
+        $emails = [];
+        $views = ArticleView::where("article_id", $id)->get();
+        foreach ($views as $item) {
+            $email = $item->email;
+            $emails[count($emails)] = $email;
+        }
+
+        $users = User::with([]);
+        if (count($emails) > 0) $users->where("email",$email);
+        foreach ($emails as $email) {
+            $users->orWhere("email",$email);
+        }
+
+        $users = $users->get();
+        return view('admin.article.detail_view', ["arts"=>$arts, "views"=>$views, "emails"=>$emails, "users"=>$users]);
+    }
 }
