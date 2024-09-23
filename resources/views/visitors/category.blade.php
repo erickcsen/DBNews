@@ -61,6 +61,7 @@
                         <div class="row">
                             <?php $temp = $category?>
                             @foreach ($article as $item)
+                                <?php $link_id = "/read_article"."/".$item->slug; ?>
                                 <?php $tipe = $item->category->name ?>
                                 <?php $category = ($item->subcategory)?$item->subcategory->name:$tipe ?>
                                 <?php $tanggal = $item->created_at ?>
