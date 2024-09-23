@@ -65,7 +65,7 @@
                         </svg> {{$share_number}}
                     </span>
                 </div>
-                <div class="col-12" style="height: 120px;">
+                <div class="col-12" style="height: 110px;">
                     <span class="color4a25a9 fw-bold" style="font-size: 35px">{{$title}}</span>
                 </div>
             </div>
