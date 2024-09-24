@@ -802,9 +802,9 @@ class VisitorsController extends Controller
         $country_name = "Worldcup";
         $date_start = date("Y-m-d");
         $date_end = date("Y-m-d", strtotime('+1 days'));
-        $country_id = 8;
-        // $country_id = VisitorsController::api_football_get_country($country_name);
-        // $country_id = (isset($country_id->country_id)) ? $country_id->country_id : 0;
+        // $country_id = 8;
+        $country_id = VisitorsController::api_football_get_country($country_name);
+        $country_id = (isset($country_id->country_id)) ? $country_id->country_id : 0;
         $leagues = VisitorsController::api_football_get_leagues($date_start, $date_end, $country_id);
 
         $events = [];

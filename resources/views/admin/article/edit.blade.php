@@ -153,6 +153,12 @@
                         </div>
                         <div class="form-group">
                             <div class="col-12 p-0">
+                                <label for="">Sumber Foto</label>
+                                <input type="text" name="sumber_foto" value="{{ old('sumber_foto', $article->sumber_foto) }}" placeholder="Sumber Foto Gambar Diatas" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-12 p-0">
                                 <label for="deskripsi_meta">Meta Deskripsi (Deskripsi Singkat)</label>
                                 <textarea name="deskripsi_meta" id="deskripsi_meta" class="form-control" rows="3" placeholder="Meta Deskripsi" style="resize: none">{{$article->deskripsi_meta}}</textarea>
                             </div>

@@ -66,6 +66,7 @@ class ArticleController extends Controller
             'subcategory_id' => 'nullable|exists:subcategories,id',
             'article_img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'article_img_txt' => 'nullable|string',
+            'sumber_foto'=> 'nullable|string',
             'deskripsi_meta'=> 'nullable|string',
             'kata_kunci_meta'=> 'nullable|string',
             'is_active' => 'required|in:publish,draft'
@@ -79,6 +80,7 @@ class ArticleController extends Controller
         $art->title = $request->title;
         $art->slug = $slug;
         $art->description = $request->description; 
+        $art->sumber_foto = $request->sumber_foto;
         $art->category_id = $request->category_id; 
         $art->subcategory_id = $request->subcategory_id; 
         $art->deskripsi_meta = $request->deskripsi_meta;
@@ -126,6 +128,7 @@ class ArticleController extends Controller
             'subcategory_id' => 'nullable|exists:subcategories,id',
             'article_img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'article_img_txt' => 'nullable|string',
+            'sumber_foto' => 'nullable|string',
             'deskripsi_meta' => 'nullable|string',
             'kata_kunci_meta' => 'nullable|string',
             'is_active' => 'required|in:publish,draft'
@@ -139,6 +142,7 @@ class ArticleController extends Controller
         $article->title = $request->title;
         $article->slug = $slug;
         $article->description = $request->description;
+        $article->sumber_foto = $request->sumber_foto;
         $article->category_id = $request->category_id;
         $article->subcategory_id = $request->subcategory_id;
         $article->deskripsi_meta = $request->deskripsi_meta;

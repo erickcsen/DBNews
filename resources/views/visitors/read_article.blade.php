@@ -5,6 +5,7 @@
     <style>
         #isi_article img {
             max-width: 100%;
+            border-radius: 10px;
         }
     </style>
     {{-- Tampilan Desktop --}}
@@ -113,8 +114,13 @@
                     <!-- Isi Artikel -->
                     <div class="row">
                         <!-- Foto -->
-                        <div class="col-12 rounded"
-                            style="background-image: url('{{ $link_image_article }}');height:500px;background-size:cover;background-position:center;">
+                        <input type="hidden" id="sumber_semua_foto" value="{{$article->sumber_foto}}" onchange="sumber_foto()">
+                        <div class="col-12">
+                            <div class="col-12 rounded"
+                                style="background-image: url('{{ $link_image_article }}');height:500px;background-size:cover;background-position:center;">
+                            </div>
+                        </div>
+                        <div id="sumber_foto_banner" class="col-12">
                         </div>
                         <!-- Foto -->
                         <!-- Isi Article -->
@@ -516,19 +522,70 @@
                     <!-- Isi Artikel -->
                     <div class="row">
                         <!-- Foto -->
-                        <div class="col-12 rounded border p-0 overflow-hidden">
-                            <img src="{{ $link_image_article }}" width="100%" alt="">
+                        <div class="col-12">
+                            <div class="col-12 rounded border p-0 overflow-hidden">
+                                <img src="{{ $link_image_article }}" width="100%" alt="">
+                            </div>
+                        </div>
+                        <div id="sumber_foto_banner2" class="col-12">
                         </div>
                         <!-- Foto -->
                         <!-- Isi Article -->
                         <style>
-                            #isi_article img{
+                            #isi_article2 img{
                                 width: 100%;
+                                border-radius: 10px;
                             }
                         </style>
-                        <div id="isi_article" class="col-12 mt-3" style="text-align: justify;font-size:12pt">
+                        <div id="isi_article2" class="col-12 mt-3" style="text-align: justify;font-size:12pt">
                             <?php echo $article->description; ?>
                         </div>
+                        <script>
+                            function sumber_foto(){
+                                let sumber_foto_banner = document.getElementById("sumber_foto_banner")
+                                let sumber_foto_banner2 = document.getElementById("sumber_foto_banner2")
+                                let sumber_semua_foto_element = document.getElementById("sumber_semua_foto");
+                                const images = document.querySelectorAll('#isi_article img');
+                                const images2 = document.querySelectorAll('#isi_article2 img');
+                                let sumber_semua_foto = sumber_semua_foto_element.value.split(","); 
+                                sumber_foto_banner.innerHTML = (sumber_semua_foto.length > 0)?
+                                    (sumber_semua_foto[0].toLowerCase().indexOf("none")==-1)?"<b>Foto : </b>"+sumber_semua_foto[0]:""
+                                    :"";
+                                sumber_foto_banner2.innerHTML = (sumber_semua_foto.length > 0)?
+                                    (sumber_semua_foto[0].toLowerCase().indexOf("none")==-1)?"<b>Foto : </b>"+sumber_semua_foto[0]:""
+                                    :"";
+                                let index = 1;
+                                images.forEach(img => {
+                                    tambahkan_informasi_sumber_foto(img, index, sumber_semua_foto);
+                                    index += (sumber_semua_foto.length > index) ? 1 : 0;
+                                });
+                                index = 1;
+                                images2.forEach(img => {
+                                    tambahkan_informasi_sumber_foto(img, index, sumber_semua_foto);
+                                    index += (sumber_semua_foto.length > index) ? 1 : 0;
+                                });
+                                console.log([images]);
+                            }
+
+                            function tambahkan_informasi_sumber_foto(img, index, sumber_semua_foto){
+                                const newElement = document.createElement('b');
+                                const newElement2 = document.createElement('span');
+                                newElement.textContent = 'Foto : ';
+                                newElement2.textContent = sumber_semua_foto[index];
+                                if (sumber_semua_foto[index]!=null){
+                                    if (((sumber_semua_foto[index]).toLowerCase()+"").indexOf("none") == -1){
+                                        img.insertAdjacentElement('afterend', newElement2);
+                                        img.insertAdjacentElement('afterend', newElement);
+                                    } else {
+                                        newElement.textContent = '';
+                                        newElement2.textContent = '';
+                                        img.insertAdjacentElement('afterend', newElement);
+                                        img.insertAdjacentElement('afterend', newElement2);
+                                    }
+                                }
+                            }
+                            sumber_foto();
+                        </script>
                         <!-- Isi Article -->
                         <!-- Tags -->
                         <div class="row">
