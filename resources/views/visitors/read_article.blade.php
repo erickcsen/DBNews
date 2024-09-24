@@ -4,7 +4,7 @@
     <?php $link_image_article = asset('storage/images/article/' . basename($article->article_img)); ?>
     <style>
         #isi_article img {
-            max-width: 100%;
+            width: 100%;
             border-radius: 10px;
         }
     </style>
@@ -548,12 +548,14 @@
                                 const images = document.querySelectorAll('#isi_article img');
                                 const images2 = document.querySelectorAll('#isi_article2 img');
                                 let sumber_semua_foto = sumber_semua_foto_element.value.split(","); 
-                                sumber_foto_banner.innerHTML = (sumber_semua_foto.length > 0)?
-                                    (sumber_semua_foto[0].toLowerCase().indexOf("none")==-1)?"<b>Foto : </b>"+sumber_semua_foto[0]:""
+                                let hasil = (sumber_semua_foto.length > 0)?
+                                    (sumber_semua_foto[0].toLowerCase().indexOf("none")==-1)?sumber_semua_foto[0]:""
                                     :"";
-                                sumber_foto_banner2.innerHTML = (sumber_semua_foto.length > 0)?
-                                    (sumber_semua_foto[0].toLowerCase().indexOf("none")==-1)?"<b>Foto : </b>"+sumber_semua_foto[0]:""
-                                    :"";
+
+                                hasil = (hasil!="")?"<b>Foto : </b>"+hasil:"";
+                                
+                                sumber_foto_banner.innerHTML = hasil;
+                                sumber_foto_banner2.innerHTML = hasil;
                                 let index = 1;
                                 images.forEach(img => {
                                     tambahkan_informasi_sumber_foto(img, index, sumber_semua_foto);
