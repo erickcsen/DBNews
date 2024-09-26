@@ -59,6 +59,8 @@
                         </svg> 
                         @if (isset($share_number))
                             {{$share_number}}
+                        @else 
+                            0
                         @endif
                     </span>
                 </div>
