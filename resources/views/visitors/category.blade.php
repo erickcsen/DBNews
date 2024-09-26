@@ -69,7 +69,7 @@
                                 <?php $user = (strlen($user) > 10)?substr($user,0,10).'..':$user; ?>
                                 <?php $menit = date_format($tanggal,"H:i") ?>
                                 <?php $tanggal = date_format($tanggal,"d M Y") ?>
-                                <?php $description = substr($item->description,0,97).'...' ?>
+                                <?php $description = $item->description ?>
                                 <?php $gambar = $item->article_img ?>
                                 <?php $title = $item->title; ?>
                                 <?php $photo = asset('storage/images/article/' . basename($gambar)) ?>
