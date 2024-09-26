@@ -116,6 +116,9 @@
                 </div>
                 <!-- Iklan 1 -->
             @endif
+            @php
+                $share_number = null;
+            @endphp
             <!-- Article -->
             <!-- Youtube Video -->
             @if (count($youtube_video) > 0)
@@ -371,6 +374,9 @@
                 </div>
             @endif
             <!-- Article -->
+            @php
+                $share_number = null;
+            @endphp
             <!-- Youtube Video -->
             @if (count($youtube_video) > 0)
                 <div class="row">
