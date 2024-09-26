@@ -23,6 +23,7 @@
                                 $category_name = ($article_utama->subcategory)?$article_utama->subcategory->name:$category_name;
                                 $title = $article_utama->title;
                                 $views = $article_utama->views;
+                                $share_number = ($article_utama->share)?$item->share:0;
                                 $comments_number = count($article_utama->comments->where("parent_id","is",null))
                             ?>
                             @include('visitors.partials.banner_category')
@@ -340,6 +341,9 @@
                                 $article_img = asset('storage/images/article/' . basename($article_img));
                                 $category_name = $article[0]->category->name;
                                 $title = $article[0]->title;
+                                $views = $article[0]->views;
+                                $share_number = ($article[0]->share)?$article[0]->share:0;
+                                $comments_number = count($article[0]->comments->where("parent_id","is",null))
                             ?>
                             @include('visitors.partials.banner_category_mobile')
                         @endif
