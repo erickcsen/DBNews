@@ -271,7 +271,7 @@
                                 <?php $user = (strlen($user) > 10)?substr($user,0,10).'..':$user; ?>
                                 <?php $menit = date_format($tanggal,"H:i") ?>
                                 <?php $tanggal = date_format($tanggal,"d M Y") ?>
-                                <?php $description = substr($value_article->description,0,95).'...' ?>
+                                <?php $description = $value_article->description ?>
                                 <?php $gambar = $value_article->article_img ?>
                                 <?php $title = $value_article->title; ?>
                                 <?php $photo = asset('storage/images/article/' . basename($gambar)) ?>
