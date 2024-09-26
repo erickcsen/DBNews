@@ -430,7 +430,7 @@ class VisitorsController extends Controller
         
         $today_headline = Article::whereHas("category", function ($query) use ($category_type) {
             $query->where('name', $category_type);
-        })->orderBy("views","desc")->first();
+        })->orderBy("created_at","desc")->first();
 
         $article = Article::whereHas("category", function ($query) use ($category_type) {
             $query->where('name',$category_type);
@@ -451,11 +451,13 @@ class VisitorsController extends Controller
             $sub_category_type = Category::with(["subcategories"])
                 ->where(["name"=>$category_type])
                 ->first()->subcategories;
+            $category_id = Category::with(["subcategories"])
+                ->where(["name" => $category_type]);
             foreach ($sub_category_type as $item) {
                 $subcategory_name = $item->name;
                 $item->article = Article::whereHas("subcategory", function ($query) use ($subcategory_name) {
                     $query->where('name', $subcategory_name);
-                })->orderBy("id", "desc")->paginate(8);
+                })->where("category_id", $category_id)->orderBy("id", "desc")->paginate(8);
             }
         }
 
