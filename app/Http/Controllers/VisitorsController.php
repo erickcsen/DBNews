@@ -451,13 +451,13 @@ class VisitorsController extends Controller
             $sub_category_type = Category::with(["subcategories"])
                 ->where(["name"=>$category_type])
                 ->first()->subcategories;
-            $category = Category::with(["subcategories"])
+            $selected_category = Category::with(["subcategories"])
                 ->where(["name" => $category_type])->first();
             foreach ($sub_category_type as $item) {
                 $subcategory_name = $item->name;
                 $item->article = Article::whereHas("subcategory", function ($query) use ($subcategory_name) {
                     $query->where('name', $subcategory_name);
-                })->where("category_id", $category->id)->orderBy("id", "desc")->paginate(8);
+                })->where("category_id", $selected_category->id)->orderBy("id", "desc")->paginate(8);
             }
         }
 
