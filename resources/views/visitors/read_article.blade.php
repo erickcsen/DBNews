@@ -228,34 +228,36 @@
                                             </div>
                                         </div>
                                         <p class="card-text">{{ $comment->comment_text }}</p>
-                                        <button onclick="reply_{{$comment->id}}.hidden=false" class="btn btn-light bg-white text-muted px-0 py-0">
-                                            <i class="fa fa-comment-o text-muted"></i>
-                                            <span style="font-size:10pt">
-                                                Reply
-                                            </span>
-                                        </button>
-                                        <form action="{{ route('comment.reply', $comment->id) }}#comment_{{$comment->id}}" method="post">
-                                            @csrf
-                                            <div id="reply_{{$comment->id}}" class="col-12 mt-3" hidden>
-                                                <div class="row">
-                                                    <div class="col-1 p-0">
-                                                        <div class="border px-2 rounded-circle text-muted float-end"
-                                                            style="font-size: 16pt">
-                                                            <i class="fa fa-user"></i>
+                                        @auth
+                                            <button onclick="reply_{{$comment->id}}.hidden=false" class="btn btn-light bg-white text-muted px-0 py-0">
+                                                <i class="fa fa-comment-o text-muted"></i>
+                                                <span style="font-size:10pt">
+                                                    Reply
+                                                </span>
+                                            </button>
+                                            <form action="{{ route('comment.reply', $comment->id) }}#comment_{{$comment->id}}" method="post">
+                                                @csrf
+                                                <div id="reply_{{$comment->id}}" class="col-12 mt-3" hidden>
+                                                    <div class="row">
+                                                        <div class="col-1 p-0">
+                                                            <div class="border px-2 rounded-circle text-muted float-end"
+                                                                style="font-size: 16pt">
+                                                                <i class="fa fa-user"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-11 ps-1">
+                                                            <textarea name="reply_text" class="form-control auto-resize" placeholder="Add Reply" style="font-size:10pt;height:12pt;resize:none;"></textarea>
                                                         </div>
                                                     </div>
-                                                    <div class="col-11 ps-1">
-                                                        <textarea name="reply_text" class="form-control auto-resize" placeholder="Add Reply" style="font-size:10pt;height:12pt;resize:none;"></textarea>
+                                                    <div class="row">
+                                                        <div class="col-12 text-end mt-1">
+                                                            <button type="button" onclick="reply_{{$comment->id}}.hidden=true" class="btn btn-light border" style="font-size:8pt">Cancel</button>
+                                                            <button class="btn btn-primary" style="font-size:8pt">Send</button>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-12 text-end mt-1">
-                                                        <button type="button" onclick="reply_{{$comment->id}}.hidden=true" class="btn btn-light border" style="font-size:8pt">Cancel</button>
-                                                        <button class="btn btn-primary" style="font-size:8pt">Send</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
+                                            </form>
+                                        @endauth
                                     </div>
                                 </div>
                             </div>
@@ -298,35 +300,36 @@
                                                     <small>{{ date_format($reply->created_at, 'M. d, Y') }}</small>
                                                 </div>
                                                 <p class="card-text">{{ $reply->comment_text }}</p>
-                                                <button onclick="reply_{{$reply->id}}.hidden=false" class="btn btn-light bg-white text-muted px-0 py-0">
-                                                    <i class="fa fa-comment-o text-muted"></i>
-                                                    <span style="font-size:10pt">
-                                                        Reply
-                                                    </span>
-                                                </button>
-
-                                                <form action="{{ route('comment.reply', $comment->id) }}#comment_{{$comment->id}}" method="post">
-                                                    @csrf
-                                                    <div id="reply_{{$reply->id}}" class="col-12 mt-3" hidden>
-                                                        <div class="row">
-                                                            <div class="col-1 p-0">
-                                                                <div class="border px-2 rounded-circle text-muted float-end"
-                                                                    style="font-size: 16pt">
-                                                                    <i class="fa fa-user"></i>
+                                                @auth
+                                                    <button onclick="reply_{{$reply->id}}.hidden=false" class="btn btn-light bg-white text-muted px-0 py-0">
+                                                        <i class="fa fa-comment-o text-muted"></i>
+                                                        <span style="font-size:10pt">
+                                                            Reply
+                                                        </span>
+                                                    </button>
+                                                    <form action="{{ route('comment.reply', $comment->id) }}#comment_{{$comment->id}}" method="post">
+                                                        @csrf
+                                                        <div id="reply_{{$reply->id}}" class="col-12 mt-3" hidden>
+                                                            <div class="row">
+                                                                <div class="col-1 p-0">
+                                                                    <div class="border px-2 rounded-circle text-muted float-end"
+                                                                        style="font-size: 16pt">
+                                                                        <i class="fa fa-user"></i>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-11 ps-1">
+                                                                    <textarea name="reply_text" class="form-control auto-resize" placeholder="Add Reply" style="font-size:10pt;height:12pt;resize:none;">@<?=substr($reply->user->email,0,strpos($reply->user->email, "@"))?> </textarea>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-11 ps-1">
-                                                                <textarea name="reply_text" class="form-control auto-resize" placeholder="Add Reply" style="font-size:10pt;height:12pt;resize:none;">@<?=substr($reply->user->email,0,strpos($reply->user->email, "@"))?> </textarea>
+                                                            <div class="row">
+                                                                <div class="col-12 text-end mt-1">
+                                                                    <button type="button" onclick="reply_{{$reply->id}}.hidden=true" class="btn btn-light border" style="font-size:8pt">Cancel</button>
+                                                                    <button class="btn btn-primary" style="font-size:8pt">Send</button>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        <div class="row">
-                                                            <div class="col-12 text-end mt-1">
-                                                                <button type="button" onclick="reply_{{$reply->id}}.hidden=true" class="btn btn-light border" style="font-size:8pt">Cancel</button>
-                                                                <button class="btn btn-primary" style="font-size:8pt">Send</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </form>
+                                                    </form>
+                                                @endauth
                                             </div>
                                         </div>
                                     </div>
@@ -667,34 +670,36 @@
                                                 </div>
                                             </div>
                                             <p class="card-text">{{ $comment->comment_text }}</p>
-                                            <button onclick="reply2_{{$comment->id}}.hidden=false" class="btn btn-light bg-white text-muted px-0 py-0">
-                                                <i class="fa fa-comment-o text-muted"></i>
-                                                <span style="font-size:10pt">
-                                                    Reply
-                                                </span>
-                                            </button>
-                                            <form action="{{ route('comment.reply', $comment->id) }}#comment_{{$comment->id}}" method="post">
-                                                @csrf
-                                                <div id="reply2_{{$comment->id}}" class="col-12 mt-3" hidden>
-                                                    <div class="row">
-                                                        <div class="col-1 p-0">
-                                                            <div class="border px-2 rounded-circle text-muted float-end"
-                                                                style="font-size: 16pt">
-                                                                <i class="fa fa-user"></i>
+                                            @auth
+                                                <button onclick="reply2_{{$comment->id}}.hidden=false" class="btn btn-light bg-white text-muted px-0 py-0">
+                                                    <i class="fa fa-comment-o text-muted"></i>
+                                                    <span style="font-size:10pt">
+                                                        Reply
+                                                    </span>
+                                                </button>
+                                                <form action="{{ route('comment.reply', $comment->id) }}#comment_{{$comment->id}}" method="post">
+                                                    @csrf
+                                                    <div id="reply2_{{$comment->id}}" class="col-12 mt-3" hidden>
+                                                        <div class="row">
+                                                            <div class="col-1 p-0">
+                                                                <div class="border px-2 rounded-circle text-muted float-end"
+                                                                    style="font-size: 16pt">
+                                                                    <i class="fa fa-user"></i>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-11 ps-1">
+                                                                <textarea name="reply_text" class="form-control auto-resize" placeholder="Add Reply" style="font-size:10pt;height:12pt;resize:none;"></textarea>
                                                             </div>
                                                         </div>
-                                                        <div class="col-11 ps-1">
-                                                            <textarea name="reply_text" class="form-control auto-resize" placeholder="Add Reply" style="font-size:10pt;height:12pt;resize:none;"></textarea>
+                                                        <div class="row">
+                                                            <div class="col-12 text-end mt-1">
+                                                                <button type="button" onclick="reply_{{$comment->id}}.hidden=true" class="btn btn-light border" style="font-size:8pt">Cancel</button>
+                                                                <button class="btn btn-primary" style="font-size:8pt">Send</button>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <div class="row">
-                                                        <div class="col-12 text-end mt-1">
-                                                            <button type="button" onclick="reply_{{$comment->id}}.hidden=true" class="btn btn-light border" style="font-size:8pt">Cancel</button>
-                                                            <button class="btn btn-primary" style="font-size:8pt">Send</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </form>
+                                                </form>
+                                            @endauth
                                         </div>
                                     </div>
                                 </div>
@@ -747,35 +752,36 @@
                                                         </div>
                                                     </div>
                                                     <p class="card-text">{{ $reply->comment_text }}</p>
-                                                    <button onclick="reply2_{{$reply->id}}.hidden=false" class="btn btn-light bg-white text-muted px-0 py-0">
-                                                        <i class="fa fa-comment-o text-muted"></i>
-                                                        <span style="font-size:10pt">
-                                                            Reply
-                                                        </span>
-                                                    </button>
-    
-                                                    <form action="{{ route('comment.reply', $comment->id) }}#comment_{{$comment->id}}" method="post">
-                                                        @csrf
-                                                        <div id="reply2_{{$reply->id}}" class="col-12 mt-3" hidden>
-                                                            <div class="row">
-                                                                <div class="col-1 p-0">
-                                                                    <div class="border px-2 rounded-circle text-muted float-end"
-                                                                        style="font-size: 16pt">
-                                                                        <i class="fa fa-user"></i>
+                                                    @auth
+                                                        <button onclick="reply2_{{$reply->id}}.hidden=false" class="btn btn-light bg-white text-muted px-0 py-0">
+                                                            <i class="fa fa-comment-o text-muted"></i>
+                                                            <span style="font-size:10pt">
+                                                                Reply
+                                                            </span>
+                                                        </button>
+                                                        <form action="{{ route('comment.reply', $comment->id) }}#comment_{{$comment->id}}" method="post">
+                                                            @csrf
+                                                            <div id="reply2_{{$reply->id}}" class="col-12 mt-3" hidden>
+                                                                <div class="row">
+                                                                    <div class="col-1 p-0">
+                                                                        <div class="border px-2 rounded-circle text-muted float-end"
+                                                                            style="font-size: 16pt">
+                                                                            <i class="fa fa-user"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-11 ps-1">
+                                                                        <textarea name="reply_text" class="form-control auto-resize" placeholder="Add Reply" style="font-size:10pt;height:12pt;resize:none;">@<?=substr($reply->user->email,0,strpos($reply->user->email, "@"))?> </textarea>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-11 ps-1">
-                                                                    <textarea name="reply_text" class="form-control auto-resize" placeholder="Add Reply" style="font-size:10pt;height:12pt;resize:none;">@<?=substr($reply->user->email,0,strpos($reply->user->email, "@"))?> </textarea>
+                                                                <div class="row">
+                                                                    <div class="col-12 text-end mt-1">
+                                                                        <button type="button" onclick="reply_{{$reply->id}}.hidden=true" class="btn btn-light border" style="font-size:8pt">Cancel</button>
+                                                                        <button class="btn btn-primary" style="font-size:8pt">Send</button>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="row">
-                                                                <div class="col-12 text-end mt-1">
-                                                                    <button type="button" onclick="reply_{{$reply->id}}.hidden=true" class="btn btn-light border" style="font-size:8pt">Cancel</button>
-                                                                    <button class="btn btn-primary" style="font-size:8pt">Send</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </form>
+                                                        </form>
+                                                    @endauth
                                                 </div>
                                             </div>
                                         </div>
