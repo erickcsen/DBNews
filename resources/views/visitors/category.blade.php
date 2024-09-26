@@ -23,7 +23,7 @@
                                 $category_name = ($article_utama->subcategory)?$article_utama->subcategory->name:$category_name;
                                 $title = $article_utama->title;
                                 $views = $article_utama->views;
-                                $share_number = ($article_utama->share)?$item->share:0;
+                                $share_number = ($article_utama->share)?$article_utama->share:0;
                                 $comments_number = count($article_utama->comments->where("parent_id","is",null))
                             ?>
                             @include('visitors.partials.banner_category')
