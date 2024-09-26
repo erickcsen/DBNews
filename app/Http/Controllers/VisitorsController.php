@@ -477,7 +477,9 @@ class VisitorsController extends Controller
     }
     public function sub_category($category_type, $sub_category_type){
         $category = VisitorsController::category_menu();
-        $article = Article::whereHas("subcategory", function ($query) use ($sub_category_type) {
+        $article = Article::whereHas("category", function ($query) use ($category_type) {
+            $query->where('name', $category_type);
+        })->whereHas("subcategory", function ($query) use ($sub_category_type) {
             $query->where('name', $sub_category_type);
         })->orderBy("id","desc")->paginate(8);
 
