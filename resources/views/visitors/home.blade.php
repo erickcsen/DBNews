@@ -26,19 +26,31 @@
                 <!-- Iklan 1 -->
                 <div class="row">
                     <div class="col-12 my-4" style="height: 200px">
-                    </div>
-                    <div class="col-12">
-                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1326912091817850"
-                            crossorigin="anonymous"></script>
-                            
-                        <ins class="adsbygoogle"
-                            style="display:block"
-                            data-ad-client="ca-pub-1326912091817850"
-                            data-ad-slot="1265174380"
-                            data-ad-format="auto"
-                            data-full-width-responsive="true"></ins>
+                        <div class="col-12">
+                            @foreach ($ads_bottom as $item)
+                                <a href="{{ $item->link }}" target="_blank">
+                                    <img class="iklan_bottom_1 rounded" src="{{ Storage::url($item->ad_img) }}"
+                                        style="width:100%">
+                                </a>
+                            @endforeach
+                        </div>
                         <script>
-                            (adsbygoogle = window.adsbygoogle || []).push({});
+                            var myIndex = 0;
+                            carousel1();
+
+                            function carousel1() {
+                                var i;
+                                var x = document.getElementsByClassName("iklan_bottom_1");
+                                for (i = 0; i < x.length; i++) {
+                                    x[i].style.display = "none";
+                                }
+                                myIndex++;
+                                if (myIndex > x.length) {
+                                    myIndex = 1
+                                }
+                                x[myIndex - 1].style.display = "block";
+                                setTimeout(carousel1, 2000); // Change image every 2 seconds
+                            }
                         </script>
                     </div>
                 </div>
