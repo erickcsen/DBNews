@@ -3,6 +3,11 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!-- Google Ads -->
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1326912091817850" crossorigin="anonymous"></script>
+        <!-- Google Ads -->
+
         <!-- SEO -->
         <meta name="google-site-verification" content="BbqCqP62zW_GDLgQiNlcOy-5u-FG_GKtce1A_ubvA0c" />
         <meta name="title" content="{{$title_page}}" />

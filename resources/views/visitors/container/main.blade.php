@@ -40,6 +40,10 @@
         <meta name="app-url" content="{{asset('')}}">
         <meta name="file-base-url" content="{{asset('')}}">
 
+        <!-- Google Ads -->
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1326912091817850" crossorigin="anonymous"></script>
+        <!-- Google Ads -->
+
         <script type="application/ld+json">
             {
                 "@context" : "https://schema.org",
