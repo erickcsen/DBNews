@@ -32,13 +32,43 @@
                     data-ad-slot="1265174380"
                     data-ad-format="auto"
                     data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
                 @include('visitors.partials.home.berita_terbaik_mingguan')
-                <ins class="adsbygoogle"
-                    style="display:block"
-                    data-ad-client="ca-pub-1326912091817850"
-                    data-ad-slot="1265174380"
-                    data-ad-format="auto"
-                    data-full-width-responsive="true"></ins>
+                <!-- Iklan 2 -->
+                <div class="row">
+                    <div class="col-12 my-4" style="height: 200px">
+                        <div class="col-12">
+                            @for ($i = count($ads_bottom) - 1; count($ads_bottom) > 0 && $i >= 0; $i--)
+                                <?php $item = $ads_bottom[$i]; ?>
+                                <a href="{{ $item->link }}" target="_blank">
+                                    <img class="iklan_bottom_2 rounded" src="{{ Storage::url($item->ad_img) }}"
+                                        style="width:100%">
+                                </a>
+                            @endfor
+                        </div>
+                        <script>
+                            var myIndex2 = 0;
+                            carousel2();
+
+                            function carousel2() {
+                                var i;
+                                var x = document.getElementsByClassName("iklan_bottom_2");
+                                for (i = 0; i < x.length; i++) {
+                                    x[i].style.display = "none";
+                                }
+                                myIndex2++;
+                                if (myIndex2 > x.length) {
+                                    myIndex2 = 1
+                                }
+                                x[myIndex2 - 1].style.display = "block";
+                                setTimeout(carousel2, 2000); // Change image every 2 seconds
+                            }
+                        </script>
+                    </div>
+                </div>
+                <!-- Iklan 2 -->
             </div>
         </div>
         <div id="content" class="col-12 d-lg-none d-inline-block">
@@ -163,8 +193,5 @@
                 return tanggal.getDate() + "/" + tanggal.getMonth() + "/" + tanggal.getFullYear(); // Format default
             }
         }
-    </script>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
 @endsection
