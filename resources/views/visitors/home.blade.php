@@ -31,7 +31,6 @@
                         crossorigin="anonymous"></script>
                 </ins>
                 <script>
-                    let adsbygoogle = document.getElementsByClassName('adsbygoogle');
                     (adsbygoogle = window.adsbygoogle || []).push({});
                 </script>
                 @include('visitors.partials.home.berita_terpopuler')
