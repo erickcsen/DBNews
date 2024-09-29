@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- Google Ads -->
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1326912091817850" crossorigin="anonymous"></script>
+        <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1326912091817850" crossorigin="anonymous"></script> -->
         <meta name="google-adsense-account" content="ca-pub-1326912091817850">
 
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1283232183386430" crossorigin="anonymous"></script>
