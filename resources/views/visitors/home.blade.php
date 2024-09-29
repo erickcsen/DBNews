@@ -30,6 +30,7 @@
                     data-ad-format="auto"
                     data-full-width-responsive="true"></ins>
                 <script>
+                    let adsbygoogle = document.getElementsByClassName('adsbygoogle');
                     (adsbygoogle = window.adsbygoogle || []).push({});
                 </script>
                 @include('visitors.partials.home.berita_terpopuler')
