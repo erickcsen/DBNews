@@ -129,6 +129,9 @@
                             </div>
                             <div id="isi_article" class="col-12 p-0" style="text-align: justify">
                                 <?php echo $article->description; ?>
+                                <script>
+                                    console.log(`<?php echo $article->description;?>`);
+                                </script>
                             </div>
                         </div>
                         <!-- Isi Article -->
