@@ -13,8 +13,8 @@
         <div class="container">
             <?php
                 $article_content = $article->description;
-                $article_content = str_replace('<iframe width="560" height="500" src="https://www.youtube.com/embed/','<figure class="media"><oembed url="https://www.youtube.com/watch?v=',$article_content);
-                $article_content = str_replace('?autoplay=1" class="col-12" frameborder="0" allowfullscreen></iframe>','"></oembed></figure>',$article_content);
+                $article_content = str_replace('<figure class="media"><oembed url="https://www.youtube.com/watch?v=','<iframe width="560" height="500" src="https://www.youtube.com/embed/',$article_content);
+                $article_content = str_replace('"></oembed></figure>','?autoplay=1" class="col-12" frameborder="0" allowfullscreen></iframe>',$article_content);
             ?>
             <?php echo $article_content; ?>
         </div>
