@@ -3,7 +3,7 @@
 @section('container')
     <?php $link_image_article = asset('storage/images/article/' . basename($article->article_img)); ?>
     <style>
-        #isi_article img {
+        #isi_article img, #isi_article2 img {
             width: 100%;
             border-radius: 10px;
         }
@@ -537,12 +537,6 @@
                         </div>
                         <!-- Foto -->
                         <!-- Isi Article -->
-                        <style>
-                            #isi_article2 img{
-                                width: 100%;
-                                border-radius: 10px;
-                            }
-                        </style>
                         <div id="isi_article2" class="col-12 mt-3" style="text-align: justify;font-size:12pt">
                             <?php echo $article->description; ?>
                         </div>
