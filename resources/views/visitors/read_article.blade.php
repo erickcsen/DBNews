@@ -7,6 +7,9 @@
             width: 100%;
             border-radius: 10px;
         }
+        #isi_article i, #isi_article2 i {
+            font-style: italic;
+        }
     </style>
     <div class="d-none">
         {{$article->description}}
