@@ -14,10 +14,10 @@
             <?php
                 $article_content = $article->description;
                 
-                $article_content = str_replace('<figure class="media"><oembed url="https://www.youtube.com/watch?v=','<iframe height="500" src="https://www.youtube.com/embed/',$article_content);
+                $article_content = str_replace('<figure class="media"><oembed url="https://www.youtube.com/watch?v=','<iframe height="500px" src="https://www.youtube.com/embed/',$article_content);
                 $article_content = str_replace('"></oembed></figure>','?autoplay=1" class="col-12" frameborder="0" allowfullscreen></iframe>',$article_content);
 
-                $article_content_mobile = str_replace('<figure class="media"><oembed url="https://www.youtube.com/watch?v=','<iframe height="250" src="https://www.youtube.com/embed/',$article_content);
+                $article_content_mobile = str_replace('<figure class="media"><oembed url="https://www.youtube.com/watch?v=','<iframe height="250px" src="https://www.youtube.com/embed/',$article_content);
                 $article_content_mobile = str_replace('"></oembed></figure>','?autoplay=1" class="col-12" frameborder="0" allowfullscreen></iframe>',$article_content);
             ?>
         </div>
