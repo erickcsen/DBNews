@@ -10,7 +10,7 @@
     </style>
     <div id="content" class="col-12 d-none">
         <div class="container">
-            <i style="font-style: italic">Italic</i>
+            <i>Italic</i>
             {{$article->description}}
         </div>
     </div>
@@ -867,7 +867,11 @@
         </div>
     </div>
     {{-- Tampilan Mobile --}}
-
+    <style>
+        #isi_article i, #isi_article2 i {
+            font-style: italic;
+        }
+    </style>
     {{-- Share to Medsos --}}
     <div id="share_to_medsos" class="col-12 position-fixed z-1 top-0 start-0 end-0 bottom-0" style="padding-top:100px"
         hidden>
