@@ -11,7 +11,7 @@
             font-style: italic;
         }
     </style>
-    <div class="content d-none">
+    <div id="content" class="col-12 d-none">
         <div class="container">
             <i>Italic</i>
             {{$article->description}}
