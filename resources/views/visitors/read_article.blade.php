@@ -12,8 +12,8 @@
         <div class="container">
             @php
                 $article_content = $article->description
-                echo $article_content;
             @endphp
+            <?php echo $article_content; ?>
         </div>
     </div>
     {{-- Tampilan Desktop --}}
