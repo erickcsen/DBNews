@@ -8,9 +8,9 @@
             border-radius: 10px;
         }
     </style>
-    <script>
+    <div class="d-inline-none">
         console.log("{{$article->description}}");
-    </script>
+    </div>
     {{-- Tampilan Desktop --}}
     <div id="content" class="col-12 d-none d-lg-inline-block">
         <div class="container">
