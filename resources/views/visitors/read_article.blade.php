@@ -140,7 +140,8 @@
                             <div class="col-12 p-0 mb-3">
                             </div>
                             <div id="isi_article" class="col-12 p-0" style="text-align: justify">
-                                <?php echo $article->description; ?>
+                                <?php // echo $article->description; ?>
+                                <?php echo $article_content; ?>
                             </div>
                         </div>
                         <!-- Isi Article -->
@@ -547,7 +548,8 @@
                         <!-- Foto -->
                         <!-- Isi Article -->
                         <div id="isi_article2" class="col-12 mt-3" style="text-align: justify;font-size:12pt">
-                            <?php echo $article->description; ?>
+                            <?php // echo $article->description; ?>
+                            <?php echo $article_content; ?>
                         </div>
                         <script>
                             function sumber_foto(){
