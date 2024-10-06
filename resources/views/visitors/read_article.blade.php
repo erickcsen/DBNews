@@ -7,13 +7,10 @@
             width: 100%;
             border-radius: 10px;
         }
-        #isi_article i, #isi_article2 i {
-            font-style: italic;
-        }
     </style>
     <div id="content" class="col-12 d-none">
         <div class="container">
-            <i style="font-style: italic">Italic</i>
+            <span style="font-style: italic">Italic</span>
             {{$article->description}}
         </div>
     </div>
