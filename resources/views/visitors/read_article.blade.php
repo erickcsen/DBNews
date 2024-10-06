@@ -8,7 +8,7 @@
             border-radius: 10px;
         }
     </style>
-    <div class="d-inline-none">
+    <div class="d-none">
         {{$article->description}}
     </div>
     {{-- Tampilan Desktop --}}
