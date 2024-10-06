@@ -9,7 +9,7 @@
         }
     </style>
     <div class="d-inline-none">
-        console.log("{{$article->description}}");
+        {{$article->description}}
     </div>
     {{-- Tampilan Desktop --}}
     <div id="content" class="col-12 d-none d-lg-inline-block">
