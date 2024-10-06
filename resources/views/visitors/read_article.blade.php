@@ -17,7 +17,6 @@
                 $article_content = str_replace('?autoplay=1" class="col-12" frameborder="0" allowfullscreen></iframe>','"></oembed></figure>',$article_content);
             @endphp
             <?php echo $article_content; ?>
-            <iframe width="560" height="500" src="{{$link_video}}?autoplay=1" class="col-12" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
     {{-- Untuk Mengatur Content Yang ditampilkan --}}
