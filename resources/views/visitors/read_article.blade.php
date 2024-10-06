@@ -16,11 +16,10 @@
                 
                 $article_content = str_replace('<figure class="media"><oembed url="https://www.youtube.com/watch?v=','<iframe height="500" src="https://www.youtube.com/embed/',$article_content);
                 $article_content = str_replace('"></oembed></figure>','?autoplay=1" class="col-12" frameborder="0" allowfullscreen></iframe>',$article_content);
-                
+
                 $article_content_mobile = str_replace('<figure class="media"><oembed url="https://www.youtube.com/watch?v=','<iframe height="250" src="https://www.youtube.com/embed/',$article_content);
                 $article_content_mobile = str_replace('"></oembed></figure>','?autoplay=1" class="col-12" frameborder="0" allowfullscreen></iframe>',$article_content);
             ?>
-            <?php echo $article_content; ?>
         </div>
     </div>
     {{-- Untuk Mengatur Content Yang ditampilkan --}}
@@ -553,7 +552,7 @@
                         <!-- Isi Article -->
                         <div id="isi_article2" class="col-12 mt-3" style="text-align: justify;font-size:12pt">
                             <?php // echo $article->description; ?>
-                            <?php echo $article_content; ?>
+                            <?php echo $article_content_mobile; ?>
                         </div>
                         <script>
                             function sumber_foto(){
