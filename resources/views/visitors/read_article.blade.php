@@ -12,6 +12,7 @@
         }
     </style>
     <div class="d-none">
+        <i>Italic</i>
         {{$article->description}}
     </div>
     {{-- Tampilan Desktop --}}
