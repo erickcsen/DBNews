@@ -13,7 +13,7 @@
     </style>
     <div id="content" class="col-12 d-none">
         <div class="container">
-            <i>Italic</i>
+            <i style="font-style: italic">Italic</i>
             {{$article->description}}
         </div>
     </div>
