@@ -10,8 +10,10 @@
     </style>
     <div id="content" class="col-12 d-none">
         <div class="container">
-            <i>Italic</i>
-            {{$article->description}}
+            @php
+                $article_content = $article->description
+                echo $article_content;
+            @endphp
         </div>
     </div>
     {{-- Tampilan Desktop --}}
