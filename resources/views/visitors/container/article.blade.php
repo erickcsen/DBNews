@@ -11,6 +11,18 @@
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1283232183386430" crossorigin="anonymous"></script>
         <!-- Google Ads -->
 
+        <!-- Google Analytic -->
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-LQ00D4NCT6"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-LQ00D4NCT6');
+        </script>
+        <!-- Google Analytic -->
+
         <!-- SEO -->
         <meta name="google-site-verification" content="BbqCqP62zW_GDLgQiNlcOy-5u-FG_GKtce1A_ubvA0c" />
         <meta name="title" content="{{$title_page}}" />
