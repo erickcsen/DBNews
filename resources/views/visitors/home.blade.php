@@ -60,7 +60,10 @@
                         <div class="col-12 my-4" style="height: 200px">
                             <div class="col-12">
                                 @foreach ($ads_bottom as $item)
-                                    {{$item->name}};
+                                    @if ($item->title=="DBDev")
+                                        <img class="iklan_bottom_1 rounded" src="{{ Storage::url($item->ad_img) }}"
+                                            style="width:100%">
+                                    @endif
                                 @endforeach
                             </div>
                         </div>
