@@ -23,7 +23,7 @@
                 @include('visitors.partials.home.berita_terpopuler')
                 <div>&nbsp;</div>
                 @include('visitors.partials.home.youtube')
-                <!-- Iklan 1 -->
+                <!-- Iklan 1 
                 <div class="row">
                     <div class="col-12 my-4" style="height: 200px">
                         <div class="col-12">
@@ -55,6 +55,17 @@
                     </div>
                 </div>
                 <!-- Iklan 1 -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="col-12 my-4" style="height: 200px">
+                            <div class="col-12">
+                                @foreach ($ads_bottom as $item)
+                                    {{$item->name}};
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 @include('visitors.partials.home.berita_terbaik_mingguan')
                 <!-- Iklan 2 -->
                 <div class="row">
