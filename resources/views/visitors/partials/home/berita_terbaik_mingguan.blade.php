@@ -82,7 +82,7 @@
                                 <img class="iklan_side_2 rounded col-12" src="{{Storage::url($item->ad_img)}}" style="max-height: 375px; max-width:100%">
                             </a>
                         @endif
-                    @endfor
+                    @endforeach
                 </div>
             </div>
             <!-- Iklan 2 Khusus -->
