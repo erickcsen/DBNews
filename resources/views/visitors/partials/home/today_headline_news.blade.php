@@ -113,7 +113,9 @@
                             @if ($item->title=="DBKlik")
                                 <center>
                                     <a href="{{$item->link}}" target="_blank">
-                                        <img class="iklan_side_1 rounded col-12" src="{{Storage::url($item->ad_img)}}" style="max-height: 345px;">
+                                        <center>
+                                            <img class="iklan_side_1 rounded" src="{{Storage::url($item->ad_img)}}" style="max-height: 345px;">
+                                        </center>
                                     </a>
                                 </center>
                             @endif
