@@ -74,7 +74,7 @@
             </div>
         </a>
         <div class="col-12 pb-0">
-            <!-- Iklan 1 -->
+            <!-- Iklan 1 
             <div class="row">
                 <div class="col-12 mt-4">
                     <div class="col-12 overflow-hidden" style="height: 345px;">
@@ -105,6 +105,23 @@
                 </div>
             </div>
             <!-- Iklan 1 -->
+            <!-- Iklan 1 Khusus -->
+            <div class="row">
+                <div class="col-12 mt-4">
+                    <div class="col-12 overflow-hidden" style="height: 345px;">
+                        @foreach ($ads_side as $item)
+                            @if ($item->title=="DBKlik")
+                                <center>
+                                    <a href="{{$item->link}}" target="_blank">
+                                        <img class="iklan_side_1 rounded col-12" src="{{Storage::url($item->ad_img)}}" style="max-height: 345px;">
+                                    </a>
+                                </center>
+                            @endif
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+            <!-- Iklan 1 Khusus -->
         </div>
     </div>
 </div>
