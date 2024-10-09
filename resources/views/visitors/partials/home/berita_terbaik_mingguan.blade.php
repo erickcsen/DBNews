@@ -74,10 +74,9 @@
             <!-- Iklan 2 -->
             <!-- Iklan 2 Khusus -->
             <div class="col-12">
-                <div class="col-12" style="height: 375px;">
+                 <div class="col-12" style="height: 375px;">
                     @foreach ($ads_side as $item)
-                        @if ($item->title=="DBSpace")
-                            <?php $item = $ads_side[$i]; ?>
+                        @if ($item->title=="DBKlik")
                             <a href="{{$item->link}}" target="_blank">
                                 <img class="iklan_side_2 rounded col-12" src="{{Storage::url($item->ad_img)}}" style="max-height: 375px; max-width:100%">
                             </a>
