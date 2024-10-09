@@ -61,8 +61,10 @@
                             <div class="col-12">
                                 @foreach ($ads_bottom as $item)
                                     @if ($item->title=="DBDev")
-                                        <img class="iklan_bottom_1 rounded" src="{{ Storage::url($item->ad_img) }}"
-                                            style="width:100%">
+                                        <a href="{{ $item->link }}" target="_blank">
+                                            <img class="iklan_bottom_1 rounded" src="{{ Storage::url($item->ad_img) }}"
+                                                style="width:100%">
+                                        </a>
                                     @endif
                                 @endforeach
                             </div>
