@@ -55,6 +55,7 @@
                     </div>
                 </div>
                 <!-- Iklan 1 -->
+                <!-- Iklan 1 Khusus -->
                 <div class="row">
                     <div class="col-12">
                         <div class="col-12 my-4" style="height: 200px">
@@ -71,8 +72,9 @@
                         </div>
                     </div>
                 </div>
+                <!-- Iklan 1 Khusus -->
                 @include('visitors.partials.home.berita_terbaik_mingguan')
-                <!-- Iklan 2 -->
+                <!-- Iklan 2 
                 <div class="row">
                     <div class="col-12 my-4" style="height: 200px">
                         <div class="col-12">
@@ -105,6 +107,24 @@
                     </div>
                 </div>
                 <!-- Iklan 2 -->
+                <!-- Iklan 2 Khusus -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="col-12 my-4" style="height: 200px">
+                            <div class="col-12">
+                                @foreach ($ads_bottom as $item)
+                                    @if ($item->title=="DBCreative")
+                                        <a href="{{ $item->link }}" target="_blank">
+                                            <img class="iklan_bottom_1 rounded" src="{{ Storage::url($item->ad_img) }}"
+                                                style="width:100%">
+                                        </a>
+                                    @endif
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Iklan 2 Khusus -->
             </div>
         </div>
         <div id="content" class="col-12 d-lg-none d-inline-block">
