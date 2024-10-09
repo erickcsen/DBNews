@@ -44,7 +44,7 @@
     </div>
     <div class="col-<?=(count($randomArticle) > 0 || count($ads_side)-1 >= $ads_side_id)?"3":"12"?> ps-4 mb-4">
         <div class="row">
-            <!-- Iklan 2 -->
+            <!-- Iklan 2 
             <div class="col-12">
                 <div class="col-12" style="height: 375px;">
                     @for ($i = count($ads_side)-1; count($ads_bottom) > 0 && $i >= 0; $i--)
@@ -72,6 +72,20 @@
                 </script>
             </div>
             <!-- Iklan 2 -->
+            <!-- Iklan 2 Khusus -->
+            <div class="col-12">
+                <div class="col-12" style="height: 375px;">
+                    @for ($i = count($ads_side)-1; count($ads_bottom) > 0 && $i >= 0; $i--)
+                        @if ($item->title=="DBSpace")
+                            <?php $item = $ads_side[$i]; ?>
+                            <a href="{{$item->link}}" target="_blank">
+                                <img class="iklan_side_2 rounded col-12" src="{{Storage::url($item->ad_img)}}" style="max-height: 375px; max-width:100%">
+                            </a>
+                        @endif
+                    @endfor
+                </div>
+            </div>
+            <!-- Iklan 2 Khusus -->
             @if (count($randomArticle) > 0)
                 <div class="col-12 mt-3 text-capitalize">
                     <b class="color4a25a9">Popular {{$randomCategory->name}}</b>
