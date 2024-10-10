@@ -40,7 +40,7 @@
         <meta property="og:type" content="website">
         <meta property="og:site_name" content="dbnews">
         <meta property="og:title" content="{{$title_page}}">
-        <meta property="og:image" content="{{asset('/images/favicon.png')}}">
+        <meta property="og:image" content="{{asset('/images/favicon.ico')}}">
         <meta property="og:url" content="{{asset('')}}">
         <meta property="og:image:type" content="image/jpeg">
         <meta property="og:image:width" content="650">
@@ -51,12 +51,12 @@
         <meta name="googlebot-news" content="index, follow">
         <meta content="{{$headline}}" itemprop="headline">
         <meta name="keywords" content="{{$keywords}}" itemprop="keywords">
-        <meta name="thumbnailUrl" content="{{asset('images/favicon.png')}}" itemprop="thumbnailUrl">
+        <meta name="thumbnailUrl" content="{{asset('images/favicon.ico')}}" itemprop="thumbnailUrl">
         <meta content="{{asset('')}}" itemprop="url">
         
         <meta itemprop="title" content="{{$title_page}}" />
         <meta itemprop="description" content="{{$description}}" />
-        <meta itemprop="image" content="{{asset('/images/favicon.png')}}">
+        <meta itemprop="image" content="{{asset('/images/favicon.ico')}}">
         <meta name="app-url" content="{{asset('')}}">
         <meta name="file-base-url" content="{{asset('')}}">
 
@@ -71,7 +71,7 @@
                     "https://www.tiktok.com/@dbmedianews",
                     "https://www.youtube.com/@dbnewsid"
                 ],
-                "logo": "{{asset('images/favicon.png')}}"
+                "logo": "{{asset('images/favicon.ico')}}"
             }
         </script>
         <script type="application/ld+json">
@@ -90,7 +90,7 @@
         <!-- Ad Sense -->
         <!-- Ad Sense -->
         <title>{{$title_page}}</title>
-        <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+        <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
