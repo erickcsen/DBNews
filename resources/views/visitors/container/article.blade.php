@@ -84,7 +84,7 @@
                     {
                         "@type": "ListItem",
                         "position": 1,
-                        "name": "DBNews ",
+                        "name": "DBNews",
                         "item": {
                             "@type": "Thing",
                             "@id": "{{asset('')}}"
