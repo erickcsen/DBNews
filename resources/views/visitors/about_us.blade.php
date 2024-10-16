@@ -1,6 +1,28 @@
 <?php $title_page = "About Us" ?>
 @extends("visitors.container.main")
 @section("container")
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "image": "{{asset("/images/logo_dbnews.png")}}",
+      "url": "{{asset("/about_us")}}",
+      "sameAs": ["asset("/about_us")"],
+      "logo": "{{asset("/images/logo_dbnews.png")}}",
+      "name": "DB NEWS",
+      "description": "<?php echo $TextAbout ?>",
+      "email": "businessdbnews@gmail.com",
+      "telephone": "08999373777",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Jl. Raya Tenggilis Mejoyo No. AA - 3",
+        "addressLocality": "Indonesian",
+        "addressCountry": "ID",
+        "addressRegion": "East Java",
+        "postalCode": "60293"
+      },
+    }
+    </script>
     {{-- Tampilan Desktop dan Mobile --}}
     <div id="content" class="col-12 
         {{-- d-none d-lg-inline-block --}}
