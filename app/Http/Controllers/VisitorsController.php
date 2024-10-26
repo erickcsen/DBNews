@@ -43,8 +43,11 @@ class VisitorsController extends Controller
                 orderBy("created_at", "desc")->
                 paginate(2);
 
+        $tanggalSatuBulanLalu = Carbon::now()->subMonths(1);
+
         $berita_terpopuler = 
             Article::with(["category","user","subcategory"])->
+                where("created_at", ">", $tanggalSatuBulanLalu)->
                 orderBy("views", "desc")->
                 paginate(3);
 
@@ -530,8 +533,12 @@ class VisitorsController extends Controller
     public function berita_terpopuler(){
         $category = VisitorsController::category_menu();
 
+        $tanggalSatuBulanLalu = Carbon::now()->subMonths(1);
+        
         $article =
-            Article::with(["category", "user", "subcategory"])->orderBy("views", "desc")->paginate(8);
+            Article::with(["category", "user", "subcategory"])
+            ->where("created_at", ">", $tanggalSatuBulanLalu)
+            ->orderBy("views", "desc")->paginate(8);
         if (!($article)) {
             abort(404, "Not Found");
         }
