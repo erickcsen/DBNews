@@ -58,66 +58,17 @@
     <!-- Untuk Upload File PopUp -->
     <div class="page-inner">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 p-0">
                 <div class="card full-height">
                     <div class="card-header">
                         <div class="card-head-row">
-                            <div class="card-title">Article Data</div>
-                            <a href="{{ route('article.index') }}" class="btn btn-primary btn-sm ml-auto">Back</a>
+                            <div class="card-title">Tambahkan Gambar</div>
+                            <a href="{{ route('filemanager.index') }}" class="btn btn-primary btn-sm ml-auto">Back</a>
                         </div>
-                        <div class="card-body">
-                            <form method="post" action="{{ route('article.store') }}" enctype="multipart/form-data">
+                        <div class="card-body p-0">
+                            @include('sweetalert::alert')
+                            <form method="post" action="{{ route('filemanager.store') }}" enctype="multipart/form-data">
                                 @csrf
-                                <div class="form-group">
-                                    <label for="title">Article Title</label>
-                                    <input type="text" class="form-control" name="title" placeholder="article..">
-                                </div>
-                                <div class="form-group">
-                                    <label for="name">Description</label>
-                                    <textarea class="form-control" id="txtarea" name="description" placeholder="Article description..."></textarea>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-4">
-                                        <label for="category_id">Category Name</label>
-                                        <select class="form-control" name="category_id" onclick="event_category(this)"
-                                            id="category_id">
-                                            @foreach ($category as $category)
-                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="col-4" id="subcategory_content" hidden>
-                                        <label for="subcategory_id">Subcategory</label>
-                                        <select class="form-control" name="subcategory_id" id="subcategory_id">
-                                            <option value="">None Subcategory</option>
-                                            @foreach ($subcategory as $subcategory)
-                                                <option value="{{ $subcategory->id }}"
-                                                    class="subcategory_item category_{{ $subcategory->category->id }}"
-                                                    style="display: inline-block;">{{ $subcategory->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <script>
-                                        function event_category(e) {
-                                            let value = e.value;
-                                            subcategory_id.value = "";
-                                            subcategory_content.hidden = false;
-                                            document.querySelectorAll('.subcategory_item').forEach(element => {
-                                                element.style.display = 'none';
-                                            });
-                                            document.querySelectorAll('.category_' + value).forEach(element => {
-                                                element.style.display = 'inline-block';
-                                            });
-                                        }
-                                    </script>
-                                    <div class="col-4 d-none">
-                                        <label for="is_active">Status</label>
-                                        <select class="form-control" name="is_active">
-                                            <option value="publish">Publish</option>
-                                            <option value="draft">Draft</option>
-                                        </select>
-                                    </div>
-                                </div>
                                 <div class="form-group">
                                     <label>Image (1300x650)</label>
                                     <a href="#popup_file" style="text-decoration: none;color:initial" onclick="button_open_popup_file('article_img', 'upload_info_gambar1', 'preview_img', 'article_img_txt', article_img, upload_info_gambar1, preview_img)">
@@ -135,76 +86,6 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-12 p-0">
-                                        <label for="">Sumber Foto</label>
-                                        <input type="text" name="sumber_foto" value="" placeholder="Sumber Foto Gambar Diatas" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-12 p-0">
-                                        <label for="deskripsi_meta">Meta Deskripsi (Deskripsi Singkat)</label>
-                                        <textarea name="deskripsi_meta" id="deskripsi_meta" class="form-control" rows="3"
-                                            placeholder="Meta Deskripsi" style="resize: none"></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-12 p-0">
-                                        <label for="kata_kunci_meta">Kata Kunci Meta (Tags)</label>
-                                        <input name="kata_kunci_meta" id="kata_kunci_meta" onkeyup="tags_event(this)"
-                                            class="form-control" placeholder="Masukkan Kata Kunci"
-                                            style="resize: none" />
-                                    </div>
-                                    <div id="tags" class="col-12 p-0 pt-3 text-capitalize">
-                                        <div class="d-none">
-                                            <div class="d-inline">
-                                                <div class="d-inline rounded-start px-2 py-1 fw-bold text-white"
-                                                    style="background: gray; width:fit-content;">
-                                                    Home
-                                                </div>
-                                                <div class="d-inline">
-                                                    <svg width="23" height="31" xmlns="http://www.w3.org/2000/svg"
-                                                        style="margin-top: -3.3px;margin-left:-1.5px">
-                                                        <!-- Menggambar segitiga sama kaki dengan rotasi 30 derajat -->
-                                                        <polygon points="15.5,10 30,30 1,30" fill="gray"
-                                                            transform="rotate(90, 15.5, 15.5)" />
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                            <div class="d-inline" style="margin-left:-20px;">
-                                                <div class="d-inline rounded-start px-2 py-1 fw-bold text-white"
-                                                    style="background: gray; width:fit-content;">
-                                                    Home
-                                                </div>
-                                                <div class="d-inline">
-                                                    <svg width="23" height="31" xmlns="http://www.w3.org/2000/svg"
-                                                        style="margin-top: -3.3px;margin-left:-1.5px">
-                                                        <!-- Menggambar segitiga sama kaki dengan rotasi 30 derajat -->
-                                                        <polygon points="15.5,10 30,30 1,30" fill="gray"
-                                                            transform="rotate(90, 15.5, 15.5)" />
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <script>
-                                        function tags_event(e) {
-                                            let txt = e.value;
-                                            let arry_txt = txt.split(",");
-                                            tags.innerHTML = '';
-                                            for (let i = 0; i < arry_txt.length; i++) {
-                                                const txt = arry_txt[i];
-                                                tags.innerHTML += (txt != "") ? `
-                                                <div class="d-inline-block mb-2 me-0 ms-0">
-                                                    <div class="d-inline rounded px-2 py-1 fw-bold text-white" style="background: gray; width:fit-content;">
-                                                        ` + txt + `
-                                                    </div>
-                                                </div>
-                                            ` : "";
-                                            }
-                                        }
-                                    </script>
-                                </div>
-                                <div class="form-group">
                                     <button class="btn btn-primary btn-sm" type="submit">Save</button>
                                 </div>
                             </form>
@@ -214,52 +95,6 @@
             </div>
         </div>
     </div>
-    <style>
-        /* Styling untuk Snackbar */
-        .snackbar {
-            visibility: hidden;
-            min-width: 250px;
-            margin-left: -145px;
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            border-radius: 2px;
-            position: fixed;
-            z-index: 1;
-            left: 50%;
-            bottom: 30px;
-            font-size: 17px;
-            white-space: nowrap;
-            padding: 16px;
-            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .snackbar.show {
-            visibility: visible;
-            -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-            animation: fadein 0.5s, fadeout 0.5s 2.5s;
-        }
-
-        @-webkit-keyframes fadein {
-            from { bottom: 0; opacity: 0; }
-            to { bottom: 30px; opacity: 1; }
-        }
-
-        @keyframes fadein {
-            from { bottom: 0; opacity: 0; }
-            to { bottom: 30px; opacity: 1; }
-        }
-
-        @-webkit-keyframes fadeout {
-            from { opacity: 1; }
-            to { opacity: 0; }
-        }
-
-        @keyframes fadeout {
-            from { opacity: 1; }
-            to { opacity: 0; }
-        }
-    </style>
     <div id="popup_file" class="position-fixed top-0 bottom-0 start-0 end-0 pb-5 px-0"
         style="background-color: rgba(0, 0, 0, 0.5);z-index:2000;overflow-y:auto;" hidden>
         <div class="container-fluid">
@@ -274,7 +109,7 @@
                             Unggah Baru
                         </button>
                         <button type="button" value="pilih"
-                            class="btn btn-light btn_tab_upload border"
+                            class="btn btn-light btn_tab_upload border d-none"
                             onclick="btnTabUploadEvent(this);get_photo_files()">
                             Pilih File
                         </button>
@@ -974,5 +809,4 @@
             }
         </script>
     </div>
-    @include('sweetalert::alert')
 @endsection

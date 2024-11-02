@@ -114,7 +114,8 @@ class ArticleController extends Controller
             Alert::success('Success', 'Article added successfully');
             return redirect()->route('article.index');
         } catch(Exception $error){
-            dd($error);
+            Alert::error('Error', $error->getMessage());
+            return redirect()->back()->withErrors($error->getMessage())->withInput();
         }
     }
     
@@ -126,62 +127,67 @@ class ArticleController extends Controller
     }
     
     public function update(Request $request, $id) {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'category_id' => 'required|exists:categories,id',
-            'subcategory_id' => 'nullable|exists:subcategories,id',
-            'article_img' => 'nullable|image',
-            'article_img_txt' => 'nullable|string',
-            'sumber_foto' => 'nullable|string',
-            'deskripsi_meta' => 'nullable|string',
-            'kata_kunci_meta' => 'nullable|string',
-            'is_active' => 'required|in:publish,draft'
-        ]);
-
-        $slug = Str::slug($request->title);
-        $jumlah_slug = Article::where('slug', 'like', $slug)->count();
-        $slug = ($jumlah_slug > 1) ? $slug . '' . $jumlah_slug : $slug;
-
-        $article = Article::findOrFail($id);
-        $article->title = $request->title;
-        $article->slug = $slug;
-        $article->description = $request->description;
-        $article->sumber_foto = $request->sumber_foto;
-        $article->category_id = $request->category_id;
-        $article->subcategory_id = $request->subcategory_id;
-        $article->deskripsi_meta = $request->deskripsi_meta;
-        $article->kata_kunci_meta = $request->kata_kunci_meta;
-        $article->is_active = $request->is_active;
-
-        if ($request->hasFile('article_img')) {
-
-            // Hapus gambar lama jika ada
-            // if ($article->article_img && file_exists(storage_path('app/public/images/article/' . basename($article->article_img)))) {
-            //     unlink(storage_path('app/public/images/article/' . basename($article->article_img)));
-            // }
-
-            $path = $request->file('article_img')->store('public/images/article');
-            $article->article_img = $path;
-
-            /** Tambahkan Database Table Photos */
-            $name = $request->file('article_img')->getClientOriginalName();
-            $size = $request->file('article_img')->getSize();
-            $size_txt = ($size > 1024) ? intval($size / 1024) . " mb" : $size . " kb";
-            Photos::create([
-                "user_id" => Auth::user()->id,
-                "name" => $name,
-                "path" => $path,
-                "size" => $size,
-                "size_txt" => $size_txt
+        try {
+            $request->validate([
+                'title' => 'required|string|max:255',
+                'description' => 'required|string',
+                'category_id' => 'required|exists:categories,id',
+                'subcategory_id' => 'nullable|exists:subcategories,id',
+                'article_img' => 'nullable|image',
+                'article_img_txt' => 'nullable|string',
+                'sumber_foto' => 'nullable|string',
+                'deskripsi_meta' => 'nullable|string',
+                'kata_kunci_meta' => 'nullable|string',
+                'is_active' => 'required|in:publish,draft'
             ]);
-        } else {
-            $article->article_img = $request->article_img_txt;
+
+            $slug = Str::slug($request->title);
+            $jumlah_slug = Article::where('slug', 'like', $slug)->count();
+            $slug = ($jumlah_slug > 1) ? $slug . '' . $jumlah_slug : $slug;
+
+            $article = Article::findOrFail($id);
+            $article->title = $request->title;
+            $article->slug = $slug;
+            $article->description = $request->description;
+            $article->sumber_foto = $request->sumber_foto;
+            $article->category_id = $request->category_id;
+            $article->subcategory_id = $request->subcategory_id;
+            $article->deskripsi_meta = $request->deskripsi_meta;
+            $article->kata_kunci_meta = $request->kata_kunci_meta;
+            $article->is_active = $request->is_active;
+
+            if ($request->hasFile('article_img')) {
+
+                // Hapus gambar lama jika ada
+                // if ($article->article_img && file_exists(storage_path('app/public/images/article/' . basename($article->article_img)))) {
+                //     unlink(storage_path('app/public/images/article/' . basename($article->article_img)));
+                // }
+
+                $path = $request->file('article_img')->store('public/images/article');
+                $article->article_img = $path;
+
+                /** Tambahkan Database Table Photos */
+                $name = $request->file('article_img')->getClientOriginalName();
+                $size = $request->file('article_img')->getSize();
+                $size_txt = ($size > 1024) ? intval($size / 1024) . " mb" : $size . " kb";
+                Photos::create([
+                    "user_id" => Auth::user()->id,
+                    "name" => $name,
+                    "path" => $path,
+                    "size" => $size,
+                    "size_txt" => $size_txt
+                ]);
+            } else {
+                $article->article_img = $request->article_img_txt;
+            }
+        
+            $article->save();
+            Alert::success('Success', 'Article updated successfully');
+            return redirect()->route('article.index');
+        } catch (Exception $error) {
+            Alert::error('Error', $error->getMessage());
+            return redirect()->back()->withErrors($error->getMessage())->withInput();
         }
-    
-        $article->save();
-        Alert::success('Success', 'Article updated successfully');
-        return redirect()->route('article.index');
     }
 
     public function destroy($id) {

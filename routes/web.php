@@ -134,6 +134,7 @@ Route::middleware('admin')->group(function () {
     Route::resource('category', CategoryController::class);
     Route::resource('subcategory', SubcategoryController::class);
     Route::resource('article', ArticleController::class);
+    Route::resource('filemanager', "App\Http\Controllers\Admin\FileManagerController");
     Route::resource('video', VideoController::class);
     Route::resource('ad', AdController::class);
     Route::resource('sport', SportController::class);

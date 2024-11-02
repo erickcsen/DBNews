@@ -82,6 +82,12 @@
                             <p>Sport</p>
                         </a>
                     </li>
+                    <li class="nav-item {{ request()->routeIs('filemanager.index') ? 'active' : '' }}" >
+                        <a href="{{route('filemanager.index')}}">
+                            <i class="fa fa-folder"></i>
+                            <p>File Manager</p>
+                        </a>
+                    </li>
                     <li class="nav-item {{ request()->routeIs('video.index') ? 'active' : '' }}">
                         <a href="{{route('video.index')}}">
                             <i class="far fa-file-video"></i>

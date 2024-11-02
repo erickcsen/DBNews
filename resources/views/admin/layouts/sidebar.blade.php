@@ -20,6 +20,11 @@
     <div class="sidebar sidebar-style-2" data-background-color="blue2">
         <div class="sidebar-wrapper scrollbar scrollbar-inner">
             <div class="sidebar-content">
+                <div class="col-12 ps-4 pt-2 border-bottom pb-2 d-lg-none d-inline-block">
+                    <a href="#" class="logo">
+                        <img src="/dashboard-asset/assets/img/logo.png" alt="navbar brand" class="navbar-brand">
+                    </a>
+                </div>
                 <ul class="nav nav-primary">
                     <li class="nav-item {{ request()->routeIs('dashboardAdmin') ? 'active' : '' }}">
                         <a href="{{route('dashboardAdmin')}}">
@@ -58,6 +63,12 @@
                             <p>Sport</p>
                         </a>
                     </li>
+                    <li class="nav-item {{ request()->routeIs('filemanager.index') ? 'active' : '' }}" >
+                        <a href="{{route('filemanager.index')}}">
+                            <i class="fa fa-folder"></i>
+                            <p>File Manager</p>
+                        </a>
+                    </li>
                     <li class="nav-item {{ request()->routeIs('video.index') ? 'active' : '' }}">
                         <a href="{{route('video.index')}}">
                             <i class="far fa-file-video"></i>
@@ -94,5 +105,7 @@
             </div>
         </div>
     </div>
+    <button class="position-fixed z-3 end-0 start-0 top-0 bottom-0 border-0 d-lg-none" style="background: rgba(0, 0, 0, 0.5)" onclick="sidebar_menu.classList.toggle('d-none');">
+    </button>
 </div>
 <!-- End Sidebar -->
