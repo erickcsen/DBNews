@@ -15,6 +15,7 @@ class UserController extends Controller
         $search = $request->input('search');
         $query = User::query();
         $query->where('role', 1);
+        $query->orWhere('role', 2);
     
         if ($search) {
             $query->where('name', 'like', "%{$search}%")
