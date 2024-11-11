@@ -308,7 +308,7 @@
                     @endif">
                         <div style="width: 100%;overflow:auto">
                             <div class="pagination justify-content-center">
-                                {{ $article->links('pagination::bootstrap-4') }}
+                                {{ $article->links() }}
                             </div>
                         </div>
                     </div>
@@ -317,7 +317,7 @@
                     @endif">
                         <div style="width: 100%;overflow:auto">
                             <div class="pagination justify-content-center">
-                                {{ $youtube_video->links('pagination::bootstrap-4') }}
+                                {{ $youtube_video->links() }}
                             </div>
                         </div>
                     </div>
