@@ -9,7 +9,7 @@
     <div id="content" class="col-12 d-none d-lg-inline-block">
         <div class="container">
             <div class="row">
-                <div class="col-3 position-fixed start-0">
+                <div class="col-3 position-fixed">
                     <form action="/pencarian" id="formFilterElement" method="get">
                         <div class="row">
                             <div class="col-12">
