@@ -179,19 +179,15 @@
                         <div class="col-12 p-0 @if ($data["tipe"]!="")
                             d-none
                         @endif">
-                            <div style="width: 100%; overflow:auto;">
-                                <div class="pagination justify-content-center">
-                                    {{ $article->onEachSide(4)->links('pagination::bootstrap-4') }}
-                                </div>
+                            <div class="pagination justify-content-center">
+                                {{ $article->links('pagination::bootstrap-4') }}
                             </div>
                         </div>
                         <div class="col-12 p-0 @if ($data["tipe"]!="video")
                             d-none
                         @endif">
-                            <div style="width: 100%; overflow:auto;">
-                                <div class="pagination justify-content-center">
-                                    {{ $youtube_video->onEachSide(4)->links('pagination::bootstrap-4') }}
-                                </div>
+                            <div class="pagination justify-content-center">
+                                {{ $youtube_video->links('pagination::bootstrap-4') }}
                             </div>
                         </div>
                     </div>
@@ -310,15 +306,17 @@
                     <div class="col-12 p-0 @if ($data["tipe"]!="")
                         d-none
                     @endif">
+                    <div>
                         <div class="pagination justify-content-center">
-                            {{ $article->links('pagination::bootstrap-4') }}
+                            {{ $article->onEachSide(4)->links('pagination::bootstrap-4') }}
                         </div>
+                    </div>
                     </div>
                     <div class="col-12 p-0 @if ($data["tipe"]!="video")
                         d-none
                     @endif">
                         <div class="pagination justify-content-center">
-                            {{ $youtube_video->links('pagination::bootstrap-4') }}
+                            {{ $youtube_video->onEachSide(4)->links('pagination::bootstrap-4') }}
                         </div>
                     </div>
                 </div>
