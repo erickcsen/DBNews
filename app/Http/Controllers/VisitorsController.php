@@ -635,8 +635,8 @@ class VisitorsController extends Controller
             });
         }
 
-        $article = $article->orderBy($orderBy, "desc")->paginate(4);
-        $youtube_video = $youtube_video->orderBy("id", "desc")->paginate(4);
+        $article = $article->orderBy($orderBy, "desc")->paginate(20);
+        $youtube_video = $youtube_video->orderBy("id", "desc")->paginate(20);
 
         return view('visitors.pencarian', [
             "category" => $category,
