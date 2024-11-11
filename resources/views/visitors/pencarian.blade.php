@@ -180,14 +180,14 @@
                             d-none
                         @endif">
                             <div class="pagination justify-content-center">
-                                {{ $article->links('pagination::bootstrap-4') }}
+                                {{ $article->onEachSide(4)->links('pagination::bootstrap-4') }}
                             </div>
                         </div>
                         <div class="col-12 p-0 @if ($data["tipe"]!="video")
                             d-none
                         @endif">
                             <div class="pagination justify-content-center">
-                                {{ $youtube_video->links('pagination::bootstrap-4') }}
+                                {{ $youtube_video->onEachSide(4)->links('pagination::bootstrap-4') }}
                             </div>
                         </div>
                     </div>
@@ -389,7 +389,7 @@
         document.querySelectorAll('a.page-link').forEach(link => {
             link.addEventListener('click', function(event) {
                 event.preventDefault();
-                window.location.href = event.srcElement.attributes[1].nodeValue+"&txt_pencarian={{$txt_pencarian}}&urut={{$data['urut']}}&tipe={{$data['tipe']}}";
+                window.location.href = event.srcElement.attributes[1].nodeValue+"&txt_pencarian={{$txt_pencarian}}&urut={{$data['urut']}}&tipe={{$data['tipe']}}&pilih_kategori={{$data['pilih_kategori']}}";
             });
         });
     </script>
