@@ -9,7 +9,7 @@
     <div id="content" class="col-12 d-none d-lg-inline-block">
         <div class="container">
             <div class="row">
-                <div class="col-3">
+                <div class="col-3 position-fixed start-0">
                     <form action="/pencarian" id="formFilterElement" method="get">
                         <div class="row">
                             <div class="col-12">
@@ -79,6 +79,7 @@
                         </div>
                     </form>
                 </div>
+                <div class="col-3"></div>
                 <div class="col-9 pb-3">
                     <div class="col-12 mb-4 border-bottom text-capitalize">
                         <b>Hasil Pencarian :</b> <br>
