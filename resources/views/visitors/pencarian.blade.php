@@ -180,14 +180,14 @@
                             d-none
                         @endif">
                             <div class="pagination justify-content-center">
-                                {{ $article->links() }}
+                                {{ $article->links("pagination::bootstrap-4") }}
                             </div>
                         </div>
                         <div class="col-12 p-0 @if ($data["tipe"]!="video")
                             d-none
                         @endif">
                             <div class="pagination justify-content-center">
-                                {{ $youtube_video->links() }}
+                                {{ $youtube_video->links("pagination::bootstrap-4") }}
                             </div>
                         </div>
                     </div>
@@ -308,7 +308,7 @@
                     @endif">
                         <div style="width: 100%;overflow:auto">
                             <div class="pagination justify-content-center">
-                                {{ $article->links() }}
+                                {{ $article->links("pagination::bootstrap-4") }}
                             </div>
                         </div>
                     </div>
@@ -317,7 +317,7 @@
                     @endif">
                         <div style="width: 100%;overflow:auto">
                             <div class="pagination justify-content-center">
-                                {{ $youtube_video->links() }}
+                                {{ $youtube_video->links("pagination::bootstrap-4") }}
                             </div>
                         </div>
                     </div>
